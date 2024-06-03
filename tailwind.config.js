@@ -27,7 +27,8 @@ export default {
                 'normal': '32px'
             },
             fontFamily:{
-                'poppins': 'Poppins'
+                'poppins': 'Poppins',
+                'Prompt': 'Prompt'
             },
             borderWidth: {
                 'principal': '.5px', // Define el ancho del borde principal
@@ -35,6 +36,9 @@ export default {
             borderColor: {
                 'principal': 'rgba(0, 0, 0, 0.11)', // Define el color del borde principal
             },
+            padding:{
+                'pLogin': '100px'
+            }
         },
     },
     plugins: [],
