@@ -4,7 +4,7 @@
 
 <template>
     <div class="h-screen w-screen bg-fondo flex justify-center items-center">
-        <div class="w-1/2 h-fit pb-pLogin pt-pLogin shadow-basic bg-white flex items-center pl-4 laptop:w-8/12 laptop:h-2/3 tablet:w-9/12 tablet:h-1/3 telefono:w-full telefono:h-full telefono:p-0 telefono:flex telefono:justify-center telefono:items-center telefono:flex-col telefono:gap-12">
+        <div class="w-1/2 h-fit pb-pLogin pt-pLogin shadow-basic bg-white flex items-center pl-4 laptop:w-8/12 laptop:h-2/3 tablet:w-9/12 telefono:w-full telefono:h-full telefono:p-0 telefono:flex telefono:justify-center telefono:items-center telefono:flex-col telefono:gap-12">
             <div class="h-fit w-4/12 flex flex-col justify-center items-center gap-9 telefono:hidden">
                 <h1 class="text-principal text-normal text-center font-bold font-poppins m-0 tablet:text-2xl">Fisioterapia</h1>
                 <img class="w-2/4" src="../../assets/icons/fisioIcon.png" alt="">
