@@ -12,7 +12,7 @@
             <div class="hidden telefono:flex telefono:justify-center telefono:items-center telefono:h-auto">
                 <img class="w-2/4" src="../../assets/icons/fisioIcon.png" alt="">
             </div>
-            <div class="h-fit w-8/12 flex flex-col justify-center items-center gap-10 telefono:w-3/4 telefono:2/3 telefono:gap-6 telefono:h-auto">
+            <div class="h-fit w-8/12 flex flex-col justify-center items-center gap-7 telefono:w-3/4 telefono:2/3 telefono:gap-6 telefono:h-auto">
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Correo electronico</label>
                     <input class="h-[40px] border-principal rounded-sm p-3 hover:outline-0 focus:outline-0"
