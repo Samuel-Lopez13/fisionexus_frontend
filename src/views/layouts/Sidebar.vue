@@ -3,7 +3,7 @@
 
 <template>
 
-    <div class="flex flex-col items-center w-16 h-screen space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700 border-r border-gray-300">
+    <div class="flex flex-col items-center w-16 h-screen space-y-8 bg-white border-r border-gray-300">
       <div class="flex flex-col items-center w-16 py-5 space-y-5">
         <a href="#">
           <img class="w-auto h-6" src="https://merakiui.com/images/logo.svg" alt="">
