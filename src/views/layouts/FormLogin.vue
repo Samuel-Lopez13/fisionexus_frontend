@@ -14,7 +14,7 @@
             <div class="hidden telefono:flex telefono:justify-center telefono:items-center telefono:h-auto">
                 <img class="w-2/4" src="../../assets/icons/fisioIcon.png" alt="">
             </div>
-            <div class="h-fit w-8/12 flex flex-col justify-center items-center gap-7 telefono:w-3/4 telefono:2/3 telefono:gap-6 telefono:h-auto">
+            <form class="h-fit w-8/12 flex flex-col justify-center items-center gap-7 telefono:w-3/4 telefono:2/3 telefono:gap-6 telefono:h-auto">
                 <div class="w-8/12 h-[40px] bg-[#FED0D1] flex items-center justify-center rounded-sm" v-if="error">
                     <img src="../../assets/icons/error.png">
                     <h5 class="p-2 text-gray-900">Nombre de usuario y/o contraseña incorrectos</h5>
@@ -30,12 +30,12 @@
                            placeholder="Contraseña">
                 </div>
                 <div class="w-full flex justify-center">
-                    <button
+                    <button type="submit" @click.prevent=""
                         class="w-8/12 h-[45px] text-1xl font-bold font-Prompt tracking-widest bg-principal text-white rounded-sm hover:bg-pHover telefono:w-full">
                         Iniciar sesión
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </template>
