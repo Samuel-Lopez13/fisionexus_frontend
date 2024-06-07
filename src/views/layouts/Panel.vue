@@ -1,18 +1,16 @@
 <script setup>
 import Sidebar from '@/views/layouts/Sidebar.vue'
-import Header from '@/views/layouts/Header.vue'
+import Header from '@/views/layouts/HeaderInfo.vue'
 </script>
 
 <template>
-  <div class="flex overflow-hidden">
-    <Sidebar/>
-    <div class="flex flex-col w-full">
-      <Header/>
-      <div>
-        <router-view></router-view>
-      </div>
-    </div>
-  </div>
+    <main class="flex overflow-hidden">
+        <Sidebar/>
+        <section class="flex flex-col w-full">
+            <Header/>
+            <router-view></router-view>
+        </section>
+    </main>
 </template>
 
 <style scoped>
