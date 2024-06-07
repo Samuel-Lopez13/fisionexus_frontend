@@ -4,7 +4,7 @@ import Header from '@/views/layouts/Header.vue'
 </script>
 
 <template>
-  <div class="flex overflow-hidden">
+  <div class="flex overflow-hidden ">
     <Sidebar/>
     <div class="flex flex-col w-full">
       <Header/>
