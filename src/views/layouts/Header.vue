@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="w-full h-[56px] flex items-center justify-between p-5 border-b ">
+  <div class="w-full h-[56px] flex items-center justify-between p-5 border-b">
     <div class="font-bold text-l">FisioLabs</div>
     <router-link data-tooltip-target="Notificaciones"  data-tooltip-placement="right" class="p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
