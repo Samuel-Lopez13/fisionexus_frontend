@@ -6,7 +6,7 @@ import Header from '@/views/layouts/HeaderInfo.vue'
 <template>
     <main class="flex overflow-hidden">
         <Sidebar/>
-        <section class="flex flex-col w-full">
+        <section class="flex flex-col w-screen">
             <Header/>
             <router-view></router-view>
         </section>
