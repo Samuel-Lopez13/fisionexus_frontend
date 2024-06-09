@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from "@/views/layouts/FormLogin.vue";
+import Login from '@/views/layouts/FormLogin.vue'
 import Panel from '@/views/layouts/Panel.vue'
+import Inicio from '@/views/Navegacion/Inicio.vue'
+import Pacientes from '@/views/Navegacion/Pacientes.vue'
+import Metricas from '@/views/Navegacion/Metricas.vue'
+import Ajustes from '@/views/Navegacion/Ajustes.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,8 +17,31 @@ const router = createRouter({
     {
       path: '/Panel',
       name: 'Panel',
-      component: Panel
-    },
+      component: Panel,
+      redirect: '/Panel/Inicio',
+      children: [
+        {
+          path: 'Inicio',
+          name: 'Inicio',
+          component: Inicio
+        },
+        {
+          path: 'Pacientes',
+          name: 'Pacientes',
+          component: Pacientes
+        },
+        {
+          path: 'Metricas',
+          name: 'Metricas',
+          component: Metricas
+        },
+        {
+          path: 'Ajustes',
+          name: 'Ajustes',
+          component: Ajustes
+        }
+      ]
+    }
   ]
 })
 
