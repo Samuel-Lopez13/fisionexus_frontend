@@ -1,14 +1,16 @@
 <script setup>
+
 </script>
 
 <template>
-    <nav class="flex flex-col items-center w-16 h-screen space-y-8 bg-white border-r border-gray-300">
+    <nav class="flex flex-col items-center w-16 h-screen space-y-8 bg-white border-r border-gray-300 telefono:hidden">
         <div class="flex flex-col items-center w-16 py-5 space-y-5">
             <a href="#">
-                <img class="w-auto h-6" src="https://merakiui.com/images/logo.svg" alt="">
+                <img class="w-auto h-10" src="https://fe.uacam.mx/view/view_image?imagen=logo_micrositio.png&tipo=logo" alt="">
             </a>
-            <router-link data-tooltip-target="Inicio" data-tooltip-placement="right"
-                         class="w-full p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
+            <router-link :to="{name:'Inicio'}" active-class="active_item border-l-4 border-blue-600"
+                         data-tooltip-target="Inicio" data-tooltip-placement="right"
+                         class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -16,13 +18,14 @@
                 </svg>
             </router-link>
             <div id="Inicio" role="tooltip"
-                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
                 Inicio
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-            <router-link data-tooltip-target="Pacientes" data-tooltip-placement="right" href="#"
-                         class="border-l-4 border-blue-600 w-full p-1.5 text-blue-600 duration-200 hover:text-blue-600 flex justify-center">
+            <router-link :to="{name:'Pacientes'}" active-class="active_item border-l-4 border-blue-600 text-blue-600"
+                         data-tooltip-target="Pacientes" data-tooltip-placement="right" href="#"
+                         class="w-full p-1.5 duration-100 text-gray-500 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,13 +33,15 @@
                 </svg>
             </router-link>
             <div id="Pacientes" role="tooltip"
-                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
                 Pacientes
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-            <router-link data-tooltip-target="Metricas" data-tooltip-placement="right" href="#"
-                         class="w-full p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
+            <router-link :to="{name:'Metricas'}" active-class="active_item border-l-4 border-blue-600"
+                         data-tooltip-target="Metricas"
+                         data-tooltip-placement="right" href="#"
+                         class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"/>
@@ -44,12 +49,13 @@
                 </svg>
             </router-link>
             <div id="Metricas" role="tooltip"
-                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
                 Métricas
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-            <router-link class="w-full p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
+            <router-link :to="{name:'Ajustes'}" active-class="active_item border-l-4 border-blue-600"
+                         class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -68,7 +74,7 @@
                 </svg>
             </router-link>
             <div id="Sesion" role="tooltip"
-                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
                 Cerrar Sesión
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
@@ -77,4 +83,7 @@
 </template>
 
 <style scoped>
+.active_item {
+    color: #0062FF !important;
+}
 </style>

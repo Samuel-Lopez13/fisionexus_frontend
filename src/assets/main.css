@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.style_scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #cad4db transparent;
+}
