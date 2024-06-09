@@ -18,7 +18,7 @@ const Saludar = () => {
 <template>
   <header class="flex flex-col md:flex-row items-center justify-between mb-5">
     <section class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-      <h1 class="text-xl font-bold">{{ saludo }}, Usuario <span class="telefono:hidden">👋</span></h1>
+      <h1 class="text-xl font-bold m-0">{{ saludo }}, Usuario <span class="telefono:hidden">👋</span></h1>
       <p class="text-gray-700 font-semibold">Los datos mostrados se actualizan en tiempo real</p>
     </section>
   </header>

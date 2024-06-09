@@ -84,7 +84,7 @@ const initializeChart = () => {
 
 <template>
   <div class="max-w-sm w-full bg-white rounded border shadow p-4">
-    <h1 class="text-blue-600 font-bold text-lg text-center pb-3">Conteo de pacientes</h1>
+    <h1 class="text-blue-600 font-bold text-lg text-center pb-3 m-0">Conteo de pacientes</h1>
     <div class="flex justify-between telefono:flex-col telefono:items-center">
       <div>
         <h5 class="leading-none text-3xl font-bold text-gray-900 pb-2">32.4k</h5>
