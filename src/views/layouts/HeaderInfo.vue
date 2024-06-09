@@ -6,7 +6,7 @@ import { irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
   <header class="w-full h-[60px] flex items-center justify-between p-4 border-b">
     <p class="font-bold text-l">FisioLabs</p>
     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-            class="font-semibold laptop:hidden tablet:hidden telefono:w-[100px] telefono:h-[30px] flex items-center justify-center text-blue-600 rounded-full border border-blue-600 "
+            class="font-semibold laptop:hidden tablet:hidden desktop:hidden telefono:w-[100px] telefono:h-[30px] flex items-center justify-center text-blue-600 rounded-full border border-blue-600 "
             type="button">Menu
       <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
            viewBox="0 0 10 6">
