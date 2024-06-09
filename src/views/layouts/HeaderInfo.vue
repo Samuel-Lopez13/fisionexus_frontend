@@ -38,13 +38,13 @@ import { irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
     </div>
     <section class="flex items-center gap-2">
       <div
-        class="md:flex border gap-2 rounded-full py-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600"
+        class="md:flex border gap-2 rounded-full p-2 duration-200 hover:text-blue-600 hover:border-blue-600"
         role="button">
         <img src="@/assets/icons/Usuario.png" class="h-7 w-7">
         <p class="font-semibold telefono:hidden">Nombre completo de usuario</p>
       </div>
       <router-link data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
-                   class="p-1.5 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">
+                   class="p-2 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
              stroke="currentColor" class="w-7 h-7">
           <path stroke-linecap="round" stroke-linejoin="round"
