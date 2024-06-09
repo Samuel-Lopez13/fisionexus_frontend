@@ -18,7 +18,7 @@
         </svg>
       </router-link>
       <div id="Inicio" role="tooltip"
-           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
         Inicio
         <div class="tooltip-arrow" data-popper-arrow></div>
       </div>
@@ -33,7 +33,7 @@
         </svg>
       </router-link>
       <div id="Pacientes" role="tooltip"
-           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
         Pacientes
         <div class="tooltip-arrow" data-popper-arrow></div>
       </div>
@@ -48,7 +48,7 @@
         </svg>
       </router-link>
       <div id="Metricas" role="tooltip"
-           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
         Métricas
         <div class="tooltip-arrow" data-popper-arrow></div>
       </div>
@@ -73,7 +73,7 @@
         </svg>
       </router-link>
       <div id="Sesion" role="tooltip"
-           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
         Cerrar Sesión
         <div class="tooltip-arrow" data-popper-arrow></div>
       </div>

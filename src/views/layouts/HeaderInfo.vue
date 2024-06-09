@@ -14,24 +14,24 @@ import { irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
       </svg>
     </button>
     <!-- Dropdown menu -->
-    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border w-44 dark:bg-gray-700">
-      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border w-44">
+      <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
         <li @click="irInicio()">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inicio</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Inicio</a>
         </li>
         <li @click="irPacientes()">
           <a href="#"
-             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pacientes</a>
+             class="block px-4 py-2 hover:bg-gray-100">Pacientes</a>
         </li>
         <li @click="irMetricas()">
           <a href="#"
-             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Metricas</a>
+             class="block px-4 py-2 hover:bg-gray-100">Metricas</a>
         </li>
         <li>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ajustes</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Ajustes</a>
         </li>
         <li>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cerrar
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cerrar
             Sesion</a>
         </li>
       </ul>
@@ -53,7 +53,7 @@ import { irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
       </router-link>
     </section>
     <div id="Notificaciones" role="tooltip"
-         class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+         class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
       Notificaciones
       <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
