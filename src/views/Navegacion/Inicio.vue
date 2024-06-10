@@ -27,7 +27,7 @@ const Saludar = () => {
   </header>
   <main class="flex flex-col gap-3">
     <section>
-      <p class="text-lg font-bold text-gray-500 mb-2">Citas del dia</p>
+      <p class="text-lg font-bold text-gray-500 mb-2"> Citas del dia </p>
       <div class="style_scroll flex gap-4 w-12/12 overflow-x-auto py-2">
         <CardCita />
         <CardCita />
