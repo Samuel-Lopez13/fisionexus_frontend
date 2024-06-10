@@ -23,16 +23,100 @@
       </thead>
       <tbody>
       <tr class="bg-white border-b">
-        <th scope="row" class="px-6 py-4 tablet:p-4 font-medium text-gray-900 whitespace-nowrap">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
           Miguelote Angel Hernandez Pat
         </th>
-        <td class="px-6 py-4 tablet:p-4">
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
           21 años
         </td>
-        <td class="px-6 py-4 tablet:p-4">
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
           Indefinido
         </td>
-        <td class="px-6 py-4 tablet:p-4">
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          9812051517
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
+          Miguelote Angel Hernandez Pat
+        </th>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          21 años
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          Indefinido
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          9812051517
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
+          Miguelote Angel Hernandez Pat
+        </th>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          21 años
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          Indefinido
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          9812051517
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
+          Miguelote Angel Hernandez Pat
+        </th>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          21 años
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          Indefinido
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          9812051517
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
+          Miguelote Angel Hernandez Pat
+        </th>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          21 años
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          Indefinido
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          9812051517
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
+          Miguelote Angel Hernandez Pat
+        </th>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          21 años
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          Indefinido
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          9812051517
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <th scope="row" class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
+          Miguelote Angel Hernandez Pat
+        </th>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          21 años
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
+          Indefinido
+        </td>
+        <td class="px-6 py-4 tablet:p-4 laptop:p-4 ">
           9812051517
         </td>
       </tr>
