@@ -1,10 +1,16 @@
 <script setup>
-    import {ref} from "vue";
+    import {onMounted, ref} from "vue";
     import {usuarioCommand} from "@/api/usuarios/usuariosCommand.js";
+    import {clavesStore} from "@/stores/clavesStore.js";
+    const store = clavesStore();
 
     let error = ref(false)
     let username = ref("")
     let contrasena = ref("")
+
+    onMounted(() =>{
+        console.log(store.jwt)
+    })
 
     const login = async () =>{
         let response = await usuarioCommand.login(username.value, contrasena.value)
