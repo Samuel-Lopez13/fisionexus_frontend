@@ -2,11 +2,14 @@
 import {onMounted, ref} from 'vue'
 import CardCita from '@/components/InicioComponents/CardCita.vue'
 import NuevosUsuarios from '@/components/InicioComponents/Charts/NuevosUsuarios.vue'
+import {clavesStore} from "@/stores/clavesStore.js";
 
 const saludo = ref('')
+const storeClave = clavesStore();
 
 onMounted(() => {
     Saludar()
+    console.log(storeClave.url)
 })
 
 const Saludar = () => {
