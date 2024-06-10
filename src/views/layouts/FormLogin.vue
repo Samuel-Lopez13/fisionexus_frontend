@@ -1,7 +1,15 @@
 <script setup>
     import {ref} from "vue";
+    import {usuarioCommand} from "@/api/usuarios/usuariosCommand.js";
 
-    const error = ref(false)
+    let error = ref(false)
+    let username = ref("")
+    let contrasena = ref("")
+
+    const login = async () =>{
+        let response = await usuarioCommand.login(username.value, contrasena.value)
+        console.log(response)
+    }
 </script>
 
 <template>
@@ -21,16 +29,16 @@
                 </div>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Correo electronico</label>
-                    <input class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500 focus:border-2"
+                    <input v-model="username" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500 focus:border-2"
                            placeholder="Correo electronico">
                 </div>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Contraseña</label>
-                    <input class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="password"
+                    <input v-model="contrasena" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="password"
                            placeholder="Contraseña">
                 </div>
                 <div class="w-full flex justify-center">
-                    <button type="submit" @click.prevent=""
+                    <button type="submit" @click.prevent="login()"
                         class="w-8/12 h-[45px] text-1xl font-bold font-Prompt tracking-widest bg-principal text-white rounded-sm hover:bg-pHover telefono:w-full">
                         Iniciar sesión
                     </button>
