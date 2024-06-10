@@ -36,6 +36,7 @@ const Saludar = () => {
         <CardCita />
         <CardCita />
         <CardCita />
+        <div class="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
       </div>
     </section>
     <section class="flex telefono:flex-col py-2 style_scroll overflow-x-auto telefono:gap-4 tablet:gap-4 laptop:gap-5">
