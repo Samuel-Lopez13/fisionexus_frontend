@@ -6,9 +6,3 @@
     scrollbar-width: thin;
     scrollbar-color: #cad4db transparent;
 }
-.btn-custom {
-    @apply bg-principal p-2 pr-6 pl-6 font-poppins text-white rounded-md;
-}
-.btn-custom:hover {
-    @apply bg-pHover;
-}
