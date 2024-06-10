@@ -1,8 +1,5 @@
-//import {clavesStore} from "@/stores/clavesStore.js";
 import {sinAutorizationJSON} from "@/api/headers.js";
 import axios from "axios";
-
-//const store = clavesStore()
 
 export const usuarioCommand = {
 
@@ -15,7 +12,7 @@ export const usuarioCommand = {
             }
 
             const [data, config] = sinAutorizationJSON(JSON)
-            const response = await axios.post("https://fisiolabs-backend.onrender.com/User/Login", data, config)
+            const response = await axios.post(import.meta.env.VITE_API_URL + "/User/Login", data, config)
 
             return response.data
         } catch (error){

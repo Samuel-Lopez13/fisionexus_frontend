@@ -18,7 +18,7 @@ export default {
             backgroundColor: {
                 'fondo': '#F9FAFD',
                 'principal': '#0062FF',
-                'pHover': '#0078FF',
+                'pHover': '#238dff',
             },
             colors:{
                 'principal': '#0062FF'
