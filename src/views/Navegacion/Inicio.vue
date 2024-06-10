@@ -38,7 +38,7 @@ const Saludar = () => {
         <CardCita />
       </div>
     </section>
-    <section class="flex justify-around telefono:flex-col py-2 overflow-x-auto telefono:gap-4 tablet:gap-4 laptop:gap-3">
+    <section class="flex telefono:flex-col py-2 overflow-x-auto telefono:gap-4 tablet:gap-4 laptop:gap-5">
       <div class="telefono:flex telefono:justify-center">
         <NuevosUsuarios />
       </div>
@@ -49,7 +49,7 @@ const Saludar = () => {
         <p class="text-gray-600 mb-1 font-semibold">Ultimos pacientes agregados</p>
         <UltimosUsuarios />
       </div>
-      <div class="telefono:flex telefono:justify-center">
+      <div class="telefono:flex telefono:justify-center w-full">
         <Fisiotepeutas />
       </div>
     </section>
