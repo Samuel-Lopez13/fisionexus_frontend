@@ -38,7 +38,7 @@ const Saludar = () => {
         <CardCita />
       </div>
     </section>
-    <section class="flex justify-around telefono:flex-col py-2 overflow-x-auto telefono:gap-4 tablet:gap-4">
+    <section class="flex justify-around telefono:flex-col py-2 overflow-x-auto telefono:gap-4 tablet:gap-4 laptop:gap-3">
       <div class="telefono:flex telefono:justify-center">
         <NuevosUsuarios />
       </div>
