@@ -38,7 +38,8 @@ export default {
             },
             padding:{
                 'pLogin': '100px'
-            }
+            },
+
         },
     },
     plugins: [],

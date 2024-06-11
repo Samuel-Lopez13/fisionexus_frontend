@@ -6,3 +6,9 @@
     scrollbar-width: thin;
     scrollbar-color: #cad4db transparent;
 }
+.button-primary {
+    @apply bg-principal p-2 pr-6 pl-6 font-poppins text-white rounded-md;
+}
+.button-primary:hover {
+    @apply bg-pHover;
+}
