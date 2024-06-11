@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/layouts/FormLogin.vue'
 import Panel from '@/views/layouts/PanelHome.vue'
-import Inicio from '@/views/Navegacion/LayoutInicio.vue'
-import Pacientes from '@/views/Navegacion/LayoutPacientes.vue'
-import Metricas from '@/views/Navegacion/LayoutMetricas.vue'
-import Ajustes from '@/views/Navegacion/LayoutAjustes.vue'
+import Inicio from '@/components/NavegacionViews/Inicio.vue'
+import Pacientes from '@/components/NavegacionViews/Pacientes.vue'
+import Metricas from '@/components/NavegacionViews/Metricas.vue'
+import Ajustes from '@/components/NavegacionViews/Ajustes.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,30 +15,61 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/Panel',
+      path: '/',
       name: 'Panel',
       component: Panel,
-      redirect: '/Panel/Inicio',
       children: [
         {
           path: 'Inicio',
           name: 'Inicio',
-          component: Inicio
+          component: Inicio,
+          redirect: { name: 'Dashboard' },
+          children: [
+            {
+              path: '',
+              name: 'Dashboard',
+              component: () => import('@/views/Navegacion/LayoutInicio.vue')
+            },
+          ]
         },
         {
           path: 'Pacientes',
           name: 'Pacientes',
-          component: Pacientes
+          component: Pacientes,
+          redirect: { name: 'ListaPacientes' },
+          children: [
+            {
+              path: '',
+              name: 'ListaPacientes',
+              component: () => import('@/views/Navegacion/LayoutPacientes.vue')
+            }
+          ]
         },
         {
           path: 'Metricas',
           name: 'Metricas',
-          component: Metricas
+          component: Metricas,
+          redirect: { name: 'Estadisticas' },
+          children: [
+            {
+              path: '',
+              name: 'Estadisticas',
+              component: () => import('@/views/Navegacion/LayoutMetricas.vue')
+            }
+          ]
         },
         {
           path: 'Ajustes',
           name: 'Ajustes',
-          component: Ajustes
+          component: Ajustes,
+          redirect: { name: 'Configuracion' },
+          children: [
+            {
+              path: '',
+              name: 'Configuracion',
+              component: () => import('@/views/Navegacion/LayoutAjustes.vue')
+            }
+          ]
         }
       ]
     }
