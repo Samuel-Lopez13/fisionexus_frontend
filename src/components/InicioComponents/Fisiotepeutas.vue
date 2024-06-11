@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="w-full max-w-md p-4 overflow-x-auto bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+  <div class="p-4 overflow-x-auto bg-white border border-gray-200 rounded-lg shadow sm:p-8">
     <div class="flex items-center justify-between mb-3
 ">
       <h5 class="text-xl font-bold leading-none text-blue-600">Fisioterapeutas</h5>
