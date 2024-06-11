@@ -5,6 +5,7 @@ import Inicio from '@/views/Navegacion/LayoutInicio.vue'
 import Pacientes from '@/views/Navegacion/LayoutPacientes.vue'
 import Metricas from '@/views/Navegacion/LayoutMetricas.vue'
 import Ajustes from '@/views/Navegacion/LayoutAjustes.vue'
+import AgregarPaciente from '@/views/AddPatient.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
           path: 'Ajustes',
           name: 'Ajustes',
           component: Ajustes
+        },
+        {
+          path: 'AgregarPaciente',
+          name: 'AgregarPaciente',
+          component: AgregarPaciente
         }
       ]
     }
