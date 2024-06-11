@@ -25,7 +25,7 @@ const router = createRouter({
             {
               path: '',
               name: 'Dashboard',
-              component: () => import('@/views/Navegacion/LayoutInicio.vue')
+              component: () => import('@/views/Navegacion/Inicio/LayoutInicio.vue')
             },
           ]
         },
@@ -38,7 +38,7 @@ const router = createRouter({
             {
               path: '',
               name: 'ListaPacientes',
-              component: () => import('@/views/Navegacion/LayoutPacientes.vue')
+              component: () => import('@/views/Navegacion/Pacientes/LayoutPacientes.vue')
             }
           ]
         },
@@ -51,7 +51,7 @@ const router = createRouter({
             {
               path: '',
               name: 'Estadisticas',
-              component: () => import('@/views/Navegacion/LayoutMetricas.vue')
+              component: () => import('@/views/Navegacion/Metricas/LayoutMetricas.vue')
             }
           ]
         },
@@ -64,7 +64,7 @@ const router = createRouter({
             {
               path: '',
               name: 'Configuracion',
-              component: () => import('@/views/Navegacion/LayoutAjustes.vue')
+              component: () => import('@/views/Navegacion/Ajustes/LayoutAjustes.vue')
             }
           ]
         }
