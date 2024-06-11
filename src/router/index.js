@@ -1,10 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/layouts/FormLogin.vue'
 import Panel from '@/views/layouts/PanelHome.vue'
-import Inicio from '@/components/NavegacionViews/Inicio.vue'
-import Pacientes from '@/components/NavegacionViews/Pacientes.vue'
-import Metricas from '@/components/NavegacionViews/Metricas.vue'
-import Ajustes from '@/components/NavegacionViews/Ajustes.vue'
+import Navegacion from '@/views/Navegacion/NavegacionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,7 +19,7 @@ const router = createRouter({
         {
           path: 'Inicio',
           name: 'Inicio',
-          component: Inicio,
+          component: Navegacion,
           redirect: { name: 'Dashboard' },
           children: [
             {
@@ -35,7 +32,7 @@ const router = createRouter({
         {
           path: 'Pacientes',
           name: 'Pacientes',
-          component: Pacientes,
+          component: Navegacion,
           redirect: { name: 'ListaPacientes' },
           children: [
             {
@@ -48,7 +45,7 @@ const router = createRouter({
         {
           path: 'Metricas',
           name: 'Metricas',
-          component: Metricas,
+          component: Navegacion,
           redirect: { name: 'Estadisticas' },
           children: [
             {
@@ -61,7 +58,7 @@ const router = createRouter({
         {
           path: 'Ajustes',
           name: 'Ajustes',
-          component: Ajustes,
+          component: Navegacion,
           redirect: { name: 'Configuracion' },
           children: [
             {
