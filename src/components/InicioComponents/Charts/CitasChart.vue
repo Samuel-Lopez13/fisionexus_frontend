@@ -19,7 +19,7 @@ const getChartOptions = () => {
         series: [52.8, 26.8, 20.4],
         colors: ["#1C64F2", "#ffbe0b", "#e63946"],
         chart: {
-            height: 420,
+            height: 330,
             width: "100%",
             type: "pie",
         },
