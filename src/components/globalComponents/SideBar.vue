@@ -4,7 +4,7 @@
 
 <template>
     <nav class="flex flex-col items-center w-16 h-screen space-y-8 bg-white border-r border-gray-300 telefono:hidden">
-        <div class="flex flex-col items-center w-16 py-5 space-y-5">
+        <div class="flex flex-col items-center w-16 py-3 space-y-5">
             <a href="#">
                 <img class="w-auto h-10" src="https://fe.uacam.mx/view/view_image?imagen=logo_micrositio.png&tipo=logo" alt="">
             </a>
