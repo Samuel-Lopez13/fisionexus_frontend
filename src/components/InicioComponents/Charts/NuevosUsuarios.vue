@@ -83,7 +83,6 @@ const initializeChart = () => {
 </script>
 
 <template>
-
   <div class="max-w-sm w-full bg-white rounded-lg shadow border p-6 md:p-6 tablet:w-[300px] laptop:w-[300px]">
     <div class="flex justify-between">
       <div>
@@ -144,7 +143,6 @@ const initializeChart = () => {
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
