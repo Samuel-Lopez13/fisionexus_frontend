@@ -12,12 +12,14 @@ const router = createRouter({
       {
          path: '/',
          name: 'login',
-         component: Login
+         component: Login,
+         meta: { requiresAuth: false },
       },
       {
          path: '/',
          name: 'Panel',
          component: Panel,
+         meta: { requiresAuth: true },
          children: [
             {
                path: 'Inicio',
@@ -74,6 +76,18 @@ const router = createRouter({
          ]
       }
    ]
+})
+
+router.beforeEach((to, from, next) =>{
+   if (to.meta.requiresAuth) {
+      if(localStorage.getItem(import.meta.env.VITE_CREDENCIALES) === null){
+         next('/')
+      } else{
+         next()
+      }
+   }
+
+   next();
 })
 
 export default router
