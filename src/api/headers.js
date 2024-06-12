@@ -1,5 +1,3 @@
-import {CREDENCIALES} from "@/api/constantesGlobales.js";
-
 const sinAutorizationJSON = (data) => {
     const config = {
         headers: {
@@ -14,7 +12,7 @@ const autorization = () => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem(CREDENCIALES)}`
+            'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
         },
     };
     return config;
@@ -24,7 +22,7 @@ const autorizationJSON = (data) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem(CREDENCIALES)}`
+            'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
         },
     };
 
