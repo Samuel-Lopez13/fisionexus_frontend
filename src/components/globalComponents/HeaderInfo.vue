@@ -3,7 +3,7 @@ import { irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
 </script>
 
 <template>
-  <header class="w-full h-[60px] flex items-center justify-between p-4 border-b">
+  <header class="w-full h-[60px] flex items-center justify-between p-4 border-b ">
     <p class="font-bold text-l">FisioLabs</p>
     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
             class="font-semibold laptop:hidden tablet:hidden desktop:hidden telefono:w-[100px] telefono:h-[30px] flex items-center justify-center text-blue-600 rounded-full border border-blue-600 "
