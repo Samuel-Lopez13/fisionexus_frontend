@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import {usuarioCommand} from "@/api/usuarios/usuariosCommand.js";
+import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 
 let spinner = ref(false)
 let alertError = ref(false)
@@ -9,6 +10,7 @@ let username = ref("")
 let contrasena = ref("")
 
 onMounted(() =>{
+
 })
 
 const login = async () =>{
@@ -44,8 +46,7 @@ const handleFocus = () =>{
                     enter-to-class="opacity-100"
                     leave-active-class="transition-opacity duration-500"
                     leave-from-class="opacity-100"
-                    leave-to-class="opacity-0"
-                >
+                    leave-to-class="opacity-0">
                     <div class="w-8/12 h-[40px] bg-[#FED0D1] flex items-center justify-center rounded-sm" v-if="alertError">
                         <img src="../../assets/icons/error.png" class="p-1 h-[24px]">
                         <h5 class="p-1 text-gray-900 text-sm">{{ messageError }}</h5>
@@ -53,7 +54,7 @@ const handleFocus = () =>{
                 </transition>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Correo electronico</label>
-                    <input v-model="username" @focus="handleFocus()" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500 focus:border-2"
+                    <input v-model="username" @focus="handleFocus()" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="text"
                            placeholder="Correo electronico">
                 </div>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
@@ -62,7 +63,7 @@ const handleFocus = () =>{
                            placeholder="Contraseña">
                 </div>
                 <div class="w-full flex justify-center">
-                    <button type="submit" @click.prevent="login()" :disabled=spinner :class="{ 'bg-pHover': spinner}" class="w-8/12 h-[45px] text-1xl font-bold tracking-widest bg-principal text-white rounded-sm hover:bg-pHover telefono:w-full">
+                    <button type="submit" @click.prevent="login()" :disabled=spinner :class="{ 'bg-[#238dff]': spinner}" class="w-8/12 h-[45px] text-1xl font-bold tracking-widest bg-principal text-white rounded-sm hover:bg-pHover telefono:w-full">
                         <div v-if="spinner === false">
                             Iniciar sesión
                         </div>
