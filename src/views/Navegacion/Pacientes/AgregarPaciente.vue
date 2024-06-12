@@ -8,7 +8,7 @@ const imagenSeleccionada = (event) => {
   let imagen = event.target.files[0]
   if (imagen) {
     let leer = new FileReader()
-    leer.onload = (e) => {
+    leer.onload = (e) =>{
       imageUrl.value = e.target.result
     }
     leer.readAsDataURL(imagen)
