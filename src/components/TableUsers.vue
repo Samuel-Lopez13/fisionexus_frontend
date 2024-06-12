@@ -47,7 +47,6 @@
       </tbody>
     </table>
   </div>
-  <hr class="border-t border-gray-300 mb-2">
   <div class="flex justify-between relative">
     <button class="relative flex items-center text-gray-700 button-with-hover">
       <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,8 +59,8 @@
       <span>Previous</span>
     </button>
 
-    <div class="flex items-center text-gray-700 gap-3">
-      <button class="relative button-with-hover pr-2 pl-2">1</button>
+    <div class="flex items-center h-[20px] text-gray-700 gap-3">
+      <button class="relative border-blue-600 border-b text-blue-600 pr-2 pl-2">1</button>
       <svg width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0.6">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -88,19 +87,5 @@
 </template>
 
 <style scoped>
-.button-with-hover::before {
-  content: "";
-  position: absolute;
-  top: -9px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: transparent;
-  transition: background-color 0.3s;
-}
-
-.button-with-hover:hover::before {
-  @apply bg-principal
-}
 
 </style>
