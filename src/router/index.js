@@ -5,6 +5,7 @@ import Navegacion from '@/views/Navegacion/NavegacionView.vue'
 import LayoutInicio from '@/views/Navegacion/Inicio/LayoutInicio.vue'
 import LayoutPacientes from '@/views/Navegacion/Pacientes/LayoutPacientes.vue'
 import LayoutMetricas from '@/views/Navegacion/Metricas/LayoutMetricas.vue'
+import AgregarPaciente from '@/views/Navegacion/Pacientes/AgregarPaciente.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
                      path: '',
                      name: 'ListaPacientes',
                      component: LayoutPacientes
+                  },
+                  {
+                     path: 'AgregarPaciente',
+                     name: 'AgregarPaciente',
+                     component: AgregarPaciente
                   }
                ]
             },

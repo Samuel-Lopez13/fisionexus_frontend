@@ -1,5 +1,6 @@
 <script setup>
 import TablaUsuarios from '@/components/PacientesComponents/TablaUsuarios.vue'
+import router from '@/router/index.js'
 </script>
 
 <template>
@@ -21,7 +22,7 @@ import TablaUsuarios from '@/components/PacientesComponents/TablaUsuarios.vue'
             </form>
         </div>
         <div class="w-2/2 telefono:w-full">
-            <button class="button-primary w-full">
+            <button @click="router.push({name:'AgregarPaciente'})" class="button-primary w-full">
                 Nuevo paciente
             </button>
         </div>
