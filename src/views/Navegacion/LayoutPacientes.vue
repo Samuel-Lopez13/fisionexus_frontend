@@ -16,7 +16,7 @@ import TableUsers from '@/components/TableUsers.vue'
             </svg>
           </div>
           <input type="search" id="default-search"
-                 class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                 class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                  placeholder="Buscar" required
           />
         </div>
