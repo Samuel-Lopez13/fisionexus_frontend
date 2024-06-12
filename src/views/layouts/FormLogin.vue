@@ -11,19 +11,19 @@ let contrasena = ref("")
 onMounted(() =>{
 })
 
-const inicializarSession = () =>{
-
-}
-
 const login = async () =>{
     spinner.value = true
     let response = await usuarioCommand.login(username.value, contrasena.value)
     spinner.value = false
 
     if(response !== null){
-        alertError = true
+        alertError.value = true
         messageError.value = response
     }
+}
+
+const handleFocus = () =>{
+    alertError.value = false
 }
 </script>
 
@@ -38,18 +38,27 @@ const login = async () =>{
                 <img class="w-2/4" src="../../assets/icons/fisioIcon.png" alt="">
             </div>
             <form class="h-fit w-8/12 flex flex-col justify-center items-center gap-7 telefono:w-3/4 telefono:2/3 telefono:gap-6 telefono:h-auto">
-                <div class="w-8/12 h-[40px] bg-[#FED0D1] flex items-center justify-center rounded-sm" v-if="alertError">
-                    <img src="../../assets/icons/error.png" class="p-1 h-[24px]">
-                    <h5 class="p-1 text-gray-900 text-sm">{{ messageError }}</h5>
-                </div>
+                <transition
+                    enter-active-class="transition-opacity duration-500"
+                    enter-from-class="opacity-0"
+                    enter-to-class="opacity-100"
+                    leave-active-class="transition-opacity duration-500"
+                    leave-from-class="opacity-100"
+                    leave-to-class="opacity-0"
+                >
+                    <div class="w-8/12 h-[40px] bg-[#FED0D1] flex items-center justify-center rounded-sm" v-if="alertError">
+                        <img src="../../assets/icons/error.png" class="p-1 h-[24px]">
+                        <h5 class="p-1 text-gray-900 text-sm">{{ messageError }}</h5>
+                    </div>
+                </transition>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Correo electronico</label>
-                    <input v-model="username" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500 focus:border-2"
+                    <input v-model="username" @focus="handleFocus()" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500 focus:border-2"
                            placeholder="Correo electronico">
                 </div>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Contraseña</label>
-                    <input v-model="contrasena" :disabled=spinner class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="password"
+                    <input v-model="contrasena" @focus="handleFocus()" :disabled=spinner class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="password"
                            placeholder="Contraseña">
                 </div>
                 <div class="w-full flex justify-center">
