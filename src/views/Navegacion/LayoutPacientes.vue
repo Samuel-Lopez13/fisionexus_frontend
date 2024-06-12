@@ -4,14 +4,15 @@ import TableUsers from '@/components/TableUsers.vue'
 </script>
 
 <template>
-  <section class="flex justify-between align-mid mb-5 flex-wrap gap-3">
-
-    <div class="w-1/2">
-      <form class="max-w-md">
-        <div class="relative group">
+  <section class="flex justify-between align-mid mb-5 flex-wrap gap-3 telefono:flex-col">
+    <div class="w-1/2 telefono:w-full">
+      <form class="max-w-md w-full">
+        <div class="relative group ">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg class="w-4 h-4 text-gray-500 group-focus-within:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            <svg class="w-4 h-4 text-gray-500 group-focus-within:text-blue-500" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>
           </div>
           <input type="search" id="default-search"
@@ -21,17 +22,14 @@ import TableUsers from '@/components/TableUsers.vue'
         </div>
       </form>
     </div>
-
-
-
-    <div>
-      <button class="button-primary">
+    <div class="w-2/2 telefono:w-full">
+      <button class="button-primary w-full">
         Nuevo paciente
       </button>
     </div>
   </section>
   <section>
-    <table-users/>
+    <table-users />
   </section>
 </template>
 

@@ -7,22 +7,21 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
-        <th scope="col" class="w-1/12 py-3"></th>
-        <th scope="col" class="w-5/12 py-3">Nombre</th>
-        <th scope="col" class="w-2/12 py-3">Edad</th>
-        <th scope="col" class="w-2/12 py-3">Sexo</th>
-        <th scope="col" class="w-2/12 py-3">Teléfono</th>
+        <th scope="col" class="w-5/12 py-3 px-2 telefono:p-4">Nombre</th>
+        <th scope="col" class="w-2/12 py-3 telefono:p-4">Edad</th>
+        <th scope="col" class="w-2/12 py-3 telefono:p-4">Sexo</th>
+        <th scope="col" class="w-2/12 py-3 telefono:p-4">Sexo</th>
+        <th scope="col" class="w-2/12 py-3 telefono:p-4">Teléfono</th>
         <th scope="col" class="w-1/12 py-3 flex"></th>
       </tr>
       </thead>
       <tbody>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">1</th>
-        <td class="py-3">Miguel Ángel Hernández Pat</td>
-        <td class="py-3">33 años</td>
-        <td class="py-3">Hombre</td>
-        <td class="py-3">9812244054</td>
-        <td class="px-3 py-3 flex gap-3">
+        <td class="py-3 telefono:p-4 truncate px-2">Miguel Ángel Hernández Pat</td>
+        <td class="py-3 telefono:p-4">33 años</td>
+        <td class="py-3 telefono:p-4">Hombre</td>
+        <td class="py-3 telefono:p-4">9812244054</td>
+        <td class="py-3 telefono:p-4 flex gap-1">
           <svg class="hover:stroke-green-500 cursor-pointer" width="32" height="32" stroke="#758CA3" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
             <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
