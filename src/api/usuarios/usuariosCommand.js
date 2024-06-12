@@ -1,5 +1,6 @@
 import {sinAutorizationJSON} from "@/api/headers.js";
 import axios from "axios";
+import { irInicio } from '@/router/rutasUtiles.js'
 
 export const usuarioCommand = {
 
@@ -14,9 +15,17 @@ export const usuarioCommand = {
             const [data, config] = sinAutorizationJSON(JSON)
             const response = await axios.post(import.meta.env.VITE_API_URL + "/User/Login", data, config)
 
-            return response.data
+            //Se agrega la credencial al localStorage
+            localStorage.setItem(import.meta.env.VITE_CREDENCIALES, response.data.accessToken)
+
+            //Te redirecciona al Dashboard
+            irInicio()
         } catch (error){
-            console.error(error)
+            if(error.response.status === 400){
+                return "Rellena los campos solicitados"
+            } else if (error.response.status === 404){
+                return "Nombre de usuario y/o contraseña incorrectos"
+            }
         }
     }
 
