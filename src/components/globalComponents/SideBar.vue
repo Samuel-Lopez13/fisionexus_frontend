@@ -5,10 +5,10 @@ import { CerrarSesion } from '@/router/rutasUtiles.js'
 <template>
     <nav class="flex flex-col items-center w-16 h-screen space-y-8 bg-white border-r border-gray-300 telefono:hidden">
         <div class="flex flex-col items-center w-16 py-3 space-y-5">
-            <div>
+            <a href="https://fe.uacam.mx/" target="_blank">
                 <img class="w-auto h-10" src="https://fe.uacam.mx/view/view_image?imagen=logo_micrositio.png&tipo=logo"
                      alt="">
-            </div>
+            </a>
             <router-link :to="{name:'Inicio'}" active-class="active_item border-l-4 border-blue-600"
                          data-tooltip-target="Inicio" data-tooltip-placement="right"
                          class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
