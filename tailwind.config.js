@@ -7,10 +7,14 @@ export default {
     theme: {
         extend: {
             screens: {
+                /* Anchos */
                 'telefono': {'max': '767px'},  // Ancho maximo de 767px
                 'tablet': {'min': '768px', 'max': '1023px'}, // Ancho mínimo de 768px y máximo de 1023px
                 'laptop': {'min': '1024px', 'max': '1919px'}, // Ancho minimo de 1024px
-                'desktop': '1920px'
+                'desktop': '1920px',
+
+                /* Alturas */
+                'short': {'raw': '(max-height: 880px)'}, // Altura máxima de 880px
             },
             boxShadow: {
                 'basic': '0 4px 6px rgba(0, 0, 0, 0.1)', // Define tu propio estilo de box-shadow

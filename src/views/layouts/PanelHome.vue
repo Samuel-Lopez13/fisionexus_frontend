@@ -10,7 +10,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <main class="flex h-screen">
+    <main class="flex h-screen short:h-full">
         <Sidebar/>
         <section class="flex flex-col w-full overflow-hidden">
             <Header/>
