@@ -87,7 +87,6 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
    if (to.meta.verifyToken) {
-      console.log(to)
       const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
 
       if (response.verify === false) {
