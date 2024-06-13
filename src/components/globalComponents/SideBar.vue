@@ -66,14 +66,14 @@
             </router-link>
         </div>
 
-        <div class="flex items-end w-16 h-screen py-4">
-            <router-link :to="{name:'login'}" data-tooltip-target="Sesion" data-tooltip-placement="right"
+        <div class="flex items-end w-16 h-screen py-4 cursor-pointer">
+            <div data-tooltip-target="Sesion" data-tooltip-placement="right"
                          class="w-full p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                      stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
                 </svg>
-            </router-link>
+            </div>
             <div id="Sesion" role="tooltip"
                  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
                 Cerrar Sesión
