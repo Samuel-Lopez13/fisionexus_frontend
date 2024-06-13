@@ -46,14 +46,14 @@ import {irInicio, irMetricas, irPacientes} from '@/router/rutasUtiles.js'
                 <img src="../../assets/icons/Usuario.png" class="h-7 w-7">
                 <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">Nombre completo de usuario</p>
             </div>
-            <router-link data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
+            <div data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
                          class="p-2 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round"
                           d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
                 </svg>
-            </router-link>
+            </div>
         </section>
         <div id="Notificaciones" role="tooltip"
              class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
