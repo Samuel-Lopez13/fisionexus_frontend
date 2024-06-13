@@ -101,8 +101,4 @@ router.beforeEach(async (to, from, next) => {
    next()
 })
 
-router.afterEach(async (to, from) => {
-
-});
-
 export default router
