@@ -5,6 +5,8 @@ import Navegacion from '@/views/Navegacion/NavegacionView.vue'
 import LayoutInicio from '@/views/Navegacion/Inicio/LayoutInicio.vue'
 import LayoutPacientes from '@/views/Navegacion/Pacientes/LayoutPacientes.vue'
 import LayoutMetricas from '@/views/Navegacion/Metricas/LayoutMetricas.vue'
+import AgregarPaciente from '@/views/Navegacion/Pacientes/AgregarPaciente.vue'
+import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,13 +15,13 @@ const router = createRouter({
          path: '/',
          name: 'login',
          component: Login,
-         meta: { requiresAuth: false },
+         meta: { verifyToken: false }
       },
       {
          path: '/',
          name: 'Panel',
          component: Panel,
-         meta: { requiresAuth: true },
+         meta: { verifyToken: true },
          children: [
             {
                path: 'Inicio',
@@ -44,6 +46,11 @@ const router = createRouter({
                      path: '',
                      name: 'ListaPacientes',
                      component: LayoutPacientes
+                  },
+                  {
+                     path: 'AgregarPaciente',
+                     name: 'AgregarPaciente',
+                     component: AgregarPaciente
                   }
                ]
             },
@@ -78,16 +85,19 @@ const router = createRouter({
    ]
 })
 
-router.beforeEach((to, from, next) =>{
-   if (to.meta.requiresAuth) {
-      if(localStorage.getItem(import.meta.env.VITE_CREDENCIALES) === null){
+router.beforeEach(async (to, from, next) => {
+   if (to.meta.verifyToken) {
+      const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
+
+      if (response.verify === false) {
+         localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
          next('/')
       } else{
          next()
       }
    }
 
-   next();
+   next()
 })
 
 export default router
