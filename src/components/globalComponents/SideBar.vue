@@ -8,7 +8,7 @@
                 <img class="w-auto h-10" src="https://fe.uacam.mx/view/view_image?imagen=logo_micrositio.png&tipo=logo"
                      alt="">
             </a>
-            <router-link :to="{name:'Inicio'}" active-class="active_item border-l-4 border-blue-600 disabled"
+            <router-link :to="{name:'Inicio'}" active-class="active_item border-l-4 border-blue-600"
                          data-tooltip-target="Inicio" data-tooltip-placement="right"
                          class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -24,7 +24,7 @@
             </div>
 
             <router-link :to="{name:'Pacientes'}"
-                         active-class="active_item border-l-4 border-blue-600 text-blue-600 disabled"
+                         active-class="active_item border-l-4 border-blue-600 text-blue-600"
                          data-tooltip-target="Pacientes" data-tooltip-placement="right" href="#"
                          class="w-full p-1.5 duration-100 text-gray-500 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -39,7 +39,7 @@
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-            <router-link :to="{name:'Metricas'}" active-class="active_item border-l-4 border-blue-600 disabled"
+            <router-link :to="{name:'Metricas'}" active-class="active_item border-l-4 border-blue-600"
                          data-tooltip-target="Metricas"
                          data-tooltip-placement="right" href="#"
                          class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
@@ -55,7 +55,7 @@
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-            <router-link :to="{name:'Ajustes'}" active-class="active_item border-l-4 border-blue-600 disabled"
+            <router-link :to="{name:'Ajustes'}" active-class="active_item border-l-4 border-blue-600"
                          class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">

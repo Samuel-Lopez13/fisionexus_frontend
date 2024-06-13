@@ -29,7 +29,7 @@ const regresarImagenDefault = () => {
         <section class="mr-3">
             <div class="flex flex-col items-center gap-6 text-center telefono:justify-around tablet:justify-center">
                 <header class="flex flex-col gap-4 telefono:w-full telefono:items-center">
-                    <h1 class="text-xl font-bold">
+                    <h1 class="text-[24px] text-gray-600 font-bold">
                         Nuevo usuario
                     </h1>
                     <img :src="imageUrl"
@@ -50,8 +50,7 @@ const regresarImagenDefault = () => {
                     enter-to-class="opacity-100"
                     leave-active-class="transition-opacity duration-300"
                     leave-from-class="opacity-100"
-                    leave-to-class="opacity-0"
-                >
+                    leave-to-class="opacity-0">
                     <button
                         v-if="imageUrl !== ImagenDefault"
                         @click="regresarImagenDefault"
@@ -111,10 +110,12 @@ const regresarImagenDefault = () => {
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-600">Estado
                         Civil <span class="text-blue-600">*</span> </label>
-                    <input type="text"
-                           class="input-primary"
-                           placeholder="Soltero"
-                           required />
+                    <select class="input-primary">
+                        <option selected value="Solter">Soltero</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Divorciado">Divorciado</option>
+                        <option value="Viudo">Viudo</option>
+                    </select>
                 </div>
 
                 <div>
@@ -169,7 +170,7 @@ const regresarImagenDefault = () => {
             </div>
             <div class="flex justify-end gap-6 flex-wrap">
                 <button
-                    class="text-blue-700 underline hover:!text-blue-500 telefono:basis-full">
+                    class="text-blue-700 underline hover:text-red-400 telefono:basis-full">
                     Cancelar
                 </button>
                 <button type="submit"

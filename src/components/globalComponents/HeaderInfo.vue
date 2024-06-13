@@ -41,10 +41,10 @@ import {irInicio, irMetricas, irPacientes} from '@/router/rutasUtiles.js'
             </ul>
         </div>
         <section class="flex items-center gap-2">
-            <div class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600"
+            <div class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
                 role="button">
                 <img src="../../assets/icons/Usuario.png" class="h-7 w-7">
-                <p class="font-semibold flex items-center text-gray-600 telefono:hidden">Nombre completo de usuario</p>
+                <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">Nombre completo de usuario</p>
             </div>
             <router-link data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
                          class="p-2 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">

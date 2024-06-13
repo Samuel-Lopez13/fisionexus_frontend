@@ -21,12 +21,13 @@ const router = createRouter({
          path: '/',
          name: 'Panel',
          component: Panel,
-         meta: { verifyToken: true },
+         meta: { verifyToken: true},
          children: [
             {
                path: 'Inicio',
                name: 'Inicio',
                component: Navegacion,
+               meta: {title: 'Dashboard - Fisiolabs'},
                redirect: { name: 'Dashboard' },
                children: [
                   {
@@ -41,6 +42,7 @@ const router = createRouter({
                name: 'Pacientes',
                component: Navegacion,
                redirect: { name: 'ListaPacientes' },
+               meta: {title: 'Pacientes - Fisiolabs'},
                children: [
                   {
                      path: '',
@@ -50,7 +52,7 @@ const router = createRouter({
                   {
                      path: 'AgregarPaciente',
                      name: 'AgregarPaciente',
-                     component: AgregarPaciente
+                     component: AgregarPaciente,
                   }
                ]
             },
@@ -58,6 +60,7 @@ const router = createRouter({
                path: 'Metricas',
                name: 'Metricas',
                component: Navegacion,
+               meta: {title: 'Metricas - Fisiolabs'},
                redirect: { name: 'Estadisticas' },
                children: [
                   {
@@ -71,6 +74,7 @@ const router = createRouter({
                path: 'Ajustes',
                name: 'Ajustes',
                component: Navegacion,
+               meta: {title: 'Ajustes - Fisiolabs'},
                redirect: { name: 'Configuracion' },
                children: [
                   {
@@ -86,6 +90,8 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
+
+   /*Verifica que el token sea autentico*/
    if (to.meta.verifyToken) {
       const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
 
@@ -95,6 +101,13 @@ router.beforeEach(async (to, from, next) => {
       } else{
          next()
       }
+   }
+
+   /*Cambia el titulo dependiendo de la pagina*/
+   if(to.meta.title){
+      document.title = to.meta.title;
+   } else {
+      document.title = 'Fisiolabs'; // Título por defecto
    }
 
    next()
