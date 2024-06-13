@@ -67,7 +67,7 @@
         </div>
 
         <div class="flex items-end w-16 h-screen py-4">
-            <router-link data-tooltip-target="Sesion" data-tooltip-placement="right"
+            <router-link :to="{name:'login'}" data-tooltip-target="Sesion" data-tooltip-placement="right"
                          class="w-full p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                      stroke="currentColor" class="size-6">
