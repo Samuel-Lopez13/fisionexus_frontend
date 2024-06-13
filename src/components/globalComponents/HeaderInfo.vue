@@ -51,7 +51,7 @@ const CerrarMenu = (ruta) => {
             </div>
         </div>
         <section class="flex items-center gap-2">
-            <div class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
+            <div @click="router.push({name:'Ajustes'})" class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
                 role="button">
                 <img src="../../assets/icons/Usuario.png" class="h-7 w-7">
                 <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">Nombre completo de usuario</p>
