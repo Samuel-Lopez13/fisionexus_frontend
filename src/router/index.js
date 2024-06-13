@@ -7,6 +7,7 @@ import LayoutPacientes from '@/views/Navegacion/Pacientes/LayoutPacientes.vue'
 import LayoutMetricas from '@/views/Navegacion/Metricas/LayoutMetricas.vue'
 import AgregarPaciente from '@/views/Navegacion/Pacientes/AgregarPaciente.vue'
 import { verify } from '@/services/verifyToken.js'
+import LayoutAjustes from '@/views/Navegacion/Ajustes/LayoutAjustes.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,7 +81,7 @@ const router = createRouter({
                   {
                      path: '',
                      name: 'Configuracion',
-                     component: LayoutMetricas
+                     component: LayoutAjustes
                   }
                ]
             }
