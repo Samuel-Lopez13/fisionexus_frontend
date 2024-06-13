@@ -5,7 +5,7 @@ export const usuariosQueries = {
 
    verifyUser: async (token) => {
       try{
-         const response = await axios.get(import.meta.env.VITE_API_LOCAL + "/User/verifyUser/" + token, autorization())
+         const response = await axios.get(import.meta.env.VITE_API_URL + "/User/verifyUser/" + token, autorization())
 
          return response.data
       } catch (error){
