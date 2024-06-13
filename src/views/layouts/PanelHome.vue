@@ -3,9 +3,10 @@ import Sidebar from '@/components/globalComponents/SideBar.vue'
 import Header from '@/components/globalComponents/HeaderInfo.vue'
 import Footer from '@/components/globalComponents/FooterInfo.vue'
 import { onMounted } from 'vue'
+import { initTooltips } from 'flowbite'
 
 onMounted(() => {
-
+    initTooltips() // Inicializar los tooltips nuevamente
 })
 </script>
 

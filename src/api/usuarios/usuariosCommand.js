@@ -20,6 +20,8 @@ export const usuarioCommand = {
 
             //Te redirecciona al Dashboard
             irInicio()
+
+            return null
         } catch (error){
             if(error.response.status === 400){
                 return "Rellena los campos solicitados"

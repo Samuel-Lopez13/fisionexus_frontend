@@ -1,26 +1,18 @@
 <script setup>
 import { ref, computed } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
+import { irPacientes } from '@/router/rutasUtiles.js'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
 
 const imagenSeleccionada = (event) => {
-    let imagen = event.target.files[0]
-    if (imagen) {
-        let leer = new FileReader()
-        leer.onload = (e) => {
-            imageUrl.value = e.target.result
-        }
-        leer.readAsDataURL(imagen)
-    }
+    imageUrl.value = URL.createObjectURL(event.target.files[0])
 }
-
 const regresarImagenDefault = () => {
-    imageUrl.value = ImagenDefault
     inputFile.value.value = ''
+    imageUrl.value = ImagenDefault
 }
-
 </script>
 
 
@@ -65,7 +57,7 @@ const regresarImagenDefault = () => {
                     <path d="M196.701 44.1913L196.576 1.0387L248.995 44.1913H196.701Z" fill="#FF9839"
                           fill-opacity="0.5" />
                     <foreignObject x="10" y="50" width="100%" height="100%">
-                        <textarea class="svgtext w-full" placeholder="Notas internas"></textarea>
+                        <textarea class="svgtext w-full text-gray-600" placeholder="Notas internas"></textarea>
                     </foreignObject>
                 </svg>
             </div>
@@ -150,7 +142,7 @@ const regresarImagenDefault = () => {
                 <h1 class="text-principal text-xl mb-2">Información de residencia</h1>
             </header>
             <hr class="mb-3">
-            <div class="flex gap-6 telefono:flex-wrap">
+            <div class="flex gap-6 telefono:flex-wrap telefono:gap-1">
                 <div class="mb-6 basis-3/4 telefono:basis-full">
                     <label class="block mb-2 text-sm font-medium text-gray-600">Domicilio <span
                         class="text-blue-600">*</span></label>
@@ -168,8 +160,8 @@ const regresarImagenDefault = () => {
                            required />
                 </div>
             </div>
-            <div class="flex justify-end gap-6 flex-wrap">
-                <button
+            <div class="flex justify-end gap-6 flex-wrap telefono:flex-col-reverse">
+                <button @click="irPacientes()"
                     class="text-blue-700 underline hover:text-red-400 telefono:basis-full">
                     Cancelar
                 </button>
@@ -187,7 +179,7 @@ const regresarImagenDefault = () => {
 
 .svgtext {
     width: 80%;
-    height: 80%;
+    height: 77%;
     background-color: transparent;
     margin-right: 20px;
     outline: none;

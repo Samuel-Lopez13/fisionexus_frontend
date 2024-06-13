@@ -8,10 +8,18 @@ import LayoutMetricas from '@/views/Navegacion/Metricas/LayoutMetricas.vue'
 import AgregarPaciente from '@/views/Navegacion/Pacientes/AgregarPaciente.vue'
 import { verify } from '@/services/verifyToken.js'
 import LayoutAjustes from '@/views/Navegacion/Ajustes/LayoutAjustes.vue'
+import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
+import NotFound from '@/views/layouts/NotFound.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
    routes: [
+      {
+         path: '/:pathMatch(.*)*',
+         name: 'NotFound',
+         component: NotFound,
+         meta: { requiresAuth: false },
+      },
       {
          path: '/',
          name: 'login',
@@ -90,17 +98,27 @@ const router = createRouter({
    ]
 })
 
-router.beforeEach( (to, from, next) => {
+router.beforeEach( async (to, from, next) => {
 
    /*Verifica que el token sea autentico*/
    if (to.meta.verifyToken) {
-      const response = verify()
+      const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
 
       if (response.verify === false) {
          localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
          next('/')
       } else{
          next()
+      }
+   }
+
+   /*
+    * Redireccion a la ruta "/"
+    * Si tengo acceso no me permitira ver el login
+    * */
+   if(to.name === 'login'){
+      if(localStorage.getItem(import.meta.env.VITE_CREDENCIALES) != null){
+         next({name: 'Dashboard'})
       }
    }
 

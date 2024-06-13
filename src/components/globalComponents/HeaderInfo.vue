@@ -1,44 +1,54 @@
 <script setup>
 import {irInicio, irMetricas, irPacientes} from '@/router/rutasUtiles.js'
+import { ref } from 'vue'
+import router from '@/router/index.js'
+
+const menu = ref(false)
+
+const MenuMobile = () =>{
+    menu.value = !menu.value
+}
+
+const CerrarMenu = (ruta) => {
+    ruta()
+    menu.value = !menu.value
+}
+
 </script>
 
 <template>
     <header class="w-full h-[60px] flex items-center justify-between p-4 border-b">
         <p class="font-bold text-l">FisioLabs</p>
-        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                class="font-semibold laptop:hidden tablet:hidden desktop:hidden telefono:w-[100px] telefono:h-[30px] flex items-center justify-center text-blue-600 rounded-full border border-blue-600 "
-                type="button">Menu
-            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                 viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="m1 1 4 4 4-4"/>
-            </svg>
-        </button>
-        <!-- Dropdown menu -->
-        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border w-44">
-            <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-                <li @click="irInicio()">
-                    <div class="block px-4 py-2 hover:bg-gray-100">Inicio</div>
-                </li>
-                <li @click="irPacientes()">
-                    <div
-                        class="block px-4 py-2 hover:bg-gray-100">Pacientes
-                    </div>
-                </li>
-                <li @click="irMetricas()">
-                    <div
-                        class="block px-4 py-2 hover:bg-gray-100">Metricas
-                    </div>
-                </li>
-                <li>
-                    <div class="block px-4 py-2 hover:bg-gray-100">Ajustes</div>
-                </li>
-                <li>
-                    <div class="block px-4 py-2 hover:bg-gray-100">Cerrar
-                        Sesion
-                    </div>
-                </li>
-            </ul>
+        <div class="relative inline-block text-left">
+            <button @click="MenuMobile()" id="dropdownDefaultButton"
+                    class="font-semibold laptop:hidden tablet:hidden desktop:hidden telefono:w-[100px] telefono:h-[30px] flex items-center justify-center text-blue-600 rounded-full border border-blue-600"
+                    type="button">Menu
+                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div v-show="menu" id="dropdown" class="z-10 flex bg-white absolute rounded-lg border w-44 left-[-40px] top-[40px]">
+                <ul class="w-full py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+                    <li @click="CerrarMenu(irInicio)">
+                        <div class=" px-4 py-2 hover:bg-gray-100">Inicio</div>
+                    </li>
+                    <li @click="CerrarMenu(irPacientes)">
+                        <div class="block px-4 py-2 hover:bg-gray-100">Pacientes</div>
+                    </li>
+                    <li @click="CerrarMenu(irMetricas)">
+                        <div class="block px-4 py-2 hover:bg-gray-100">Metricas</div>
+                    </li>
+                    <li>
+                        <div class="block px-4 py-2 hover:bg-gray-100">Ajustes</div>
+                    </li>
+                    <li>
+                        <div class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesion</div>
+                    </li>
+                </ul>
+            </div>
         </div>
         <section class="flex items-center gap-2">
             <div class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
