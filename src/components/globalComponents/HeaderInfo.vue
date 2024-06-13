@@ -1,5 +1,5 @@
 <script setup>
-import {irInicio, irMetricas, irPacientes} from '@/router/rutasUtiles.js'
+import { CerrarSesion, irAjustes, irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
 import { ref } from 'vue'
 import router from '@/router/index.js'
 
@@ -41,10 +41,10 @@ const CerrarMenu = (ruta) => {
                     <li @click="CerrarMenu(irMetricas)">
                         <div class="block px-4 py-2 hover:bg-gray-100">Metricas</div>
                     </li>
-                    <li>
+                    <li @click="CerrarMenu(irAjustes)">
                         <div class="block px-4 py-2 hover:bg-gray-100">Ajustes</div>
                     </li>
-                    <li>
+                    <li @click="CerrarSesion()">
                         <div class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesion</div>
                     </li>
                 </ul>

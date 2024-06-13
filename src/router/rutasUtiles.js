@@ -20,3 +20,7 @@ export const irAgregarPacientes = () => {
 export const irMetricas = () => {
    router.push({ name: 'Metricas' })
 }
+
+export const irAjustes = () => {
+   router.push({ name: 'Ajustes' })
+}
