@@ -1,7 +1,6 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import {usuarioCommand} from "@/api/usuarios/usuariosCommand.js";
-import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 
 let spinner = ref(false)
 let alertError = ref(false)

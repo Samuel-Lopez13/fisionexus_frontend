@@ -6,7 +6,7 @@ import LayoutInicio from '@/views/Navegacion/Inicio/LayoutInicio.vue'
 import LayoutPacientes from '@/views/Navegacion/Pacientes/LayoutPacientes.vue'
 import LayoutMetricas from '@/views/Navegacion/Metricas/LayoutMetricas.vue'
 import AgregarPaciente from '@/views/Navegacion/Pacientes/AgregarPaciente.vue'
-import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
+import { verify } from '@/services/verifyToken.js'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -89,11 +89,11 @@ const router = createRouter({
    ]
 })
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach( (to, from, next) => {
 
    /*Verifica que el token sea autentico*/
    if (to.meta.verifyToken) {
-      const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
+      const response = verify()
 
       if (response.verify === false) {
          localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)

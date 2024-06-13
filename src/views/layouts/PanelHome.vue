@@ -2,22 +2,11 @@
 import Sidebar from '@/components/globalComponents/SideBar.vue'
 import Header from '@/components/globalComponents/HeaderInfo.vue'
 import Footer from '@/components/globalComponents/FooterInfo.vue'
-import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-    verify()
+
 })
-
-const verify = async () =>{
-    const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
-
-    console.log(response)
-
-    if(response.verify === false){
-        localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
-    }
-}
 </script>
 
 <template>
