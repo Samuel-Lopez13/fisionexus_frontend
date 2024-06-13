@@ -15,13 +15,13 @@ const router = createRouter({
          path: '/',
          name: 'login',
          component: Login,
-         meta: { requiresAuth: false, verifyToken: false },
+         meta: { verifyToken: false }
       },
       {
          path: '/',
          name: 'Panel',
          component: Panel,
-         meta: { requiresAuth: true, verifyToken: true },
+         meta: { verifyToken: true },
          children: [
             {
                path: 'Inicio',
@@ -85,23 +85,24 @@ const router = createRouter({
    ]
 })
 
-router.beforeEach(async (to, from, next) =>{
-   if (to.meta.requiresAuth) {
-      if(localStorage.getItem(import.meta.env.VITE_CREDENCIALES) === null){
+router.beforeEach(async (to, from, next) => {
+   if (to.meta.verifyToken) {
+      console.log(to)
+      const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
+
+      if (response.verify === false) {
+         localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
          next('/')
       } else{
          next()
       }
    }
 
-   if(to.meta.verifyToken){
-      const response = await usuariosQueries.verifyUser(import.meta.env.VITE_CREDENCIALES)
-      if(response.verify === false){
-         localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
-      }
-   }
-
-   next();
+   next()
 })
+
+router.afterEach(async (to, from) => {
+
+});
 
 export default router
