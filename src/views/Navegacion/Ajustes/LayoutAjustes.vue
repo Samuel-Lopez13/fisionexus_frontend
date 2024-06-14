@@ -56,7 +56,7 @@ const regresarImagenDefault = () => {
     <section class="px-4 w-5/12 telefono:w-full flex flex-col gap-3">
       <div>
         <header>
-          <h1 class="text-principal text-xl mb-2">Ajustes del usuario</h1>
+          <h1 class="text-principal text-xl mb-2 telefono:text-center telefono:mt-5">Ajustes del usuario</h1>
         </header>
         <hr class="border-b-blue-500 mb-3">
       </div>
