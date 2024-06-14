@@ -10,6 +10,7 @@ import { verify } from '@/services/verifyToken.js'
 import LayoutAjustes from '@/views/Navegacion/Ajustes/LayoutAjustes.vue'
 import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 import NotFound from '@/views/layouts/NotFound.vue'
+import Expediente from '@/views/Navegacion/Pacientes/Expediente.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,11 @@ const router = createRouter({
                      path: 'AgregarPaciente',
                      name: 'AgregarPaciente',
                      component: AgregarPaciente,
+                  },
+                  {
+                     path: 'Expediente',
+                     name: 'Expediente',
+                     component: Expediente,
                   }
                ]
             },
