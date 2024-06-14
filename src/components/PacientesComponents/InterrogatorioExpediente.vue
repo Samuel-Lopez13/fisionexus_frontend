@@ -18,10 +18,10 @@ function handleChange(tipo) {
         <div>
           <section
             class="tablet:flex-col flex px-6 py-3 items-center telefono:flex-col gap-4 telefono:text-center tablet:text-center">
-            <div class="text-gray-600 w-[200px] laptop:w-6/12 telefono:w-full">
-              <label class="">Tipo de interrogatorio</label>
+            <div class="text-gray-600 w-[200px] laptop:w-4/12 telefono:w-1/2">
+              <label>Tipo de interrogatorio</label>
             </div>
-            <div class="flex w-full justify-center laptop:w-6/12 telefono:w-full telefono:justify-center">
+            <div class="flex w-full desktop:justify-center tablet:justify-center laptop:w-6/12 telefono:w-full justify-center">
               <input type="radio" id="opcion1" name="opcion" class="custom-radio hidden"
                      @change="handleChange('Directo')">
               <label for="opcion1"
