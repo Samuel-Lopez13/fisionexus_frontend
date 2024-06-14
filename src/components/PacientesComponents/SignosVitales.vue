@@ -4,10 +4,10 @@
 
 <template>
   <div class="border text-gray-500 rounded-sm shadow">
-    <header class="bg-gray-100 border-b">
-      <h3 class="text-left py-1 p-2 telefono:text-center font-normal">Signos Vitales</h3>
+    <header class="bg-gray-100 border-b text-sm text-black">
+      <h3 class="text-left py-3 p-4 telefono:text-center">Signos Vitales</h3>
     </header>
-    <section class="p-2">
+    <section class="p-4">
       <div class="flex">
         <label for="height" class="flex items-center gap-2 text-principal py-2 font-normal w-8/12">
           <span class="w-[30px] items-center justify-center flex">

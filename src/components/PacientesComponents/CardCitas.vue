@@ -4,7 +4,7 @@
 
 <template>
   <div class="rounded-md border">
-    <header class="text-gray-600 p-2 pt-1 pb-1 border-b">
+    <header class="text-gray-600 p-3 py-3 border-b">
       <h5 class="telefono:text-center">Agendar consulta</h5>
     </header>
     <div class="flex">

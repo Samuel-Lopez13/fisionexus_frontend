@@ -13,7 +13,7 @@ function handleChange(tipo) {
     <section class="overflow-x-auto rounded-sm border shadow-sm">
       <div class="w-full text-sm text-gray-500">
         <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
-          <h2 class="">Tipo de interrogatorio</h2>
+          <h2>Tipo de interrogatorio</h2>
         </header>
         <div>
           <section
@@ -23,7 +23,7 @@ function handleChange(tipo) {
             </div>
             <div class="flex w-full desktop:justify-center tablet:justify-center laptop:w-6/12 telefono:w-full justify-center">
               <input type="radio" id="opcion1" name="opcion" class="custom-radio hidden"
-                     @change="handleChange('Directo')">
+                     @change="handleChange('Directo')" checked>
               <label for="opcion1"
                      class="opcion border-principal rounded-sm hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500 p-2 pr-6 pl-6 cursor-pointer hover:bg-principal hover:text-white">Directo</label>
               <input type="radio" id="opcion2" name="opcion" class="custom-radio hidden"
@@ -45,7 +45,7 @@ function handleChange(tipo) {
                   paciente</label>
                 <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
                        type="text"
-                       placeholder="Antecedentes patológicos">
+                       placeholder="Responsable">
               </div>
             </section>
           </transition>
