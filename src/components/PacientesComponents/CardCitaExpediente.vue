@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="bg-principal text-white rounded-sm p-5">
+  <div class="bg-principal text-white p-5 rounded-sm">
     <header class="pb-5 text-center font-bold text-md">
       <h3>Edson Dzec Hernández</h3>
     </header>
