@@ -1,5 +1,5 @@
 <script setup>
-import {irInicio, irMetricas, irPacientes} from '@/router/rutasUtiles.js'
+import { CerrarSesion, irAjustes, irInicio, irMetricas, irPacientes } from '@/router/rutasUtiles.js'
 import { ref } from 'vue'
 import router from '@/router/index.js'
 
@@ -41,17 +41,17 @@ const CerrarMenu = (ruta) => {
                     <li @click="CerrarMenu(irMetricas)">
                         <div class="block px-4 py-2 hover:bg-gray-100">Metricas</div>
                     </li>
-                    <li>
+                    <li @click="CerrarMenu(irAjustes)">
                         <div class="block px-4 py-2 hover:bg-gray-100">Ajustes</div>
                     </li>
-                    <li>
+                    <li @click="CerrarSesion()">
                         <div class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesion</div>
                     </li>
                 </ul>
             </div>
         </div>
         <section class="flex items-center gap-2">
-            <div class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
+            <div @click="router.push({name:'Ajustes'})" class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
                 role="button">
                 <img src="../../assets/icons/Usuario.png" class="h-7 w-7">
                 <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">Nombre completo de usuario</p>

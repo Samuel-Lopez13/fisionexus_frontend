@@ -442,8 +442,6 @@
                     </svg>
                 </td>
             </tr>
-
-
             </tbody>
         </table>
     </div>
