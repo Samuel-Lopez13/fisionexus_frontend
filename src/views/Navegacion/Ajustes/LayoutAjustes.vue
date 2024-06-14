@@ -52,12 +52,6 @@ const regresarImagenDefault = () => {
           Cambiar a predeterminada
         </button>
       </transition>
-      <div>
-        <p class="text-gray-600 font-semibold text-center mb-1">Biografia</p>
-        <textarea
-          class="p-2.5 w-[220px] h-[152px] border-gray-300 bg-gray-50 rounded-lg text-gray-600 font-normal"
-          placeholder="Escribe algo sobre ti..." style="resize: none"></textarea>
-      </div>
     </section>
     <section class="px-4 w-5/12 telefono:w-full flex flex-col gap-3">
       <div>
