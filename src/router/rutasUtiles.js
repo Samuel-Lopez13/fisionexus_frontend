@@ -24,3 +24,7 @@ export const irExpediente = () => {
 export const irMetricas = () => {
    router.push({ name: 'Metricas' })
 }
+
+export const irAjustes = () => {
+   router.push({ name: 'Ajustes' })
+}

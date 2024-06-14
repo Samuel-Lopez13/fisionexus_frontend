@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 
@@ -20,8 +20,8 @@ const regresarImagenDefault = () => {
     <div class="flex telefono:flex-col">
         <section class="mr-3">
             <div class="flex flex-col items-center gap-6 text-center telefono:justify-around tablet:justify-center">
-                <header class="flex flex-col gap-4 telefono:w-full telefono:items-center">
-                    <h1 class="text-[24px] text-gray-600 font-bold">
+                <header class="flex flex-col items-center gap-4 telefono:w-full telefono:items-center">
+                    <h1 class="text-[24px] text-gray-600 font-bold text-center">
                         Nuevo usuario
                     </h1>
                     <img :src="imageUrl"

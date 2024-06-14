@@ -1,6 +1,5 @@
 <script setup>
 import TablaUsuarios from '@/components/PacientesComponents/TablaUsuarios.vue'
-import router from '@/router/index.js'
 import { irAgregarPacientes } from '@/router/rutasUtiles.js'
 </script>
 
