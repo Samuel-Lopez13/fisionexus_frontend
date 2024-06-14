@@ -56,10 +56,16 @@ const regresarImagenDefault = () => {
         <p class="text-gray-600 font-semibold text-center mb-1">Biografia</p>
         <textarea
           class="p-2.5 w-[220px] h-[152px] border-gray-300 bg-gray-50 rounded-lg text-gray-600 font-normal"
-          placeholder="Escribe algo sobre ti..."></textarea>
+          placeholder="Escribe algo sobre ti..." style="resize: none"></textarea>
       </div>
     </section>
-    <section class="px-4 py-2 w-5/12 telefono:w-full flex flex-col gap-3">
+    <section class="px-4 w-5/12 telefono:w-full flex flex-col gap-3">
+      <div>
+        <header>
+          <h1 class="text-principal text-xl mb-2">Ajustes del usuario</h1>
+        </header>
+        <hr class="border-b-blue-500 mb-3">
+      </div>
       <div>
         <label class="block mb-2 text-sm font-medium text-gray-600">Nombre de usuario</label>
         <input type="text" class="input-primary" placeholder="Pedro Alfonso" />
@@ -91,7 +97,7 @@ const regresarImagenDefault = () => {
             :type="mostrarContasena ? 'text' : 'password'" class="input-primary w-full pr-10"
             placeholder="Escribe aqui tu nueva contraseña"
           />
-          <button type="button" @click="verContrasena" class="absolute inset-y-0 right-0 flex items-center pr-3">
+          <button type="button" @click="verContrasena" class="absolute inset-y-0 right-0 flex text-gray-600 items-center pr-3">
             <svg v-if="mostrarContasena" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round"
