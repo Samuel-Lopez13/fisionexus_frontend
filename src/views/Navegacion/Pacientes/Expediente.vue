@@ -15,7 +15,7 @@ import CardCitaExpediente from '@/components/PacientesComponents/CardCitaExpedie
             class="rounded-full h-12 w-12">
         </div>
         <div class="text-gray-600">
-          <h1 class="font-bold" >Edson Dzec López</h1>
+          <h4 class="font-bold" >Edson Dzec López</h4>
           <div class="flex text-sm">
             <p>13/11/2001</p> -
             <p>22 años</p>
@@ -34,7 +34,7 @@ import CardCitaExpediente from '@/components/PacientesComponents/CardCitaExpedie
       <button class="button-primary w-full">Iniciar Consulta</button>
       <card-citas />
       <button class="bg-principal font-poppins text-white rounded-[3px] w-1/2 hover:bg-pHover telefono:w-full p-2">Agendar cita</button>
-      <h1 class="text-gray-500 font-bold telefono:text-center">Consultas agendadas</h1>
+      <h5 class="text-gray-500 font-bold telefono:text-center">Consultas agendadas</h5>
       <div class="laptop:h-[450px] tablet:h-[250px] telefono:h-[200px] overflow-y-auto flex-col flex gap-5">
       <card-cita-expediente/>
       <card-cita-expediente/>
