@@ -1,33 +1,46 @@
-const sinAutorizationJSON = (data) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
+const apiUrl = import.meta.env.VITE_API_URL
 
-    return [data, config];
+const sinAutorizationJSON = (data) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  return [data, config]
 }
 
 const autorization = () => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
-        },
-    };
-    return config;
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
+    }
+  }
+  return config
 }
 
 const autorizationJSON = (data) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
-        },
-    };
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
+    }
+  }
 
-    return [data, config];
+  return [data, config]
+}
+
+const autorizationFormData = (data) => {
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
+    }
+  }
+
+  return [data, config]
 }
 
 // Exporta las funciones de configuración para que puedan ser llamadas desde otros módulos
-export { autorization, autorizationJSON, sinAutorizationJSON };
+export { autorization, autorizationJSON, sinAutorizationJSON, autorizationFormData, apiUrl }

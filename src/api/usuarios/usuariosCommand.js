@@ -1,4 +1,4 @@
-import {sinAutorizationJSON} from "@/api/headers.js";
+import { apiUrl, sinAutorizationJSON } from '@/api/headers.js'
 import axios from "axios";
 import { irInicio } from '@/router/rutasUtiles.js'
 
@@ -13,7 +13,7 @@ export const usuarioCommand = {
             }
 
             const [data, config] = sinAutorizationJSON(JSON)
-            const response = await axios.post(import.meta.env.VITE_API_URL + "/User/Login", data, config)
+            const response = await axios.post(apiUrl + "/User/Login", data, config)
 
             //Se agrega la credencial al localStorage
             localStorage.setItem(import.meta.env.VITE_CREDENCIALES, response.data.accessToken)

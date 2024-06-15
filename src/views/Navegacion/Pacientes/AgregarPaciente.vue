@@ -2,9 +2,21 @@
 import { ref } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
+import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
+let nombre = ref(null)
+let apellido = ref(null)
+let fechaNacimiento = ref(null)
+let sexo = ref(null)
+let estadoCivil = ref(null)
+let ocupacion = ref(null)
+let telefono = ref(null)
+let institucion = ref(null)
+let domicilio = ref(null)
+let codigoPostal = ref(null)
+
 
 const imagenSeleccionada = (event) => {
     imageUrl.value = URL.createObjectURL(event.target.files[0])
@@ -12,6 +24,10 @@ const imagenSeleccionada = (event) => {
 const regresarImagenDefault = () => {
     inputFile.value.value = ''
     imageUrl.value = ImagenDefault
+}
+
+const agregarPaciente = async () =>{
+  let response = pacientesCommand.postPacientes()
 }
 </script>
 
