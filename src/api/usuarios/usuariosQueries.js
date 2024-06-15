@@ -1,7 +1,5 @@
 import axios from 'axios'
-import { autorization } from '@/api/headers.js'
-
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl, autorization } from '@/api/headers.js'
 
 export const usuariosQueries = {
 
@@ -11,6 +9,7 @@ export const usuariosQueries = {
 
          return response.data
       } catch (error){
+
       }
    }
 

@@ -1,6 +1,7 @@
 <script setup>
-
 import { irExpediente } from '@/router/rutasUtiles.js'
+
+
 </script>
 
 <template>
@@ -72,7 +73,7 @@ import { irExpediente } from '@/router/rutasUtiles.js'
                           stroke-linecap="round" stroke-linejoin="round"></path>
                 </g>
             </svg>
-            <span class="group-hover:text-blue-600">Previous</span>
+            <span class="group-hover:text-blue-600">Anterior</span>
         </button>
 
         <div class="flex items-center h-[20px] text-gray-700 gap-3">
@@ -90,7 +91,7 @@ import { irExpediente } from '@/router/rutasUtiles.js'
         </div>
 
         <button class="relative flex items-center text-gray-700 button-with-hover group">
-            <span class="group-hover:text-blue-600">Next</span>
+            <span class="group-hover:text-blue-600">Siguiente</span>
             <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
