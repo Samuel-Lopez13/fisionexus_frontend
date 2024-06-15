@@ -34,7 +34,6 @@ const autorizationJSON = (data) => {
 const autorizationFormData = (data) => {
   const config = {
     headers: {
-      'Content-Type': 'multipart/form-data',
       'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
     }
   }
