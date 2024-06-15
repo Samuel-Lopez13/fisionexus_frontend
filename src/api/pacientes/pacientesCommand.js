@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const pacientesCommand = {
 
-   postPacientes: async (nombre, edad, sexo, institucion, domicilio, codigoPostal, ocupacion, telefono, estadoCivilId, fotoPerfil) => {
+   postPacientes: async (nombre, edad, sexo, institucion, domicilio, codigoPostal, ocupacion, telefono, estadoCivilId) => {
       try {
          const formData = new FormData();
          formData.append("nombre", nombre);
@@ -15,15 +15,16 @@ export const pacientesCommand = {
          formData.append("ocupacion", ocupacion);
          formData.append("telefono", telefono);
          formData.append("estadoCivilId", estadoCivilId);
-         formData.append("fotoPerfil", fotoPerfil);
 
          const [data, config] = autorizationFormData(formData)
-         const response = await axios.post(apiUrl + "Pacientes/CrearPaciente", data, config);
-         return response.data;
+         const response = await axios.post(apiUrl + "/Pacientes/CrearPaciente", data, config);
+         return null;
 
       } catch (error) {
          if (error.response && error.response.status === 400) {
             return "El numero telefonico ya existe para otro paciente";
+         }else{
+            return 'Ocurrio un error en el registro'
          }
       }
    }
