@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
@@ -17,9 +17,16 @@ let telefono = ref("")
 let institucion = ref("Campeche")
 let domicilio = ref("Domicilio xd")
 let codigoPostal = ref("24500")
+let fotoPerfil = ref(null)
+let base64 = ref("")
+
+onMounted(() => {
+
+})
 
 const imagenSeleccionada = (event) => {
     imageUrl.value = URL.createObjectURL(event.target.files[0])
+    fotoPerfil.value = event.target.files[0];
 }
 const regresarImagenDefault = () => {
     inputFile.value.value = ''
@@ -27,11 +34,28 @@ const regresarImagenDefault = () => {
 }
 
 const agregarPaciente = async () => {
+    const reader = new FileReader();
 
+    // Manejar el evento onload para obtener el resultado de la lectura como Base64
+    /*reader.onload = () => {
+        base64.value = reader.result.substring(reader.result.indexOf(',') + 1);
+    };*/
 
-    /*let nombreCompleto = nombre.value + ' ' + apellido.value
+    // Promesa que resuelve cuando se completa la lectura del archivo
+    const fileReaderPromise = new Promise((resolve, reject) => {
+        reader.onload = () => {
+            base64.value = reader.result.substring(reader.result.indexOf(',') + 1);
+            resolve(); // Resolvemos la promesa cuando se completa la lectura
+        };
+        reader.onerror = reject; // Manejamos errores de lectura del archivo
+    });
 
-    console.log(telefono.value)
+    await fileReaderPromise;
+
+    console.log("Este es un mensaje")
+    console.log(base64.value)
+
+    let nombreCompleto = nombre.value + ' ' + apellido.value
 
     let response = await pacientesCommand.postPacientes(
         nombreCompleto,
@@ -43,28 +67,8 @@ const agregarPaciente = async () => {
         ocupacion.value,
         telefono.value,
         estadoCivil.value,
-    )*/
-
-    let nombreCompleto = nombre.value + ' ' + apellido.value
-
-    const formData = new FormData();
-    formData.append("Nombre", nombreCompleto);
-    formData.append("Edad", edad.value);
-    formData.append("Sexo", sexo.value);
-    formData.append("Institucion", institucion.value);
-    formData.append("Domicilio", domicilio.value);
-    formData.append("CodigoPostal", codigoPostal.value);
-    formData.append("Ocupacion", ocupacion.value);
-    formData.append("Telefono", telefono.value);
-    formData.append("EstadoCivilId", estadoCivil.value);
-
-    var response = await fetch(apiUrl + "/Pacientes/CrearPaciente", {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem(import.meta.env.VITE_CREDENCIALES)}`
-        },
-    })
+        base64.value
+    )
 
     console.log(response)
 }
@@ -193,28 +197,30 @@ const agregarPaciente = async () => {
                            required />
                 </div>
             </div>
-            <header>
-                <h1 class="text-principal text-xl mb-2">Información de residencia</h1>
-            </header>
-            <hr class="mb-3">
-            <div class="flex gap-6 telefono:flex-wrap telefono:gap-1">
-                <div class="mb-6 basis-3/4 telefono:basis-full">
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Domicilio <span
-                        class="text-blue-600">*</span></label>
-                    <input type="text"
-                           class="input-primary" v-model="domicilio"
-                           placeholder="1234 Calle Principal" required />
+            <details open class="cursor-pointer">
+                <summary class="text-principal text-xl mb-2">
+                    Información de residencia
+                </summary>
+                <hr class="mb-3">
+                <div class="flex gap-6 telefono:flex-wrap telefono:gap-1">
+                    <div class="mb-6 basis-3/4 telefono:basis-full">
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Domicilio <span
+                            class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary" v-model="domicilio"
+                               placeholder="1234 Calle Principal" required />
+                    </div>
+                    <div class="mb-6 basis-1/4 telefono:basis-full">
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Código
+                            Postal <span class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary"
+                               placeholder="00030" v-model="codigoPostal"
+                               maxlength="5"
+                               required />
+                    </div>
                 </div>
-                <div class="mb-6 basis-1/4 telefono:basis-full">
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Código
-                        Postal <span class="text-blue-600">*</span></label>
-                    <input type="text"
-                           class="input-primary"
-                           placeholder="00030" v-model="codigoPostal"
-                           maxlength="5"
-                           required />
-                </div>
-            </div>
+            </details>
             <div class="flex justify-end gap-6 flex-wrap telefono:flex-col-reverse">
                 <button @click="irPacientes()"
                         class="text-blue-700 underline hover:text-red-400 telefono:basis-full">
