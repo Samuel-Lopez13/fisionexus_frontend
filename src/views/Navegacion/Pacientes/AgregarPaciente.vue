@@ -4,6 +4,7 @@ import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 import { apiUrl } from '@/api/headers.js'
+import { globalCommand } from '@/api/global/globaCommand.js'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
@@ -18,7 +19,6 @@ let institucion = ref("Campeche")
 let domicilio = ref("Domicilio xd")
 let codigoPostal = ref("24500")
 let fotoPerfil = ref(null)
-let base64 = ref("")
 
 onMounted(() => {
 
@@ -34,28 +34,10 @@ const regresarImagenDefault = () => {
 }
 
 const agregarPaciente = async () => {
-    const reader = new FileReader();
-
-    // Manejar el evento onload para obtener el resultado de la lectura como Base64
-    /*reader.onload = () => {
-        base64.value = reader.result.substring(reader.result.indexOf(',') + 1);
-    };*/
-
-    // Promesa que resuelve cuando se completa la lectura del archivo
-    const fileReaderPromise = new Promise((resolve, reject) => {
-        reader.onload = () => {
-            base64.value = reader.result.substring(reader.result.indexOf(',') + 1);
-            resolve(); // Resolvemos la promesa cuando se completa la lectura
-        };
-        reader.onerror = reject; // Manejamos errores de lectura del archivo
-    });
-
-    await fileReaderPromise;
-
-    console.log("Este es un mensaje")
-    console.log(base64.value)
 
     let nombreCompleto = nombre.value + ' ' + apellido.value
+
+    console.log(telefono.value)
 
     let response = await pacientesCommand.postPacientes(
         nombreCompleto,
@@ -67,7 +49,7 @@ const agregarPaciente = async () => {
         ocupacion.value,
         telefono.value,
         estadoCivil.value,
-        base64.value
+        fotoPerfil.value
     )
 
     console.log(response)
@@ -122,81 +104,83 @@ const agregarPaciente = async () => {
             </div>
         </section>
         <section class="desktop:w-9/12 laptop:w-9/12 tablet:w-full telefono:w-full">
-            <header>
-                <h1 class="text-principal text-xl mb-2">Información general</h1>
-            </header>
-            <hr class="border-b-blue-500 mb-3">
-            <div class="grid gap-6 mb-6 md:grid-cols-2">
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Nombre(s) <span
-                        class="text-blue-600">*</span> </label>
-                    <input type="text"
-                           class="input-primary" v-model="nombre"
-                           placeholder="Pedro Alfonso" required />
-                </div>
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Apellidos <span
-                        class="text-blue-600">*</span></label>
-                    <input type="text"
-                           class="input-primary" v-model="apellido"
-                           placeholder="Lopez Blanco"
-                           required />
-                </div>
+            <details open class="cursor-pointer">
+                <summary class="text-principal text-xl mb-2">
+                    Información general
+                </summary>
+                <hr class="border-b-blue-500 mb-3">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Nombre(s) <span
+                            class="text-blue-600">*</span> </label>
+                        <input type="text"
+                               class="input-primary" v-model="nombre"
+                               placeholder="Pedro Alfonso" required />
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Apellidos <span
+                            class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary" v-model="apellido"
+                               placeholder="Lopez Blanco"
+                               required />
+                    </div>
 
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
-                        nacimiento <span class="text-blue-600">*</span> </label>
-                    <input type="date" class="input-primary" placeholder="Select date" v-model="edad">
-                </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
+                            nacimiento <span class="text-blue-600">*</span> </label>
+                        <input type="date" class="input-primary" placeholder="Select date" v-model="edad">
+                    </div>
 
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Sexo <span
-                        class="text-blue-600">*</span></label>
-                    <select class="input-primary" v-model="sexo">
-                        <option selected :value="true">Masculino</option>
-                        <option :value="false">Femenino</option>
-                    </select>
-                </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Sexo <span
+                            class="text-blue-600">*</span></label>
+                        <select class="input-primary" v-model="sexo">
+                            <option selected :value="true">Masculino</option>
+                            <option :value="false">Femenino</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Estado
-                        Civil <span class="text-blue-600">*</span> </label>
-                    <select class="input-primary" v-model="estadoCivil">
-                        <option selected :value="1">Soltero</option>
-                        <option :value="2">Casado</option>
-                        <option :value="3">Divorciado</option>
-                        <option :value="4">Viudo</option>
-                    </select>
-                </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Estado
+                            Civil <span class="text-blue-600">*</span> </label>
+                        <select class="input-primary" v-model="estadoCivil">
+                            <option selected :value="1">Soltero</option>
+                            <option :value="2">Casado</option>
+                            <option :value="3">Divorciado</option>
+                            <option :value="4">Viudo</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Ocupación<span
-                        class="text-blue-600">*</span></label>
-                    <input type="text"
-                           class="input-primary" v-model="ocupacion"
-                           placeholder="Abogado"
-                           required />
-                </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Ocupación<span
+                            class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary" v-model="ocupacion"
+                               placeholder="Abogado"
+                               required />
+                    </div>
 
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Teléfono<span
-                        class="text-blue-600">*</span></label>
-                    <input type="tel"
-                           class="input-primary" v-model="telefono"
-                           placeholder="9812308723"
-                           maxlength="10"
-                           required />
-                </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Teléfono<span
+                            class="text-blue-600">*</span></label>
+                        <input type="tel"
+                               class="input-primary" v-model="telefono"
+                               placeholder="9812308723"
+                               maxlength="10"
+                               required />
+                    </div>
 
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Institución <span
-                        class="text-blue-600">*</span></label>
-                    <input type="text"
-                           class="input-primary" v-model="institucion"
-                           placeholder="SEAFI"
-                           required />
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-600">Institución <span
+                            class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary" v-model="institucion"
+                               placeholder="SEAFI"
+                               required />
+                    </div>
                 </div>
-            </div>
+            </details>
             <details open class="cursor-pointer">
                 <summary class="text-principal text-xl mb-2">
                     Información de residencia

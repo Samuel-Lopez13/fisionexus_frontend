@@ -1,10 +1,16 @@
-import { apiUrl, autorizationFormData, autorizationJSON } from '@/api/headers.js'
+import { apiUrl, autorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
+import { globalCommand } from '@/api/global/globaCommand.js'
 
 export const pacientesCommand = {
 
    postPacientes: async (nombre, edad, sexo, institucion, domicilio, codigoPostal, ocupacion, telefono, estadoCivilId, foto) => {
       try {
+         let img = null;
+
+         if(foto != null)
+            img = await globalCommand.postImage(nombre.trim().replace(/\s+/g, ''), foto)
+
          const JSON = {
             "nombre": nombre,
             "edad": edad,
@@ -15,7 +21,7 @@ export const pacientesCommand = {
             "ocupacion": ocupacion,
             "telefono": telefono,
             "estadoCivilId": estadoCivilId,
-            "fotoPerfil": foto
+            "fotoPerfil": img == null ? img : img.secure_url
          }
 
          const [data, config] = autorizationJSON(JSON)
