@@ -8,44 +8,20 @@ import { maxLength, minLength, required } from '@vuelidate/validators'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
-let nombre = ref('')
-let apellido = ref('')
-let edad = ref(null)
-let sexo = ref(true)
-let estadoCivil = ref(1)
-let ocupacion = ref('Ingeniero')
-let telefono = ref('')
-let institucion = ref('Campeche')
-let domicilio = ref('Domicilio xd')
-let codigoPostal = ref('24500')
 let fotoPerfil = ref(null)
 
-
-const imagenSeleccionada = (event) => {
-   imageUrl.value = URL.createObjectURL(event.target.files[0])
-   fotoPerfil.value = event.target.files[0]
-}
-const regresarImagenDefault = () => {
-   inputFile.value.value = ''
-   imageUrl.value = ImagenDefault
-}
-
-const agregarPaciente = async () => {
-   $v.value.$touch()
-   let nombreCompleto = nombre.value + ' ' + apellido.value
-   let response = await pacientesCommand.postPacientes(
-      nombreCompleto,
-      edad.value,
-      sexo.value,
-      institucion.value,
-      domicilio.value,
-      codigoPostal.value,
-      ocupacion.value,
-      telefono.value,
-      estadoCivil.value,
-      fotoPerfil.value
-   )
-}
+const variables = reactive({
+   nombre: '',
+   apellido: '',
+   edad: null,
+   sexo: true,
+   estadoCivil: 1,
+   ocupacion: 'Ingeniero',
+   telefono: '',
+   institucion: 'Campeche',
+   domicilio: 'Domicilio xd',
+   codigoPostal: '24500'
+})
 
 const rules = {
    nombre: { required },
@@ -60,7 +36,33 @@ const rules = {
    codigoPostal: { required, minLength: minLength(5), maxLength: maxLength(5) }
 }
 
-const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocupacion, telefono, institucion, domicilio, codigoPostal })
+const $v = useVuelidate(rules, variables)
+
+const imagenSeleccionada = (event) => {
+   imageUrl.value = URL.createObjectURL(event.target.files[0])
+   fotoPerfil.value = event.target.files[0]
+}
+const regresarImagenDefault = () => {
+   inputFile.value.value = ''
+   imageUrl.value = ImagenDefault
+}
+
+const agregarPaciente = async () => {
+   $v.value.$touch()
+   let nombreCompleto = variables.nombre + ' ' + variables.apellido
+   let response = await pacientesCommand.postPacientes(
+      nombreCompleto,
+      variables.edad,
+      variables.sexo,
+      variables.institucion,
+      variables.domicilio,
+      variables.codigoPostal,
+      variables.ocupacion,
+      variables.telefono,
+      variables.estadoCivil,
+      fotoPerfil.value
+   )
+}
 
 </script>
 
@@ -122,7 +124,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                   <label class="block mb-2 text-sm font-medium text-gray-600">Nombre(s) <span
                      class="text-blue-600">*</span> </label>
                   <input type="text"
-                         class="input-primary" v-model="nombre"
+                         class="input-primary" v-model="variables.nombre"
                          placeholder="Pedro Alfonso" required />
                   <span v-if="$v.nombre.$error" class="text-red-500 text-xs">El nombre es obligatorio</span>
                </div>
@@ -130,7 +132,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                   <label class="block mb-2 text-sm font-medium text-gray-600">Apellidos <span
                      class="text-blue-600">*</span></label>
                   <input type="text"
-                         class="input-primary" v-model="apellido"
+                         class="input-primary" v-model="variables.apellido"
                          placeholder="Lopez Blanco"
                          required />
                   <span v-if="$v.apellido.$error" class="text-red-500 text-xs">El apellido es obligatorio y debe tener al menos 3 caracteres.</span>
@@ -139,14 +141,14 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                <div>
                   <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
                      nacimiento <span class="text-blue-600">*</span> </label>
-                  <input type="date" class="input-primary" placeholder="Select date" v-model="edad">
+                  <input type="date" class="input-primary" placeholder="Select date" v-model="variables.edad">
                   <span v-if="$v.edad.$error" class="text-red-500 text-xs">La edad es obligatoria</span>
                </div>
 
                <div>
                   <label class="block mb-2 text-sm font-medium text-gray-600">Sexo <span
                      class="text-blue-600">*</span></label>
-                  <select class="input-primary" v-model="sexo">
+                  <select class="input-primary" v-model="variables.sexo">
                      <option selected :value="true">Masculino</option>
                      <option :value="false">Femenino</option>
                   </select>
@@ -156,7 +158,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                <div>
                   <label class="block mb-2 text-sm font-medium text-gray-600">Estado
                      Civil <span class="text-blue-600">*</span> </label>
-                  <select class="input-primary" v-model="estadoCivil">
+                  <select class="input-primary" v-model="variables.estadoCivil">
                      <option selected :value="1">Soltero</option>
                      <option :value="2">Casado</option>
                      <option :value="3">Divorciado</option>
@@ -170,7 +172,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                   <label class="block mb-2 text-sm font-medium text-gray-600">Ocupación<span
                      class="text-blue-600">*</span></label>
                   <input type="text"
-                         class="input-primary" v-model="ocupacion"
+                         class="input-primary" v-model="variables.ocupacion"
                          placeholder="Abogado"
                          required />
                   <span v-if="$v.ocupacion.$error" class="text-red-500 text-xs">La ocupacion es obligatoria</span>
@@ -179,7 +181,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                   <label class="block mb-2 text-sm font-medium text-gray-600">Teléfono<span
                      class="text-blue-600">*</span></label>
                   <input type="tel"
-                         class="input-primary" v-model="telefono"
+                         class="input-primary" v-model="variables.telefono"
                          placeholder="9812308723"
                          maxlength="10"
                          required />
@@ -190,7 +192,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                   <label class="block mb-2 text-sm font-medium text-gray-600">Institución <span
                      class="text-blue-600">*</span></label>
                   <input type="text"
-                         class="input-primary" v-model="institucion"
+                         class="input-primary" v-model="variables.institucion"
                          placeholder="SEAFI"
                          required />
                   <span v-if="$v.institucion.$error" class="text-red-500 text-xs">La institucion es obligatoria</span>
@@ -207,7 +209,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                   <label class="block mb-2 text-sm font-medium text-gray-600">Domicilio <span
                      class="text-blue-600">*</span></label>
                   <input type="text"
-                         class="input-primary" v-model="domicilio"
+                         class="input-primary" v-model="variables.domicilio"
                          placeholder="1234 Calle Principal" required />
                   <span v-if="$v.domicilio.$error" class="text-red-500 text-xs">El domicilo es obligatorio</span>
                </div>
@@ -216,7 +218,7 @@ const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocup
                      Postal <span class="text-blue-600">*</span></label>
                   <input type="text"
                          class="input-primary"
-                         placeholder="00030" v-model="codigoPostal"
+                         placeholder="00030" v-model="variables.codigoPostal"
                          maxlength="5"
                          required />
                   <span v-if="$v.codigoPostal.$error" class="text-red-500 text-xs">El codigo postal es obligatorio y debe tener 5 digitos</span>
