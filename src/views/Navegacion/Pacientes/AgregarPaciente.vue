@@ -205,7 +205,7 @@ const $v = useVuelidate(rules, state)
                          class="input-primary" v-model="institucion"
                          placeholder="SEAFI"
                          required />
-                  <span v-if="$v.telefono.$error" class="text-red-500 text-xs">La institucion es obligatoria</span>
+                  <span v-if="$v.institucion.$error" class="text-red-500 text-xs">La institucion es obligatoria</span>
                </div>
             </div>
          </details>
