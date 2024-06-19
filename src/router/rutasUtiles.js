@@ -3,6 +3,7 @@ import router from '@/router/index.js'
 export const CerrarSesion = () => {
    router.push({ name: 'login' })
    localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
+   localStorage.removeItem(import.meta.env.VITE_USUARIO)
 }
 
 export const irInicio = () => {

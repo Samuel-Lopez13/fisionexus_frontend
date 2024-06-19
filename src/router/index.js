@@ -111,6 +111,7 @@ router.beforeEach( async (to, from, next) => {
 
       if (response.verify === false) {
          localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
+         localStorage.removeItem(import.meta.env.VITE_USUARIO)
          next('/')
       } else{
          next()
