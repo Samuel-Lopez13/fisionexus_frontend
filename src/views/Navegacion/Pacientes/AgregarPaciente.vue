@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
@@ -59,18 +59,20 @@ const rules = {
   domicilio: { required },
   codigoPostal: { required, minLength: minLength(5), maxLength: maxLength(5) }
 }
-const $v = useVuelidate(rules, {
-  nombre,
-  apellido,
-  edad,
-  sexo,
-  estadoCivil,
-  ocupacion,
-  telefono,
-  institucion,
-  domicilio,
-  codigoPostal
+const state = reactive({
+    nombre,
+    apellido,
+    edad,
+    sexo,
+    estadoCivil,
+    ocupacion,
+    telefono,
+    institucion,
+    domicilio,
+    codigoPostal
 })
+
+const $v = useVuelidate(rules, state)
 
 </script>
 
