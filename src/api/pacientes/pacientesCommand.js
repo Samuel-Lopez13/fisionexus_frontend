@@ -29,6 +29,7 @@ export const pacientesCommand = {
          await axios.post(apiUrl + "/Pacientes", data, config);
 
          await NotificacionesModal.PantallaExito()
+         return null
       } catch (error) {
          if (error.response.status === 400) {
             if("Ya existe un paciente con el numero telefonico ingresado" === error.response.data.detail){

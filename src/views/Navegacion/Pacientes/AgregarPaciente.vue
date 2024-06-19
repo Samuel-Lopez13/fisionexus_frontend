@@ -35,7 +35,7 @@ const agregarPaciente = async () => {
 
     let nombreCompleto = nombre.value + ' ' + apellido.value
 
-    await pacientesCommand.postPacientes(
+    let response = await pacientesCommand.postPacientes(
         nombreCompleto,
         edad.value,
         sexo.value,
@@ -47,6 +47,8 @@ const agregarPaciente = async () => {
         estadoCivil.value,
         fotoPerfil.value
     )
+
+    console.log(response)
 }
 </script>
 
