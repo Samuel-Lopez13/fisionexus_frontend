@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
@@ -9,6 +9,7 @@ import { maxLength, minLength, required } from '@vuelidate/validators'
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
 let fotoPerfil = ref(null)
+let verificarTelefono = ref(false)
 
 const variables = reactive({
    nombre: '',
@@ -47,6 +48,12 @@ const regresarImagenDefault = () => {
    imageUrl.value = ImagenDefault
 }
 
+watch(() => variables.telefono, (newVal, oldVal) => {
+   if (verificarTelefono.value) {
+      verificarTelefono.value = false
+   }
+})
+
 const agregarPaciente = async () => {
    $v.value.$touch()
    let nombreCompleto = variables.nombre + ' ' + variables.apellido
@@ -62,6 +69,11 @@ const agregarPaciente = async () => {
       variables.estadoCivil,
       fotoPerfil.value
    )
+   if (response === 'Ya existe un paciente con el numero telefonico ingresado') {
+      verificarTelefono.value = true
+   } else {
+      verificarTelefono.value = false
+   }
 }
 
 </script>
@@ -186,6 +198,7 @@ const agregarPaciente = async () => {
                          maxlength="10"
                          required />
                   <span v-if="$v.telefono.$error" class="text-red-500 text-xs">El telefono es obligatorio y debe tener 10 digitos</span>
+                  <span v-if="verificarTelefono" class="text-red-500 text-xs">El telefono ya esta en uso</span>
                </div>
 
                <div>
