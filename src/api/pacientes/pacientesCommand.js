@@ -32,7 +32,7 @@ export const pacientesCommand = {
       } catch (error) {
          if (error.response.status === 400) {
             if("Ya existe un paciente con el numero telefonico ingresado" === error.response.data.detail){
-               return "Ya existe un paciente con el numero telefonico ingresado"
+               return error.response.data.detail
             } else{
                return "Existen campos vacios";
             }
