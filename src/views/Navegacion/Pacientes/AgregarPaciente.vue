@@ -1,8 +1,10 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
+import useVuelidate from '@vuelidate/core'
+import { maxLength, minLength, required } from '@vuelidate/validators'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
@@ -18,9 +20,6 @@ let domicilio = ref('Domicilio xd')
 let codigoPostal = ref('24500')
 let fotoPerfil = ref(null)
 
-onMounted(() => {
-
-})
 
 const imagenSeleccionada = (event) => {
   imageUrl.value = URL.createObjectURL(event.target.files[0])
@@ -32,6 +31,7 @@ const regresarImagenDefault = () => {
 }
 
 const agregarPaciente = async () => {
+  $v.value.$touch()
   let nombreCompleto = nombre.value + ' ' + apellido.value
   let response = await pacientesCommand.postPacientes(
     nombreCompleto,
@@ -46,6 +46,32 @@ const agregarPaciente = async () => {
     fotoPerfil.value
   )
 }
+
+const rules = {
+  nombre: { required },
+  apellido: { required, minLength: minLength(3) },
+  edad: { required },
+  sexo: { required },
+  estadoCivil: { required },
+  ocupacion: { required },
+  telefono: { required, minLength: minLength(10), maxLength: maxLength(10) },
+  institucion: { required },
+  domicilio: { required },
+  codigoPostal: { required, minLength: minLength(5), maxLength: maxLength(5) }
+}
+const $v = useVuelidate(rules, {
+  nombre,
+  apellido,
+  edad,
+  sexo,
+  estadoCivil,
+  ocupacion,
+  telefono,
+  institucion,
+  domicilio,
+  codigoPostal
+})
+
 </script>
 
 
@@ -108,6 +134,7 @@ const agregarPaciente = async () => {
             <input type="text"
                    class="input-primary" v-model="nombre"
                    placeholder="Pedro Alfonso" required />
+            <span v-if="$v.nombre.$error" class="text-red-500 text-xs">El nombre es obligatorio</span>
           </div>
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-600">Apellidos <span
@@ -116,12 +143,14 @@ const agregarPaciente = async () => {
                    class="input-primary" v-model="apellido"
                    placeholder="Lopez Blanco"
                    required />
+            <span v-if="$v.apellido.$error" class="text-red-500 text-xs">El apellido es obligatorio y debe tener al menos 3 caracteres.</span>
           </div>
 
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
               nacimiento <span class="text-blue-600">*</span> </label>
             <input type="date" class="input-primary" placeholder="Select date" v-model="edad">
+            <span v-if="$v.edad.$error" class="text-red-500 text-xs">La edad es obligatoria</span>
           </div>
 
           <div>
@@ -131,6 +160,7 @@ const agregarPaciente = async () => {
               <option selected :value="true">Masculino</option>
               <option :value="false">Femenino</option>
             </select>
+            <span v-if="$v.sexo.$error" class="text-red-500 text-xs">Selecciona el sexo del paciente</span>
           </div>
 
           <div>
@@ -142,6 +172,7 @@ const agregarPaciente = async () => {
               <option :value="3">Divorciado</option>
               <option :value="4">Viudo</option>
             </select>
+            <span v-if="$v.estadoCivil.$error" class="text-red-500 text-xs">Selecciona el estado civil del paciente</span>
           </div>
 
           <div>
@@ -151,8 +182,8 @@ const agregarPaciente = async () => {
                    class="input-primary" v-model="ocupacion"
                    placeholder="Abogado"
                    required />
+            <span v-if="$v.ocupacion.$error" class="text-red-500 text-xs">La ocupacion es obligatoria</span>
           </div>
-
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-600">Teléfono<span
               class="text-blue-600">*</span></label>
@@ -161,6 +192,7 @@ const agregarPaciente = async () => {
                    placeholder="9812308723"
                    maxlength="10"
                    required />
+            <span v-if="$v.telefono.$error" class="text-red-500 text-xs">El telefono es obligatorio y debe tener 10 digitos</span>
           </div>
 
           <div>
@@ -170,6 +202,7 @@ const agregarPaciente = async () => {
                    class="input-primary" v-model="institucion"
                    placeholder="SEAFI"
                    required />
+            <span v-if="$v.telefono.$error" class="text-red-500 text-xs">La institucion es obligatoria</span>
           </div>
         </div>
       </details>
@@ -185,6 +218,7 @@ const agregarPaciente = async () => {
             <input type="text"
                    class="input-primary" v-model="domicilio"
                    placeholder="1234 Calle Principal" required />
+            <span v-if="$v.domicilio.$error" class="text-red-500 text-xs">El domicilo es obligatorio</span>
           </div>
           <div class="mb-6 basis-1/4 telefono:basis-full">
             <label class="block mb-2 text-sm font-medium text-gray-600">Código
@@ -194,6 +228,7 @@ const agregarPaciente = async () => {
                    placeholder="00030" v-model="codigoPostal"
                    maxlength="5"
                    required />
+            <span v-if="$v.codigoPostal.$error" class="text-red-500 text-xs">El codigo postal es obligatorio y debe tener 5 digitos</span>
           </div>
         </div>
       </details>
