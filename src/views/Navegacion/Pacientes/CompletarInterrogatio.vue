@@ -49,7 +49,7 @@ function handleChange(tipo) {
               <div class="flex flex-col">
                 <label class="text-gray-600 mb-2 telefono:text-center telefono:mb-2">Responsable del
                   paciente</label>
-                <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                <input class="h-[40px] input-primary"
                        type="text"
                        placeholder="Responsable">
               </div>
@@ -73,12 +73,12 @@ function handleChange(tipo) {
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Padres</label>
                   <input type="number"
-                         class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] mb-2 input-primary"
                          placeholder="Numero de padres">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Padres fallecidos</label>
-                  <input v-model="numPadresFallecidos" class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                  <input v-model="numPadresFallecidos" class="h-[40px] mb-2 input-primary"
                          type="number" placeholder="Numero de padres fallecidos">
                 </div>
                 <transition
@@ -90,7 +90,7 @@ function handleChange(tipo) {
                   leave-to-class="opacity-0">
                 <div class="flex flex-col" v-show="numPadresFallecidos > 0">
                   <label class="text-gray-600 mb-2">Causas de fallecimiento</label>
-                  <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                  <input class="h-[40px] input-primary"
                          type="text" placeholder="Causa de fallecimiento">
                 </div>
                 </transition>
@@ -99,12 +99,12 @@ function handleChange(tipo) {
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Hermanos</label>
                   <input type="number"
-                         class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] mb-2 input-primary"
                          placeholder="Numero de padres">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Hermanos fallecidos</label>
-                  <input v-model="numHermanosFallecidos" class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                  <input v-model="numHermanosFallecidos" class="h-[40px] mb-2 input-primary"
                          type="number" placeholder="Numero de Hermanos fallecidos">
                 </div>
                 <transition
@@ -116,7 +116,7 @@ function handleChange(tipo) {
                   leave-to-class="opacity-0">
                 <div class="flex flex-col" v-show="numHermanosFallecidos > 0">
                   <label class="text-gray-600 mb-2">Causas de fallecimiento</label>
-                  <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                  <input class="h-[40px] input-primary"
                          type="text" placeholder="Causa de fallecimiento">
                 </div>
                 </transition>
@@ -125,12 +125,12 @@ function handleChange(tipo) {
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Hijos</label>
                   <input type="number"
-                         class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] mb-2 input-primary"
                          placeholder="Numero de padres">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Hijos fallecidos</label>
-                  <input v-model="numHijosFallecidos" class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                  <input v-model="numHijosFallecidos" class="h-[40px] mb-2 input-primary"
                          type="number" placeholder="Numero de Hijos fallecidos">
                 </div>
                 <transition
@@ -142,7 +142,7 @@ function handleChange(tipo) {
                   leave-to-class="opacity-0">
                 <div class="flex flex-col" v-show="numHijosFallecidos > 0">
                   <label class="text-gray-600 mb-2">Causas de fallecimiento</label>
-                  <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                  <input class="h-[40px] input-primary"
                          type="text" placeholder="Causa de fallecimiento">
                 </div>
                 </transition>
@@ -151,7 +151,7 @@ function handleChange(tipo) {
             <div class="flex flex-col">
               <label class="text-gray-600 mb-2">Enfermedades</label>
               <input type="text"
-                     class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                     class="h-[40px] input-primary"
                      placeholder="Enfermades que han padecido los familiares">
             </div>
             <div class="flex w-full gap-4 telefono:flex-col">
@@ -159,19 +159,19 @@ function handleChange(tipo) {
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">DM</label>
                   <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] input-primary"
                          placeholder="DM">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2 mt-2">Cancer</label>
                   <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] input-primary"
                          placeholder="Cancer">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2 mt-2">Toxicomanias</label>
                   <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] input-primary"
                          placeholder="Toxicomanias">
                 </div>
               </div>
@@ -179,19 +179,19 @@ function handleChange(tipo) {
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2">Alcoholismo</label>
                   <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] input-primary"
                          placeholder="Alcoholismo">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2 mt-2">Tabaquismo</label>
                   <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] input-primary"
                          placeholder="Tabaquismo">
                 </div>
                 <div class="flex flex-col">
                   <label class="text-gray-600 mb-2 mt-2">Drogas</label>
                   <input type="text"
-                         class="h-[40px] border-principal mb-2 text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                         class="h-[40px] input-primary mb-2"
                          placeholder="Drogas">
                 </div>
               </div>
@@ -210,7 +210,7 @@ function handleChange(tipo) {
         <section class="flex flex-col gap-3">
           <div class="flex flex-col">
             <input type="text"
-                   class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                   class="h-[40px] input-primary"
                    placeholder="Antecedentes patológicos">
           </div>
         </section>
@@ -227,17 +227,17 @@ function handleChange(tipo) {
           <div class="flex flex-col">
             <label class="text-gray-600 mb-2">Medio laboral</label>
             <input type="text"
-                   class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                   class="h-[40px] input-primary"
                    placeholder="Medio laboral">
           </div>
           <div class="flex flex-col">
             <label class="text-gray-600 mb-2">Medio Sociocultural</label>
-            <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+            <input class="h-[40px] input-primary"
                    type="text" placeholder="Medio Sociocultural">
           </div>
           <div class="flex flex-col">
             <label class="text-gray-600 mb-2">Medio Fisicoambiental</label>
-            <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+            <input class="h-[40px] input-primary"
                    type="text" placeholder="Medio Fisicoambiental">
           </div>
         </section>
@@ -256,25 +256,25 @@ function handleChange(tipo) {
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">FUM</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="FUM">
               </div>
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">FPP</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="FPP">
               </div>
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Edad gestional</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Edad gestional">
               </div>
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Semanas</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Semanas">
               </div>
             </div>
@@ -282,19 +282,19 @@ function handleChange(tipo) {
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Edad de la menarca</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Edad de la menarca">
               </div>
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Ritmo Menstrual</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Ritmo Menstrual">
               </div>
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Flujo vaginal</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Flujo vaginal">
               </div>
             </div>
@@ -302,7 +302,7 @@ function handleChange(tipo) {
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Gestas</label>
                 <input type="number" v-model="numeroGestas"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Numero de gestas">
               </div>
               <transition
@@ -316,19 +316,19 @@ function handleChange(tipo) {
                   <div class="flex flex-col w-full">
                     <label class="text-gray-600 mb-2">Partos</label>
                     <input type="number"
-                           class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                           class="h-[40px] input-primary"
                            placeholder="Numero de partos">
                   </div>
                   <div class="flex flex-col w-full">
                     <label class="text-gray-600 mb-2">Cesareas</label>
                     <input type="number"
-                           class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                           class="h-[40px] input-primary"
                            placeholder="Numero de cesareas">
                   </div>
                   <div class="flex flex-col w-full">
                     <label class="text-gray-600 mb-2">Abortos</label>
                     <input type="number"
-                           class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                           class="h-[40px] input-primary"
                            placeholder="Numero de abortos">
                   </div>
                 </div>
@@ -338,13 +338,13 @@ function handleChange(tipo) {
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Anticonceptivos</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Anticonceptivos">
               </div>
               <div class="flex flex-col w-full">
                 <label class="text-gray-600 mb-2">Cirugias</label>
                 <input type="text"
-                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       class="h-[40px] input-primary"
                        placeholder="Cirugas del paciente">
               </div>
             </div>
