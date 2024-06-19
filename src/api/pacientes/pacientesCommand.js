@@ -28,7 +28,7 @@ export const pacientesCommand = {
          const [data, config] = autorizationJSON(JSON)
          await axios.post(apiUrl + "/Pacientes", data, config);
 
-         await NotificacionesModal.PantallaExito()
+         await NotificacionesModal.ExitosoSimple('Paciente agregado con éxito')
          return null
       } catch (error) {
          if (error.response.status === 400) {
