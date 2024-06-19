@@ -58,14 +58,16 @@ function handleChange(tipo) {
         </div>
       </div>
     </section>
+    <h3 class="text-gray-600 text-lg font-semibold">
+      Antecedentes
+    </h3>
     <section class="overflow-x-auto rounded-sm border shadow">
       <div class="w-full text-sm text-left rtl:text-right text-gray-500">
         <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
-          <h2>Antecedentes</h2>
+          <h2>Heredo-Familiares</h2>
         </header>
         <div class="px-6 py-3">
           <section class="flex flex-col gap-3">
-            <h3 class="mt-2 mb-2 text-blue-600">Heredo-Familiares</h3>
             <div class="flex w-full gap-4 telefono:flex-col">
               <div class="w-4/12 telefono:w-full">
                 <div class="flex flex-col">
@@ -199,9 +201,13 @@ function handleChange(tipo) {
       </div>
     </section>
     <section class="overflow-x-auto rounded-sm border shadow">
+      <div class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
+          <h2>Antecedentes patologicos</h2>
+        </header>
+      </div>
       <div class="px-6 py-3">
         <section class="flex flex-col gap-3">
-          <h3 class="mt-2 mb-2 text-blue-600">Antecedentes patologicos</h3>
           <div class="flex flex-col">
             <input type="text"
                    class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
@@ -211,9 +217,13 @@ function handleChange(tipo) {
       </div>
     </section>
     <section class="overflow-x-auto rounded-sm border shadow">
+      <div class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
+          <h2>Antecedentes no patológicos</h2>
+        </header>
+      </div>
       <div class="px-6 py-3">
         <section class="flex flex-col gap-3">
-          <h3 class="mt-4 mb-2 text-blue-600">No patológicos</h3>
           <div class="flex flex-col">
             <label class="text-gray-600 mb-2">Medio laboral</label>
             <input type="text"
@@ -234,9 +244,13 @@ function handleChange(tipo) {
       </div>
     </section>
     <section class="overflow-x-auto rounded-sm border shadow" v-show="true">
+      <div class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
+          <h2>Gineco-Obstetricos</h2>
+        </header>
+      </div>
       <div class="px-6 py-3">
         <section class="flex flex-col gap-3">
-          <h3 class="mt-4 mb-2 text-blue-600">Gineco-Obstetricos</h3>
           <div class="flex flex-col">
             <div class="flex gap-4 mb-2 telefono:flex-col">
               <div class="flex flex-col w-full">
