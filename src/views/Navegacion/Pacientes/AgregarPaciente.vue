@@ -59,20 +59,8 @@ const rules = {
    domicilio: { required },
    codigoPostal: { required, minLength: minLength(5), maxLength: maxLength(5) }
 }
-const state = reactive({
-   nombre,
-   apellido,
-   edad,
-   sexo,
-   estadoCivil,
-   ocupacion,
-   telefono,
-   institucion,
-   domicilio,
-   codigoPostal
-})
 
-const $v = useVuelidate(rules, state)
+const $v = useVuelidate(rules, { nombre, apellido, edad, sexo, estadoCivil, ocupacion, telefono, institucion, domicilio, codigoPostal })
 
 </script>
 
