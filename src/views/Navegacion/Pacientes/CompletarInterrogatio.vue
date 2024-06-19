@@ -15,7 +15,7 @@ function handleChange(tipo) {
 
 <template>
   <div class="flex gap-3 flex-col">
-    <h1 class="text-blue-600 text-xl font-semibold">Interrogatorio del paciente</h1>
+    <h1 class="text-blue-600 text-xl font-semibold">Interrogatorio del paciente (Nombre del paciente - genero)</h1>
     <section class="overflow-x-auto rounded-sm border shadow-sm">
       <div class="w-full text-sm text-gray-500">
         <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
