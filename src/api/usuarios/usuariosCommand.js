@@ -17,6 +17,7 @@ export const usuarioCommand = {
 
             //Se agrega la credencial al localStorage
             localStorage.setItem(import.meta.env.VITE_CREDENCIALES, response.data.accessToken)
+            localStorage.setItem("Usuario", response.data.user.username)
 
             //Te redirecciona al Dashboard
             irInicio()

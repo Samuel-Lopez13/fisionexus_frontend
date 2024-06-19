@@ -7,6 +7,7 @@ import CitasChart from '@/components/InicioComponents/Charts/CitasChart.vue'
 import Fisiotepeutas from '@/components/InicioComponents/Fisiotepeutas.vue'
 
 const saludo = ref('')
+const nombre = ref(localStorage.getItem("Usuario"))
 
 onMounted(() => {
     Saludar()
@@ -21,7 +22,7 @@ const Saludar = () => {
 <template>
     <header class="flex flex-col md:flex-row items-center justify-between mb-5">
         <section class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <h1 class="text-xl font-bold m-0">{{ saludo }}, Usuario <span>👋</span></h1>
+            <h1 class="text-xl font-bold m-0">{{ saludo }}, {{ nombre }} <span>👋</span></h1>
             <p class="text-gray-700 font-semibold">Los datos mostrados se actualizan en tiempo real</p>
         </section>
     </header>

@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import router from '@/router/index.js'
 
 const menu = ref(false)
+const nombre = ref(localStorage.getItem("Usuario"))
 
 const MenuMobile = () =>{
     menu.value = !menu.value
@@ -54,7 +55,7 @@ const CerrarMenu = (ruta) => {
             <div @click="router.push({name:'Ajustes'})" class="md:flex border gap-2 rounded-full p-2 px-3 duration-200 hover:text-blue-600 hover:border-blue-600 group"
                 role="button">
                 <img src="../../assets/icons/Usuario.png" class="h-7 w-7">
-                <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">Nombre completo de usuario</p>
+                <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">{{ nombre }}</p>
             </div>
             <div data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
                          class="p-2 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">
