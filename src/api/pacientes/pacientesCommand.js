@@ -26,12 +26,16 @@ export const pacientesCommand = {
          }
 
          const [data, config] = autorizationJSON(JSON)
-         const response = await axios.post(apiUrl + "/Pacientes", data, config);
+         await axios.post(apiUrl + "/Pacientes", data, config);
 
          await NotificacionesModal.PantallaExito()
       } catch (error) {
          if (error.response.status === 400) {
-            return error.response.data.detail;
+            if("Ya existe un paciente con el numero telefonico ingresado" === error.response.data.detail){
+               return "Ya existe un paciente con el numero telefonico ingresado"
+            } else{
+               return "Existen campos vacios";
+            }
          }else{
             return 'Ocurrio un error en el registro'
          }
