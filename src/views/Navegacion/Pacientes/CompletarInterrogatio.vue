@@ -222,7 +222,7 @@ function handleChange(tipo) {
           <h2>Antecedentes no patológicos</h2>
         </header>
       </div>
-      <div class="px-6 py-3">
+      <div class="px-6 py-3 text-sm">
         <section class="flex flex-col gap-3">
           <div class="flex flex-col">
             <label class="text-gray-600 mb-2">Medio laboral</label>
@@ -243,7 +243,7 @@ function handleChange(tipo) {
         </section>
       </div>
     </section>
-    <section class="overflow-x-auto rounded-sm border shadow" v-show="true">
+    <section class="overflow-x-auto rounded-sm border shadow text-sm" v-show="true">
       <div class="w-full text-sm text-left rtl:text-right text-gray-500">
         <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
             <h2>Gineco-Obstetricos</h2>
