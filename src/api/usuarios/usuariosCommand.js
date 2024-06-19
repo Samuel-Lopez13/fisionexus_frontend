@@ -13,7 +13,7 @@ export const usuarioCommand = {
             }
 
             const [data, config] = sinAutorizationJSON(JSON)
-            const response = await axios.post(apiUrl + "/User/Login", data, config)
+            const response = await axios.post(apiUrl + "/Usuario/Login", data, config)
 
             //Se agrega la credencial al localStorage
             localStorage.setItem(import.meta.env.VITE_CREDENCIALES, response.data.accessToken)

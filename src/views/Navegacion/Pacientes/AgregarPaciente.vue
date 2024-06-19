@@ -3,13 +3,11 @@ import { onMounted, ref } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
-import { apiUrl } from '@/api/headers.js'
-import { globalCommand } from '@/api/global/globaCommand.js'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
-let nombre = ref(null)
-let apellido = ref(null)
+let nombre = ref("")
+let apellido = ref("")
 let edad = ref(null)
 let sexo = ref(true)
 let estadoCivil = ref(1)
@@ -37,9 +35,7 @@ const agregarPaciente = async () => {
 
     let nombreCompleto = nombre.value + ' ' + apellido.value
 
-    console.log(telefono.value)
-
-    let response = await pacientesCommand.postPacientes(
+    await pacientesCommand.postPacientes(
         nombreCompleto,
         edad.value,
         sexo.value,
@@ -51,8 +47,6 @@ const agregarPaciente = async () => {
         estadoCivil.value,
         fotoPerfil.value
     )
-
-    console.log(response)
 }
 </script>
 
@@ -115,7 +109,7 @@ const agregarPaciente = async () => {
                             class="text-blue-600">*</span> </label>
                         <input type="text"
                                class="input-primary" v-model="nombre"
-                               placeholder="Pedro Alfonso" required />
+                               placeholder="Pedro Alfonso" required/>
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">Apellidos <span
