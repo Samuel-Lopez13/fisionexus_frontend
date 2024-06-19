@@ -246,7 +246,7 @@ function handleChange(tipo) {
     <section class="overflow-x-auto rounded-sm border shadow" v-show="true">
       <div class="w-full text-sm text-left rtl:text-right text-gray-500">
         <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
-          <h2>Gineco-Obstetricos</h2>
+            <h2>Gineco-Obstetricos</h2>
         </header>
       </div>
       <div class="px-6 py-3">
