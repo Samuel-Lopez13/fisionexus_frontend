@@ -38,7 +38,7 @@ export const pacientesCommand = {
                return "Existen campos vacios";
             }
          }else{
-            return 'Ocurrio un error en el registro'
+            return NotificacionesModal.PantallaError('Ocurrio un error en el registro')
          }
       }
    }

@@ -32,5 +32,22 @@ export const NotificacionesModal = {
          },
          html: `<b class="text-lg">${msg}</b>`
       })
+   },
+   PantallaError: async (msg = 'Error') => {
+      return await Swal.fire({
+         allowOutsideClick: false,
+         allowEscapeKey: false,
+         position: 'center',
+         icon: 'error',
+         iconColor: 'red',
+         showConfirmButton: true,
+         confirmButtonColor: `${primaryColor}`,
+         confirmButtonText:'Aceptar',
+         customClass: {
+            popup: 'rounded-sm'
+         },
+         html: `<b class="text-lg">${msg}</b>`
+      })
    }
+
 }
