@@ -1,6 +1,7 @@
 import { apiUrl, autorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
 import { globalCommand } from '@/api/global/globaCommand.js'
+import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 
 export const pacientesCommand = {
 
@@ -25,12 +26,12 @@ export const pacientesCommand = {
          }
 
          const [data, config] = autorizationJSON(JSON)
-         const response = await axios.post(apiUrl + "/Pacientes/CrearPaciente", data, config);
+         const response = await axios.post(apiUrl + "/Pacientes", data, config);
 
-         return response.data;
+         await NotificacionesModal.PantallaExito()
       } catch (error) {
-         if (error.response && error.response.status === 400) {
-            return "El numero telefonico ya existe para otro paciente";
+         if (error.response.status === 400) {
+            return error.response.data.detail;
          }else{
             return 'Ocurrio un error en el registro'
          }

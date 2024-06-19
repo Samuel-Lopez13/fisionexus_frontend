@@ -1,4 +1,6 @@
 <script setup>
+import ApexCharts from 'apexcharts'
+
 import { onMounted, ref } from 'vue'
 
 const chartRef = ref(null)
