@@ -195,96 +195,109 @@ function handleChange(tipo) {
               </div>
             </div>
           </section>
-          <section class="flex flex-col gap-3">
-            <h3 class="mt-2 mb-2 text-blue-600">Antecedentes patologicos</h3>
-            <div class="flex flex-col">
-              <input type="text"
-                     class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                     placeholder="Antecedentes patológicos">
-            </div>
-          </section>
-          <section class="flex flex-col gap-3">
-            <h3 class="mt-4 mb-2 text-blue-600">No patológicos</h3>
-            <div class="flex flex-col">
-              <label class="text-gray-600 mb-2">Medio laboral</label>
-              <input type="text"
-                     class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                     placeholder="Medio laboral">
-            </div>
-            <div class="flex flex-col">
-              <label class="text-gray-600 mb-2">Medio Sociocultural</label>
-              <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                     type="text" placeholder="Medio Sociocultural">
-            </div>
-            <div class="flex flex-col">
-              <label class="text-gray-600 mb-2">Medio Fisicoambiental</label>
-              <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                     type="text" placeholder="Medio Fisicoambiental">
-            </div>
-          </section>
-          <section class="flex flex-col gap-3" v-show="true">
-            <h3 class="mt-4 mb-2 text-blue-600">Gineco-Obstetricos</h3>
-            <div class="flex flex-col">
-              <div class="flex gap-4 mb-2 telefono:flex-col">
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">FUM</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="FUM">
-                </div>
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">FPP</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="FPP">
-                </div>
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Edad gestional</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Edad gestional">
-                </div>
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Semanas</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Semanas">
-                </div>
+        </div>
+      </div>
+    </section>
+    <section class="overflow-x-auto rounded-sm border shadow">
+      <div class="px-6 py-3">
+        <section class="flex flex-col gap-3">
+          <h3 class="mt-2 mb-2 text-blue-600">Antecedentes patologicos</h3>
+          <div class="flex flex-col">
+            <input type="text"
+                   class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                   placeholder="Antecedentes patológicos">
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="overflow-x-auto rounded-sm border shadow">
+      <div class="px-6 py-3">
+        <section class="flex flex-col gap-3">
+          <h3 class="mt-4 mb-2 text-blue-600">No patológicos</h3>
+          <div class="flex flex-col">
+            <label class="text-gray-600 mb-2">Medio laboral</label>
+            <input type="text"
+                   class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                   placeholder="Medio laboral">
+          </div>
+          <div class="flex flex-col">
+            <label class="text-gray-600 mb-2">Medio Sociocultural</label>
+            <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                   type="text" placeholder="Medio Sociocultural">
+          </div>
+          <div class="flex flex-col">
+            <label class="text-gray-600 mb-2">Medio Fisicoambiental</label>
+            <input class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                   type="text" placeholder="Medio Fisicoambiental">
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="overflow-x-auto rounded-sm border shadow" v-show="true">
+      <div class="px-6 py-3">
+        <section class="flex flex-col gap-3">
+          <h3 class="mt-4 mb-2 text-blue-600">Gineco-Obstetricos</h3>
+          <div class="flex flex-col">
+            <div class="flex gap-4 mb-2 telefono:flex-col">
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">FUM</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="FUM">
               </div>
-              <div class="flex gap-4 mb-2 telefono:flex-col">
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Edad de la menarca</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Edad de la menarca">
-                </div>
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Ritmo Menstrual</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Ritmo Menstrual">
-                </div>
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Flujo vaginal</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Flujo vaginal">
-                </div>
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">FPP</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="FPP">
               </div>
-              <div class="flex gap-4 mb-2 telefono:flex-col">
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Gestas</label>
-                  <input type="number" v-model="numeroGestas"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Numero de gestas">
-                </div>
-                <transition
-                  enter-active-class="transition-opacity duration-500"
-                  enter-from-class="opacity-0"
-                  enter-to-class="opacity-100"
-                  leave-active-class="transition-opacity duration-500"
-                  leave-from-class="opacity-100"
-                  leave-to-class="opacity-0">
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Edad gestional</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Edad gestional">
+              </div>
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Semanas</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Semanas">
+              </div>
+            </div>
+            <div class="flex gap-4 mb-2 telefono:flex-col">
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Edad de la menarca</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Edad de la menarca">
+              </div>
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Ritmo Menstrual</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Ritmo Menstrual">
+              </div>
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Flujo vaginal</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Flujo vaginal">
+              </div>
+            </div>
+            <div class="flex gap-4 mb-2 telefono:flex-col">
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Gestas</label>
+                <input type="number" v-model="numeroGestas"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Numero de gestas">
+              </div>
+              <transition
+                enter-active-class="transition-opacity duration-500"
+                enter-from-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-active-class="transition-opacity duration-500"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0">
                 <div class="flex gap-4 w-full telefono:flex-col" v-show="numeroGestas > 0">
                   <div class="flex flex-col w-full">
                     <label class="text-gray-600 mb-2">Partos</label>
@@ -305,29 +318,28 @@ function handleChange(tipo) {
                            placeholder="Numero de abortos">
                   </div>
                 </div>
-                </transition>
+              </transition>
+            </div>
+            <div class="flex gap-4 mb-2 telefono:flex-col">
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Anticonceptivos</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Anticonceptivos">
               </div>
-              <div class="flex gap-4 mb-2 telefono:flex-col">
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Anticonceptivos</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Anticonceptivos">
-                </div>
-                <div class="flex flex-col w-full">
-                  <label class="text-gray-600 mb-2">Cirugias</label>
-                  <input type="text"
-                         class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
-                         placeholder="Cirugas del paciente">
-                </div>
+              <div class="flex flex-col w-full">
+                <label class="text-gray-600 mb-2">Cirugias</label>
+                <input type="text"
+                       class="h-[40px] border-principal text-sm rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500"
+                       placeholder="Cirugas del paciente">
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
     </section>
   </div>
-  <div class="w-full flex gap-6 justify-end p-4">
+  <div class="w-full flex gap-6 justify-end p-4 telefono:flex-col-reverse">
     <button class="text-blue-700 underline hover:text-red-400 telefono:basis-full">
       Continuar sin interrogatorio
     </button>
