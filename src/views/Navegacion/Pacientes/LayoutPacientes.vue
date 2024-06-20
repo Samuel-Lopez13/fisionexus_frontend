@@ -1,6 +1,7 @@
 <script setup>
 import TablaUsuarios from '@/components/PacientesComponents/TablaUsuarios.vue'
 import { irAgregarPacientes } from '@/router/rutasUtiles.js'
+import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 </script>
 
 <template>

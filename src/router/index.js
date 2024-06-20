@@ -10,6 +10,7 @@ import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 import NotFound from '@/views/layouts/NotFound.vue'
 import Expediente from '@/views/Navegacion/Pacientes/Expediente.vue'
 import FormLogin from '@/views/layouts/FormLogin.vue'
+import Interrogatorio from '@/views/Navegacion/Pacientes/CompletarInterrogatio.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,7 +19,7 @@ const router = createRouter({
          path: '/:pathMatch(.*)*',
          name: 'NotFound',
          component: NotFound,
-         meta: { requiresAuth: false },
+         meta: { requiresAuth: false }
       },
       {
          path: '/',
@@ -30,13 +31,13 @@ const router = createRouter({
          path: '/',
          name: 'Panel',
          component: Panel,
-         meta: { verifyToken: true},
+         meta: { verifyToken: true },
          children: [
             {
                path: 'Inicio',
                name: 'Inicio',
                component: Navegacion,
-               meta: {title: 'Dashboard - Fisiolabs'},
+               meta: { title: 'Dashboard - Fisiolabs' },
                redirect: { name: 'Dashboard' },
                children: [
                   {
@@ -51,7 +52,7 @@ const router = createRouter({
                name: 'Pacientes',
                component: Navegacion,
                redirect: { name: 'ListaPacientes' },
-               meta: {title: 'Pacientes - Fisiolabs'},
+               meta: { title: 'Pacientes - Fisiolabs' },
                children: [
                   {
                      path: '',
@@ -61,12 +62,17 @@ const router = createRouter({
                   {
                      path: 'AgregarPaciente',
                      name: 'AgregarPaciente',
-                     component: AgregarPaciente,
+                     component: AgregarPaciente
                   },
                   {
                      path: 'Expediente',
                      name: 'Expediente',
-                     component: Expediente,
+                     component: Expediente
+                  },
+                  {
+                     path: 'Interrogatorio',
+                     name: 'Interrogatorio',
+                     component: Interrogatorio
                   }
                ]
             },
@@ -74,7 +80,7 @@ const router = createRouter({
                path: 'Metricas',
                name: 'Metricas',
                component: Navegacion,
-               meta: {title: 'Metricas - Fisiolabs'},
+               meta: { title: 'Metricas - Fisiolabs' },
                redirect: { name: 'Estadisticas' },
                children: [
                   {
@@ -88,7 +94,7 @@ const router = createRouter({
                path: 'Ajustes',
                name: 'Ajustes',
                component: Navegacion,
-               meta: {title: 'Ajustes - Fisiolabs'},
+               meta: { title: 'Ajustes - Fisiolabs' },
                redirect: { name: 'Configuracion' },
                children: [
                   {
@@ -103,17 +109,22 @@ const router = createRouter({
    ]
 })
 
-router.beforeEach( async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
 
    /*Verifica que el token sea autentico*/
    if (to.meta.verifyToken) {
-      const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
+      if (localStorage.getItem(import.meta.env.VITE_CREDENCIALES) === '') {
+         localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
+         localStorage.removeItem(import.meta.env.VITE_USUARIO)
+         next('/')
+      }
 
+      const response = await usuariosQueries.verifyUser(localStorage.getItem(import.meta.env.VITE_CREDENCIALES))
       if (response.verify === false) {
          localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
          localStorage.removeItem(import.meta.env.VITE_USUARIO)
          next('/')
-      } else{
+      } else {
          next()
       }
    }
@@ -122,17 +133,17 @@ router.beforeEach( async (to, from, next) => {
     * Redireccion a la ruta "/"
     * Si tengo acceso no me permitira ver el login
     * */
-   if(to.name === 'login'){
-      if(localStorage.getItem(import.meta.env.VITE_CREDENCIALES) != null){
-         next({name: 'Dashboard'})
+   if (to.name === 'login') {
+      if (localStorage.getItem(import.meta.env.VITE_CREDENCIALES) != null) {
+         next({ name: 'Dashboard' })
       }
    }
 
    /*Cambia el titulo dependiendo de la pagina*/
-   if(to.meta.title){
-      document.title = to.meta.title;
+   if (to.meta.title) {
+      document.title = to.meta.title
    } else {
-      document.title = 'Fisiolabs'; // Título por defecto
+      document.title = 'Fisiolabs' // Título por defecto
    }
 
    next()
