@@ -2,6 +2,7 @@ import { apiUrl, autorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
 import { globalCommand } from '@/api/global/globaCommand.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
+import { irInterrogatorio } from '@/router/rutasUtiles.js'
 
 export const pacientesCommand = {
 
@@ -28,7 +29,9 @@ export const pacientesCommand = {
          const [data, config] = autorizationJSON(JSON)
          await axios.post(apiUrl + "/Pacientes", data, config);
 
-         await NotificacionesModal.ExitosoSimple('Paciente agregado con éxito')
+         await NotificacionesModal.ExitosoSimple('Paciente agregado con éxito', 'Aceptar')
+         irInterrogatorio()
+
          return null
       } catch (error) {
          if (error.response.status === 400) {

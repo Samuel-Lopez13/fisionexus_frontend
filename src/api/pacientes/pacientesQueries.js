@@ -9,7 +9,7 @@ export const pacientesQueries = {
 
          return response.data
       } catch (error){
-
+         console.log(error)
       }
    },
 
@@ -19,7 +19,7 @@ export const pacientesQueries = {
 
          return response.data
       } catch (error){
-
+         console.log(error)
       }
    },
 
@@ -29,7 +29,7 @@ export const pacientesQueries = {
 
          return response.data
       } catch (error){
-
+         console.log(error)
       }
    }
 }

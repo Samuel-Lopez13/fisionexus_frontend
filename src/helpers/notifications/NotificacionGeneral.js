@@ -1,23 +1,9 @@
 import Swal from 'sweetalert2'
-import { ref } from 'vue'
 
-const primaryColor = "#0062FF";
+const primaryColor = '#0062FF'
 
 export const NotificacionesModal = {
-   PantallaExito: async (msg = 'Proceso completado') => {
-      return await Swal.fire({
-         allowOutsideClick: false,
-         allowEscapeKey: false,
-         customClass: {
-            popup: 'swal2-border-radius',
-            confirmButton: 'btn-square-round-success'
-         },
-         title: `<i class="mdi mdi-check-circle-outline text-success" style="font-size:100px" >`,
-         confirmButtonText: 'Aceptar',
-         html: `<b> ${msg}</b>`
-      })
-   },
-   ExitosoSimple: async (msg = 'Proceso completado con exito') => {
+   ExitosoSimple: async (msg = 'Proceso completado con exito', textBtn = 'Aceptar') => {
       return await Swal.fire({
          allowOutsideClick: false,
          allowEscapeKey: false,
@@ -26,7 +12,7 @@ export const NotificacionesModal = {
          iconColor: 'green',
          showConfirmButton: true,
          confirmButtonColor: `${primaryColor}`,
-         confirmButtonText:'Aceptar',
+         confirmButtonText: textBtn,
          customClass: {
             popup: 'rounded-sm'
          },
@@ -42,7 +28,7 @@ export const NotificacionesModal = {
          iconColor: 'red',
          showConfirmButton: true,
          confirmButtonColor: `${primaryColor}`,
-         confirmButtonText:'Aceptar',
+         confirmButtonText: 'Aceptar',
          customClass: {
             popup: 'rounded-sm'
          },

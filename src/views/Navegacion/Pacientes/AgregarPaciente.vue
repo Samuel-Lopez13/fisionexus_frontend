@@ -31,7 +31,7 @@ const rules = {
     apellido: { required },
     edad: { required },
     ocupacion: { required },
-    telefono: { required, numeric: helpers.regex('numeric', /^\d+$/), minLength: minLength(10), maxLength: maxLength(10) },
+    telefono: { required, numeric: helpers.regex('numeric', /^\d{10}$/), minLength: minLength(10), maxLength: maxLength(10) },
     institucion: { required },
     domicilio: { required },
     codigoPostal: { required, minLength: minLength(5), maxLength: maxLength(5) }
@@ -198,7 +198,7 @@ const agregarPaciente = async () => {
                                placeholder="9812308723"
                                maxlength="10"
                                required />
-                        <span v-if="$v.telefono.$error" class="text-red-500 text-xs">El telefono es obligatorio y debe tener 10 digitos</span>
+                        <span v-if="$v.telefono.$error" class="text-red-500 text-xs">El telefono debe contener 10 digitos del 0 al 9</span>
                         <span v-if="verificarTelefono" class="text-red-500 text-xs">El telefono ya esta en uso</span>
                     </div>
 
