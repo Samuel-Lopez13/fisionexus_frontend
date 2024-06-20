@@ -4,7 +4,7 @@ import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 import useVuelidate from '@vuelidate/core'
-import { helpers, maxLength, minLength, required } from '@vuelidate/validators'
+import { maxLength, minLength, numeric, required } from '@vuelidate/validators'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
@@ -31,10 +31,10 @@ const rules = {
     apellido: { required },
     edad: { required },
     ocupacion: { required },
-    telefono: { required, numeric: helpers.regex('numeric', /^\d{10}$/), minLength: minLength(10), maxLength: maxLength(10) },
+    telefono: { required, numeric, minLength: minLength(10), maxLength: maxLength(10) },
     institucion: { required },
     domicilio: { required },
-    codigoPostal: { required, minLength: minLength(5), maxLength: maxLength(5) }
+    codigoPostal: { required, numeric, minLength: minLength(5), maxLength: maxLength(5) }
 }
 
 //Aqui se junta el modelo con las reglas
