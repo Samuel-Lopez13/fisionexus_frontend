@@ -353,7 +353,7 @@ const editarDatos = () =>{
             </section>
          </div>
       </section>
-      <div class="w-full flex justify-end gap-3 px-3">
+      <div class="w-full flex justify-end gap-3 px-3 telefono:flex-col-reverse telefono:p-0">
          <button @click="editarDatos">
             <p v-if="editar === true" class="text-blue-700 font-medium underline hover:text-blue-800 telefono:basis-full p-3 pr-6 pl-6">Editar</p>
             <p v-else class="text-blue-700 font-medium underline hover:text-red-400 telefono:basis-full">Cancelar</p>
