@@ -37,7 +37,7 @@ const obtenerTablaPacientes = async (pagina) => {
          </tr>
          </thead>
          <tbody>
-         <tr class="bg-white border-b" v-for="paciente in pacientes" :key="paciente.id">
+         <tr class="hover:bg-gray-50 hover:text-blue-500 border-b" v-for="paciente in pacientes" :key="paciente.id">
             <td class="py-3 telefono:p-4 truncate px-2">{{ paciente.nombre }}</td>
             <td class="py-3 telefono:p-4">{{ paciente.edad }}</td>
             <td class="py-3 telefono:p-4">{{ paciente.sexo }}</td>
