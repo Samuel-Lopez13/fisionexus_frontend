@@ -71,7 +71,7 @@ const router = createRouter({
                      component: Expediente
                   },
                   {
-                     path: 'Interrogatorio',
+                     path: 'Interrogatorio/:id',
                      name: 'Interrogatorio',
                      component: Interrogatorio
                   },
