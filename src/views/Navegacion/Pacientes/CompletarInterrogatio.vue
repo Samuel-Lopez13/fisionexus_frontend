@@ -63,7 +63,7 @@ function handleChange(tipo) {
       <h3 class="text-gray-600 text-lg font-semibold">
          Antecedentes
       </h3>
-      <section class="overflow-x-auto rounded-sm border shadow">
+      <section class="overflow-x-auto rounded-sm border shadow pb-2">
          <div class="w-full text-sm text-left rtl:text-right text-gray-500">
             <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
                <h2>Heredo-Familiares</h2>
@@ -150,52 +150,56 @@ function handleChange(tipo) {
                         </transition>
                      </div>
                   </div>
-                  <div class="flex flex-col">
-                     <label class="text-gray-600 mb-2">Enfermedades</label>
-                     <input type="text"
-                            class="h-[40px] input-primary"
-                            placeholder="Enfermades que han padecido los familiares">
-                  </div>
                   <div class="flex w-full gap-4 telefono:flex-col">
-                     <div class="w-6/12 telefono:w-full">
-                        <div class="flex flex-col">
-                           <label class="text-gray-600 mb-2">DM</label>
-                           <input type="text"
-                                  class="h-[40px] input-primary"
-                                  placeholder="DM">
-                        </div>
-                        <div class="flex flex-col">
-                           <label class="text-gray-600 mb-2 mt-2">Cancer</label>
-                           <input type="text"
-                                  class="h-[40px] input-primary"
-                                  placeholder="Cancer">
-                        </div>
-                        <div class="flex flex-col">
-                           <label class="text-gray-600 mb-2 mt-2">Toxicomanias</label>
-                           <input type="text"
-                                  class="h-[40px] input-primary"
-                                  placeholder="Toxicomanias">
-                        </div>
-                     </div>
-                     <div class="w-6/12 telefono:w-full">
-                        <div class="flex flex-col">
-                           <label class="text-gray-600 mb-2">Alcoholismo</label>
-                           <input type="text"
-                                  class="h-[40px] input-primary"
-                                  placeholder="Alcoholismo">
-                        </div>
-                        <div class="flex flex-col">
-                           <label class="text-gray-600 mb-2 mt-2">Tabaquismo</label>
-                           <input type="text"
-                                  class="h-[40px] input-primary"
-                                  placeholder="Tabaquismo">
-                        </div>
-                        <div class="flex flex-col">
-                           <label class="text-gray-600 mb-2 mt-2">Drogas</label>
-                           <input type="text"
-                                  class="h-[40px] input-primary mb-2"
-                                  placeholder="Drogas">
-                        </div>
+                      <div class="w-[100%] overflow-x-auto rounded-sm border">
+                          <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
+                              <h2>Enfermedades</h2>
+                          </header>
+                          <div class="w-[100%] telefono:w-full p-4">
+                              <div class="flex flex-col">
+                                  <label class="text-gray-600 mb-2">DM</label>
+                                  <input type="text"
+                                         class="h-[40px] input-primary"
+                                         placeholder="DM">
+                              </div>
+                              <div class="flex flex-col">
+                                  <label class="text-gray-600 mb-2 mt-2">Cancer</label>
+                                  <input type="text"
+                                         class="h-[40px] input-primary"
+                                         placeholder="Cancer">
+                              </div>
+                              <div class="flex flex-col">
+                                  <label class="text-gray-600 mb-2 mt-2">Toxicomanias</label>
+                                  <input type="text"
+                                         class="h-[40px] input-primary"
+                                         placeholder="Toxicomanias">
+                              </div>
+                          </div>
+                      </div>
+                     <div class="w-[100%] overflow-x-auto rounded-sm border">
+                         <header class="text-black bg-gray-100 px-6 py-3 telefono:text-center">
+                             <h2>Toxicomanias</h2>
+                         </header>
+                         <div class="w-[100%] telefono:w-full p-4">
+                             <div class="flex flex-col">
+                                 <label class="text-gray-600 mb-2">Alcoholismo</label>
+                                 <input type="text"
+                                        class="h-[40px] input-primary"
+                                        placeholder="Alcoholismo">
+                             </div>
+                             <div class="flex flex-col">
+                                 <label class="text-gray-600 mb-2 mt-2">Tabaquismo</label>
+                                 <input type="text"
+                                        class="h-[40px] input-primary"
+                                        placeholder="Tabaquismo">
+                             </div>
+                             <div class="flex flex-col">
+                                 <label class="text-gray-600 mb-2 mt-2">Drogas</label>
+                                 <input type="text"
+                                        class="h-[40px] input-primary mb-2"
+                                        placeholder="Drogas">
+                             </div>
+                         </div>
                      </div>
                   </div>
                </section>
