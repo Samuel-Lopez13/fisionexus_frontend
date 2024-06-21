@@ -34,6 +34,10 @@ export const irAjustes = () => {
    router.push({ name: 'Ajustes' })
 }
 
+export const irEditarPaciente = (id) => {
+   router.push({name: 'EditarPaciente', params: {id: id}})
+}
+
 export const irNotFound = () => {
    router.push({ name: 'NotFound' })
 }
