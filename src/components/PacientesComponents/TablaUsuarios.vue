@@ -94,7 +94,7 @@ const obtenerTablaPacientes = async (pagina) => {
                      stroke-linecap="round" stroke-linejoin="round"></path>
             </g>
          </svg>
-         <span class="group-hover:text-blue-600" @click="obtenerTablaPacientes(paginaActual-1)">Anterior</span>
+         <button class="group-hover:text-blue-600" :disabled="paginaActual === 1" @click="obtenerTablaPacientes(paginaActual-1)">Anterior</button>
       </button>
 
       <div class="flex items-center h-[20px] text-gray-700 gap-3">
@@ -105,7 +105,7 @@ const obtenerTablaPacientes = async (pagina) => {
       </div>
 
       <button class="relative flex items-center text-gray-700 button-with-hover group">
-         <span class="group-hover:text-blue-600" @click="obtenerTablaPacientes(paginaActual+1)">Siguiente</span>
+         <button class="group-hover:text-blue-600" :disabled="paginaActual === paginas" @click="obtenerTablaPacientes(paginaActual+1)">Siguiente</button>
          <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -117,8 +117,6 @@ const obtenerTablaPacientes = async (pagina) => {
          </svg>
       </button>
    </div>
-
-
 </template>
 
 <style scoped>
