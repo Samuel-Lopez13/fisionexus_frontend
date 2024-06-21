@@ -66,7 +66,7 @@ const router = createRouter({
                      component: AgregarPaciente
                   },
                   {
-                     path: 'Expediente',
+                     path: 'Expediente/:id',
                      name: 'Expediente',
                      component: Expediente
                   },

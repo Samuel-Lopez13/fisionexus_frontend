@@ -22,8 +22,8 @@ export const irInterrogatorio = (id) =>{
    router.push({name: 'Interrogatorio', params: {id: id}})
 }
 
-export const irExpediente = () => {
-   router.push({name: 'Expediente'})
+export const irExpediente = (id) => {
+   router.push({name: 'Expediente', params: {id: id}})
 }
 
 export const irMetricas = () => {

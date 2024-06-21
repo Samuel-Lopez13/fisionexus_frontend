@@ -72,7 +72,7 @@ const eliminar = async () =>{
                      d="M25.5 18.5L28.5 15.5L24.5 11.5L21.5 14.5M25.5 18.5L15.5 28.5H11.5V24.5L21.5 14.5M25.5 18.5L21.5 14.5"
                      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                </svg>
-               <svg @click="irExpediente()" class="hover:stroke-blue-500 cursor-pointer" stroke="#758CA3" width="28px"
+               <svg @click="irExpediente(paciente.pacienteId)" class="hover:stroke-blue-500 cursor-pointer" stroke="#758CA3" width="28px"
                     viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                   <path fill-rule="evenodd" clip-rule="evenodd"
