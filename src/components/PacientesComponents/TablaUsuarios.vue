@@ -27,7 +27,7 @@ const obtenerTablaPacientes = async (pagina) => {
 <template>
    <div class="relative overflow-x-auto mb-5 style_scroll">
       <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+         <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
          <tr>
             <th scope="col" class="w-5/12 py-3 px-2 telefono:p-4">Nombre</th>
             <th scope="col" class="w-2/12 py-3 telefono:p-4">Edad</th>
