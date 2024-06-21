@@ -79,7 +79,7 @@ const router = createRouter({
                      path: 'EditarPaciente/:id',
                      name: 'EditarPaciente',
                      component: EditarPaciente
-                  },
+                  }
                ]
             },
             {
