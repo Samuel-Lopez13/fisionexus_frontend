@@ -27,7 +27,7 @@ import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral
         </div>
     </section>
     <section>
-        <TablaUsuarios />
+        <TablaUsuarios/>
     </section>
 </template>
 
