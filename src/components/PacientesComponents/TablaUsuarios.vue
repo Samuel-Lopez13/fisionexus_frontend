@@ -109,7 +109,7 @@ const eliminar = async () => {
         </table>
     </div>
     <div class="flex justify-between relative">
-        <button class="relative flex items-center text-gray-600 button-with-hover group">
+        <div class="relative flex items-center text-gray-600 button-with-hover group">
             <button class="group-hover:text-blue-600 flex gap-2 items-center" :disabled="paginaActual === 1"
                     @click="obtenerTablaPacientes(1)">
                 <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -124,7 +124,7 @@ const eliminar = async () => {
                 </svg>
                 <p class="telefono:hidden">Inicio</p>
             </button>
-        </button>
+        </div>
 
         <div class="flex items-center h-[20px] text-gray-600 gap-3">
             <button @click="obtenerTablaPacientes(paginaActual - 1)" :disabled="paginaActual === 1"
@@ -151,7 +151,7 @@ const eliminar = async () => {
             </button>
         </div>
 
-        <button class="relative flex items-center text-gray-600 button-with-hover group">
+        <div class="relative flex items-center text-gray-600 button-with-hover group">
             <button class="group-hover:text-blue-600 flex gap-2 items-center" :disabled="paginaActual === ultimaPagina"
                     @click="obtenerTablaPacientes(ultimaPagina)">
                 <p class="telefono:hidden">Ultimo</p>
@@ -167,7 +167,7 @@ const eliminar = async () => {
                           d="m1 9 4-4-4-4" />
                 </svg>
             </button>
-        </button>
+        </div>
     </div>
     <div class="w-full mt-4 flex justify-center telefono:justify-center">
         <span class="text-sm text-gray-500">Mostrando 1-10 pacientes de 122</span>
