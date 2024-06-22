@@ -19,13 +19,7 @@ const ultimosPacientes = async () => {
 <template>
   <div class="animate-pulse" v-if="loader">
     <div class="px-6 py-4 bg-blue-300 mt-3 mb-3 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-5 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-5 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-5 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-5 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-5 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-5 rounded"></div>
-    <div class="px-6 py-4 bg-gray-300 mb-3 rounded"></div>
+    <div class="px-6 py-4 bg-gray-300 mb-5 rounded" v-for="load in 7"></div>
   </div>
   <div v-else class="overflow-x-auto rounded-lg border shadow">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
