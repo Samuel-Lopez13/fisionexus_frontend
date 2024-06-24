@@ -10,6 +10,7 @@ import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 import NotFound from '@/views/layouts/NotFound.vue'
 import Expediente from '@/views/Navegacion/Pacientes/Expediente.vue'
 import FormLogin from '@/views/layouts/FormLogin.vue'
+import Diagnostico from '@/views/Navegacion/Pacientes/Diagnostico.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -67,6 +68,11 @@ const router = createRouter({
                      path: 'Expediente',
                      name: 'Expediente',
                      component: Expediente,
+                  },
+                  {
+                     path: 'Diagnostico',
+                     name: 'Diagnostico',
+                     component: Diagnostico,
                   }
                ]
             },
