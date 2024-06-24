@@ -1,30 +1,54 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
+import useVuelidate from '@vuelidate/core'
+import { maxLength, minLength, numeric, required } from '@vuelidate/validators'
 
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
-let nombre = ref("")
-let apellido = ref("")
-let edad = ref(null)
+let fotoPerfil = ref(null)
+let verificarTelefono = ref(false)
 let sexo = ref(true)
 let estadoCivil = ref(1)
-let ocupacion = ref("Ingeniero")
-let telefono = ref("")
-let institucion = ref("Campeche")
-let domicilio = ref("Domicilio xd")
-let codigoPostal = ref("24500")
-let fotoPerfil = ref(null)
 
-onMounted(() => {
+//Modelos reactivos
+const model = reactive({
+    nombre: '',
+    apellido: '',
+    edad: null,
+    ocupacion: '',
+    telefono: '',
+    institucion: '',
+    domicilio: '',
+    codigoPostal: ''
+})
 
+//Se le aplica las reglas
+const rules = {
+    nombre: { required },
+    apellido: { required },
+    edad: { required },
+    ocupacion: { required },
+    telefono: { required, numeric, minLength: minLength(10), maxLength: maxLength(10) },
+    institucion: { required },
+    domicilio: { required },
+    codigoPostal: { required, numeric, minLength: minLength(5), maxLength: maxLength(5) }
+}
+
+//Aqui se junta el modelo con las reglas
+const $v = useVuelidate(rules, model)
+
+watch(() => model.telefono, (newVal, oldVal) => {
+    if (verificarTelefono.value) {
+        verificarTelefono.value = false
+    }
 })
 
 const imagenSeleccionada = (event) => {
     imageUrl.value = URL.createObjectURL(event.target.files[0])
-    fotoPerfil.value = event.target.files[0];
+    fotoPerfil.value = event.target.files[0]
 }
 const regresarImagenDefault = () => {
     inputFile.value.value = ''
@@ -32,24 +56,30 @@ const regresarImagenDefault = () => {
 }
 
 const agregarPaciente = async () => {
+    //Habilitara los errores si existen
+    $v.value.$touch()
 
-    let nombreCompleto = nombre.value + ' ' + apellido.value
-
+    let nombreCompleto = model.nombre + ' ' + model.apellido
     let response = await pacientesCommand.postPacientes(
         nombreCompleto,
-        edad.value,
+        model.edad,
         sexo.value,
-        institucion.value,
-        domicilio.value,
-        codigoPostal.value,
-        ocupacion.value,
-        telefono.value,
+        model.institucion,
+        model.domicilio,
+        model.codigoPostal,
+        model.ocupacion,
+        model.telefono,
         estadoCivil.value,
         fotoPerfil.value
     )
 
-    console.log(response)
+    if (response === 'Ya existe un paciente con el numero telefonico ingresado') {
+        verificarTelefono.value = true
+    } else {
+        verificarTelefono.value = false
+    }
 }
+
 </script>
 
 
@@ -110,22 +140,25 @@ const agregarPaciente = async () => {
                         <label class="block mb-2 text-sm font-medium text-gray-600">Nombre(s) <span
                             class="text-blue-600">*</span> </label>
                         <input type="text"
-                               class="input-primary" v-model="nombre"
-                               placeholder="Pedro Alfonso" required/>
+                               class="input-primary" v-model="model.nombre"
+                               placeholder="Pedro Alfonso" required />
+                        <span v-if="$v.nombre.$error" class="text-red-500 text-xs">El nombre es obligatorio</span>
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">Apellidos <span
                             class="text-blue-600">*</span></label>
                         <input type="text"
-                               class="input-primary" v-model="apellido"
+                               class="input-primary" v-model="model.apellido"
                                placeholder="Lopez Blanco"
                                required />
+                        <span v-if="$v.apellido.$error" class="text-red-500 text-xs">El apellido es obligatorio</span>
                     </div>
 
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
                             nacimiento <span class="text-blue-600">*</span> </label>
-                        <input type="date" class="input-primary" placeholder="Select date" v-model="edad">
+                        <input type="date" class="input-primary" placeholder="Select date" v-model="model.edad">
+                        <span v-if="$v.edad.$error" class="text-red-500 text-xs">La edad es obligatoria</span>
                     </div>
 
                     <div>
@@ -152,28 +185,32 @@ const agregarPaciente = async () => {
                         <label class="block mb-2 text-sm font-medium text-gray-600">Ocupación<span
                             class="text-blue-600">*</span></label>
                         <input type="text"
-                               class="input-primary" v-model="ocupacion"
+                               class="input-primary" v-model="model.ocupacion"
                                placeholder="Abogado"
                                required />
+                        <span v-if="$v.ocupacion.$error" class="text-red-500 text-xs">La ocupacion es obligatoria</span>
                     </div>
-
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">Teléfono<span
                             class="text-blue-600">*</span></label>
                         <input type="tel"
-                               class="input-primary" v-model="telefono"
+                               class="input-primary" v-model="model.telefono"
                                placeholder="9812308723"
                                maxlength="10"
                                required />
+                        <span v-if="$v.telefono.$error" class="text-red-500 text-xs">El telefono debe contener 10 digitos del 0 al 9</span>
+                        <span v-if="verificarTelefono" class="text-red-500 text-xs">El telefono ya esta en uso</span>
                     </div>
 
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">Institución <span
                             class="text-blue-600">*</span></label>
                         <input type="text"
-                               class="input-primary" v-model="institucion"
+                               class="input-primary" v-model="model.institucion"
                                placeholder="SEAFI"
                                required />
+                        <span v-if="$v.institucion.$error"
+                              class="text-red-500 text-xs">La institucion es obligatoria</span>
                     </div>
                 </div>
             </details>
@@ -187,17 +224,19 @@ const agregarPaciente = async () => {
                         <label class="block mb-2 text-sm font-medium text-gray-600">Domicilio <span
                             class="text-blue-600">*</span></label>
                         <input type="text"
-                               class="input-primary" v-model="domicilio"
+                               class="input-primary" v-model="model.domicilio"
                                placeholder="1234 Calle Principal" required />
+                        <span v-if="$v.domicilio.$error" class="text-red-500 text-xs">El domicilo es obligatorio</span>
                     </div>
                     <div class="mb-6 basis-1/4 telefono:basis-full">
                         <label class="block mb-2 text-sm font-medium text-gray-600">Código
                             Postal <span class="text-blue-600">*</span></label>
                         <input type="text"
                                class="input-primary"
-                               placeholder="00030" v-model="codigoPostal"
+                               placeholder="00030" v-model="model.codigoPostal"
                                maxlength="5"
                                required />
+                        <span v-if="$v.codigoPostal.$error" class="text-red-500 text-xs">El codigo postal es obligatorio y debe tener 5 digitos</span>
                     </div>
                 </div>
             </details>

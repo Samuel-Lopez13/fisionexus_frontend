@@ -26,7 +26,7 @@ import CardCitaExpediente from '@/components/PacientesComponents/CardCitaExpedie
                 <signos-vitales />
             </div>
         </section>
-        <section class="desktop:w-6/12 laptop:w-6/12 tablet:w-full tablet:order-3 telefono:w-full">
+        <section class="desktop:w-6/12 laptop:w-6/12 tablet:w-full tablet:order-3 telefono:w-full desktop:h-[766px] laptop:h-[766px] overflow-x-auto style_scroll">
             <interrogatorio-expediente />
         </section>
 
@@ -39,13 +39,12 @@ import CardCitaExpediente from '@/components/PacientesComponents/CardCitaExpedie
                 Agendar cita
             </button>
             <h5 class="text-gray-500 font-bold telefono:text-center mt-3 mb-2">Consultas agendadas</h5>
-            <div class="h-[450px] laptop:h-[450px] tablet:h-[250px] telefono:h-[200px] overflow-y-auto flex-col flex gap-5 style_scroll">
+            <div class="h-[450px] laptop:h-[450px] tablet:h-[220px] telefono:h-[200px] overflow-y-auto flex-col flex gap-5 style_scroll">
                 <card-cita-expediente />
                 <card-cita-expediente />
                 <card-cita-expediente />
             </div>
         </section>
-
     </div>
 </template>
 

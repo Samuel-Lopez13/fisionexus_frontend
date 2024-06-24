@@ -15,7 +15,7 @@ onMounted(() => {
 
 const Saludar = () => {
     const horaActual = new Date().getHours()
-    saludo.value = horaActual < 12 ? 'Buenos días 🌤️' : (horaActual < 15 ? 'Buenas tardes 🌇' : 'Buenas noches 🌙')
+    saludo.value = horaActual < 12 ? 'Buenos días 🌤️' : (horaActual < 19 ? 'Buenas tardes 🌇' : 'Buenas noches 🌙')
 }
 </script>
 

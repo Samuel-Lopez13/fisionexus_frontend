@@ -18,8 +18,12 @@ export const irAgregarPacientes = () => {
    router.push({ name: 'AgregarPaciente' })
 }
 
-export const irExpediente = () => {
-   router.push({name: 'Expediente'})
+export const irInterrogatorio = (id) => {
+   router.push({ name: 'Interrogatorio', params: { id: id } })
+}
+
+export const irExpediente = (id) => {
+   router.push({ name: 'Expediente', params: { id: id } })
 }
 
 export const irMetricas = () => {
@@ -28,4 +32,12 @@ export const irMetricas = () => {
 
 export const irAjustes = () => {
    router.push({ name: 'Ajustes' })
+}
+
+export const irEditarPaciente = (id) => {
+   router.push({ name: 'EditarPaciente', params: { id: id } })
+}
+
+export const irNotFound = () => {
+   router.push({ name: 'NotFound' })
 }
