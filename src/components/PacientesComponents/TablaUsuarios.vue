@@ -10,6 +10,11 @@ let paginaActual = ref(null)
 let ultimaPagina = ref(null)
 let loader = ref(false)
 
+let props = defineProps({
+  pagina: Number,
+  buscador: String,
+})
+
 onMounted(() => {
     obtenerTablaPacientes(1)
     obtenerPaginas()
@@ -27,7 +32,11 @@ const obtenerPaginas = async () => {
 
 const obtenerTablaPacientes = async (pagina) => {
     loader.value = true
-    pacientes.value = await pacientesQueries.getPacientes(pagina)
+    if(props.buscador.length > 0){
+        pacientes.value = await pacientesQueries.getBuscador(pagina, props.buscador)
+    } else {
+        pacientes.value = await pacientesQueries.getPacientes(pagina)
+    }
     paginaActual.value = pagina
     await obtenerPaginas()
     loader.value = false

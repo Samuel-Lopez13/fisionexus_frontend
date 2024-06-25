@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { apiUrl, autorization } from '@/api/headers.js'
-import { irNotFound } from '@/router/rutasUtiles.js'
 
 export const pacientesQueries = {
 
@@ -20,9 +19,7 @@ export const pacientesQueries = {
 
          return response.data
       } catch (error){
-         /*if(error.response.status === 404){
-            irNotFound()
-         }*/
+         console.log(error)
       }
    },
 
@@ -44,5 +41,15 @@ export const pacientesQueries = {
       } catch (error){
          console.log(error)
       }
-   }
+   },
+
+   getBuscador: async (pagina, nombre) => {
+      try{
+         const response = await axios.get(import.meta.env.VITE_API_LOCAL + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
+
+         return response.data.pacientes
+      } catch (error){
+         console.log(error)
+      }
+   },
 }

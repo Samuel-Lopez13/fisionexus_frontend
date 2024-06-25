@@ -1,6 +1,9 @@
 <script setup>
 import TablaUsuarios from '@/components/PacientesComponents/TablaUsuarios.vue'
 import { irAgregarPacientes } from '@/router/rutasUtiles.js'
+import { ref } from 'vue'
+
+let buscador = ref("")
 </script>
 
 <template>
@@ -14,7 +17,7 @@ import { irAgregarPacientes } from '@/router/rutasUtiles.js'
                               d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                <input type="search" id="default-search"
+                <input v-model="buscador" type="search" id="default-search"
                        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 focus:text-blue-600"
                        placeholder="Buscar"/>
             </div>
@@ -26,7 +29,7 @@ import { irAgregarPacientes } from '@/router/rutasUtiles.js'
         </div>
     </section>
     <section>
-        <TablaUsuarios/>
+        <TablaUsuarios :buscador/>
     </section>
 </template>
 
