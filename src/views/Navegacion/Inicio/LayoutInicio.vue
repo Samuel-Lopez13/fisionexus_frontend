@@ -5,6 +5,7 @@ import NuevosUsuarios from '@/components/InicioComponents/Charts/NuevosUsuarios.
 import UltimosUsuarios from '@/components/InicioComponents/UltimosUsuarios.vue'
 import CitasChart from '@/components/InicioComponents/Charts/CitasChart.vue'
 import Fisiotepeutas from '@/components/InicioComponents/Fisiotepeutas.vue'
+import { irFisioterapeutas } from '@/router/rutasUtiles.js'
 
 const saludo = ref('')
 const nombre = ref(localStorage.getItem("Usuario"))
