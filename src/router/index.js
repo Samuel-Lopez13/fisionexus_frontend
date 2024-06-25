@@ -13,6 +13,7 @@ import FormLogin from '@/views/layouts/FormLogin.vue'
 import Interrogatorio from '@/views/Navegacion/Pacientes/CompletarInterrogatio.vue'
 import EditarPaciente from '@/views/Navegacion/Pacientes/EditarPaciente.vue'
 import Fisioterapeutas from '@/views/Usuarios/LayoutFT.vue'
+import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,7 +75,8 @@ const router = createRouter({
                   {
                      path: 'Interrogatorio/:id',
                      name: 'Interrogatorio',
-                     component: Interrogatorio
+                     component: Interrogatorio,
+                     meta: { idExistente: true }
                   },
                   {
                      path: 'EditarPaciente/:id',
@@ -123,7 +125,19 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
 
-   /*Verifica que el token sea autentico*/
+   /* Verificamos si existe el id para el interrogatorio */
+   if (to.meta.idExistente) {
+
+      const response = await pacientesQueries.getDatosPaciente(to.params.id)
+
+      if (response == null) {
+         return next({ name: 'NotFound' })
+      } else {
+         return next()
+      }
+   }
+
+   /* Verifica que el token sea autentico */
    if (to.meta.verifyToken) {
       if (localStorage.getItem(import.meta.env.VITE_CREDENCIALES) === '') {
          localStorage.removeItem(import.meta.env.VITE_CREDENCIALES)
@@ -151,14 +165,14 @@ router.beforeEach(async (to, from, next) => {
       }
    }
 
-   /*Cambia el titulo dependiendo de la pagina*/
+   /* Cambia el titulo dependiendo de la pagina */
    if (to.meta.title) {
       document.title = to.meta.title
    } else {
       document.title = 'Fisiolabs' // Título por defecto
    }
 
-   next()
+   return next()
 })
 
 export default router
