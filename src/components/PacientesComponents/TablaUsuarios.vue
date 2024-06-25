@@ -1,28 +1,32 @@
 <script setup>
 import { irEditarPaciente, irExpediente, irInterrogatorio } from '@/router/rutasUtiles.js'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
+
+let props = defineProps({
+    pagina: Number,
+    buscador: String,
+})
 
 let pacientes = ref([])
 let paginas = ref(null)
 let paginaActual = ref(null)
 let ultimaPagina = ref(null)
 let loader = ref(false)
+let buscador = ref(props.buscador)
 
-let props = defineProps({
-  pagina: Number,
-  buscador: String,
+watch(() => props.buscador, (newVal) => {
+    buscador.value = newVal
+    obtenerTablaPacientes(1)
 })
 
 onMounted(() => {
     obtenerTablaPacientes(1)
-    obtenerPaginas()
 })
 
-const obtenerPaginas = async () => {
-    let respuesta = await pacientesQueries.getPaginas()
-    const totalPaginas = respuesta.numeroPaginas
+const obtenerPaginas = async (page) => {
+    const totalPaginas = page
     // Calculamos el rango de páginas a mostrar
     const rangoInicial = Math.max(1, paginaActual.value - 2)
     const rangoFinal = Math.min(totalPaginas, rangoInicial + 4)
@@ -33,12 +37,16 @@ const obtenerPaginas = async () => {
 const obtenerTablaPacientes = async (pagina) => {
     loader.value = true
     if(props.buscador.length > 0){
-        pacientes.value = await pacientesQueries.getBuscador(pagina, props.buscador)
+        let searching = await pacientesQueries.getBuscador(pagina, buscador.value)
+        pacientes.value = searching.pacientes
+        paginaActual.value = 1;
+        obtenerPaginas(searching.numPaginas)
+
     } else {
         pacientes.value = await pacientesQueries.getPacientes(pagina)
+        obtenerPaginas(await pacientesQueries.getPaginas())
     }
     paginaActual.value = pagina
-    await obtenerPaginas()
     loader.value = false
 }
 

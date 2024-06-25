@@ -7,7 +7,7 @@ export const pacientesQueries = {
       try{
          const response = await axios.get(apiUrl + "/Pacientes/paginas", autorization())
 
-         return response.data
+         return response.data.numeroPaginas
       } catch (error){
          console.log(error)
       }
@@ -45,9 +45,9 @@ export const pacientesQueries = {
 
    getBuscador: async (pagina, nombre) => {
       try{
-         const response = await axios.get(import.meta.env.VITE_API_LOCAL + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
+         const response = await axios.get(apiUrl + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
 
-         return response.data.pacientes
+         return response.data
       } catch (error){
          console.log(error)
       }
