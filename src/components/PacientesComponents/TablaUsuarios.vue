@@ -1,9 +1,8 @@
 <script setup>
-import { irEditarPaciente, irExpediente } from '@/router/rutasUtiles.js'
+import { irEditarPaciente, irExpediente, irInterrogatorio } from '@/router/rutasUtiles.js'
 import { onMounted, ref } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
-import router from '@/router/index.js'
 
 let pacientes = ref([])
 let paginas = ref(null)
@@ -34,10 +33,10 @@ const obtenerTablaPacientes = async (pagina) => {
     loader.value = false
 }
 
-const mas = async () => {
+const mas = async (id) => {
     const pregunta = await NotificacionesModal.PantallaWarning('Es necesario realizar el interrogatorio a este paciente', 'Continuar', 'Despues')
     if (pregunta.isConfirmed) {
-        router.push({ name: 'Interrogatorio' })
+        irInterrogatorio(id)
     }
 }
 
@@ -69,7 +68,7 @@ const eliminar = async () => {
                 <td class="py-3 telefono:p-4">{{ paciente.telefono }}</td>
                 <td class="py-3 telefono:p-4 flex gap-2">
                     <svg class="hover:stroke-green-500 cursor-pointer" width="28px" stroke="#758CA3"
-                         @click="mas()"
+                         @click="mas(paciente.pacienteId)"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                         <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round"
