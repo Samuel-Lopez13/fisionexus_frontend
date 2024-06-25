@@ -12,6 +12,7 @@ import Expediente from '@/views/Navegacion/Pacientes/Expediente.vue'
 import FormLogin from '@/views/layouts/FormLogin.vue'
 import Interrogatorio from '@/views/Navegacion/Pacientes/CompletarInterrogatio.vue'
 import EditarPaciente from '@/views/Navegacion/Pacientes/EditarPaciente.vue'
+import Fisioterapeutas from '@/views/Usuarios/LayoutFT.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -79,7 +80,12 @@ const router = createRouter({
                      path: 'EditarPaciente/:id',
                      name: 'EditarPaciente',
                      component: EditarPaciente
-                  }
+                  },
+                  {
+                     path: 'Fisioterapeutas',
+                     name: 'Fisioterapeutas',
+                     component: Fisioterapeutas
+                  },
                ]
             },
             {
