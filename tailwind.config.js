@@ -48,7 +48,8 @@ export default {
         },
     },
     plugins: [
-        flowbitePlugin
+        flowbitePlugin,
+        require('tailwindcss-animated')
     ],
 }
 
