@@ -25,7 +25,7 @@ onMounted(()=>{
 const model = reactive({
    nombre: '',
    apellido: '',
-   edad: null,
+   edad: '',
    ocupacion: '',
    telefono: '',
    institucion: '',
@@ -92,7 +92,10 @@ const obtenerPerfil = async () =>{
     let respuesta = await pacientesQueries.getPerfil(id.value)
     model.nombre = respuesta.nombre
     model.apellido = respuesta.apellido
-    model.edad = respuesta.edad
+
+    let indiceT = respuesta.edad.indexOf('T')
+    model.edad = respuesta.edad.substring(0, indiceT)
+
     model.ocupacion = respuesta.ocupacion
     model.telefono = respuesta.telefono
     model.domicilio = respuesta.domicilio
@@ -183,7 +186,7 @@ const Name = computed(() => model.nombre.split(' ')[0]);
                <div>
                   <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
                      nacimiento <span class="text-blue-600">*</span> </label>
-                  <input type="text" class="input-primary" placeholder="Select date" v-model="model.edad" readonly>
+                  <input type="date" class="input-primary" placeholder="Select date" v-model="model.edad">
                   <span v-if="$v.edad.$error" class="text-red-500 text-xs">La edad es obligatoria</span>
                </div>
 
