@@ -1,11 +1,15 @@
 <script setup>
-import { reactive, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 import useVuelidate from '@vuelidate/core'
 import { maxLength, minLength, numeric, required } from '@vuelidate/validators'
+import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
+import { useRoute } from 'vue-router'
 
+let route = useRoute()
+let id = ref(route.params.id)
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
 let fotoPerfil = ref(null)
@@ -13,11 +17,15 @@ let verificarTelefono = ref(false)
 let sexo = ref(true)
 let estadoCivil = ref(1)
 
+onMounted(()=>{
+    obtenerPerfil()
+})
+
 //Modelos reactivos
 const model = reactive({
    nombre: '',
    apellido: '',
-   edad: null,
+   edad: '',
    ocupacion: '',
    telefono: '',
    institucion: '',
@@ -80,6 +88,25 @@ const agregarPaciente = async () => {
    }
 }
 
+const obtenerPerfil = async () =>{
+    let respuesta = await pacientesQueries.getPerfil(id.value)
+    model.nombre = respuesta.nombre
+    model.apellido = respuesta.apellido
+    //El back debe devolver el string '' en formato YYYY-MM-DD
+    model.edad = respuesta.edad.substring(0, respuesta.edad.indexOf('T'));
+    model.ocupacion = respuesta.ocupacion
+    model.telefono = respuesta.telefono
+    model.domicilio = respuesta.domicilio
+    model.codigoPostal = respuesta.codigoPostal
+    model.institucion = respuesta.institucion
+    imageUrl.value = respuesta.fotoPerfil
+    sexo.value = respuesta.sexo
+    console.log(id.value)
+    console.log(respuesta)
+}
+
+const Name = computed(() => model.nombre.split(' ')[0]);
+
 </script>
 
 
@@ -88,8 +115,8 @@ const agregarPaciente = async () => {
       <section class="mr-3">
          <div class="flex flex-col items-center gap-6 text-center telefono:justify-around tablet:justify-center">
             <header class="flex flex-col items-center gap-4 telefono:w-full telefono:items-center">
-               <h1 class="text-[24px] text-gray-600 font-bold text-center">
-                  Nombre del usuario
+               <h1 class="text-[24px] text-gray-600 font-bold text-center text-wrap">
+                   {{ Name }}
                </h1>
                <img :src="imageUrl"
                     class="h-40 w-40 object-cover rounded-full">

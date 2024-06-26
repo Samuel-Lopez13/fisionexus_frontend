@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { apiUrl, autorization } from '@/api/headers.js'
-import { irNotFound } from '@/router/rutasUtiles.js'
 
 export const pacientesQueries = {
 
@@ -8,7 +7,7 @@ export const pacientesQueries = {
       try{
          const response = await axios.get(apiUrl + "/Pacientes/paginas", autorization())
 
-         return response.data
+         return response.data.numeroPaginas
       } catch (error){
          console.log(error)
       }
@@ -20,9 +19,7 @@ export const pacientesQueries = {
 
          return response.data
       } catch (error){
-         /*if(error.response.status === 404){
-            irNotFound()
-         }*/
+         console.log(error)
       }
    },
 
@@ -44,5 +41,25 @@ export const pacientesQueries = {
       } catch (error){
          console.log(error)
       }
-   }
+   },
+
+   getBuscador: async (pagina, nombre) => {
+      try{
+         const response = await axios.get(apiUrl + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
+
+         return response.data
+      } catch (error){
+         console.log(error)
+      }
+   },
+
+   getPerfil: async (id) => {
+      try{
+         const response = await axios.get(apiUrl + "/Pacientes/Paciente?id=" + id, autorization())
+         console.log(response)
+         return response.data
+      } catch (error){
+         console.log(error.data)
+      }
+   },
 }
