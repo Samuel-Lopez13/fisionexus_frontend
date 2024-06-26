@@ -1,17 +1,25 @@
 <script setup>
-import { reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 import useVuelidate from '@vuelidate/core'
 import { maxLength, minLength, numeric, required } from '@vuelidate/validators'
+import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
+import { useRoute } from 'vue-router'
 
+let route = useRoute()
+let id = ref(route.params.id)
 let imageUrl = ref(ImagenDefault)
 let inputFile = ref(null)
 let fotoPerfil = ref(null)
 let verificarTelefono = ref(false)
 let sexo = ref(true)
 let estadoCivil = ref(1)
+
+onMounted(()=>{
+    obtenerPerfil()
+})
 
 //Modelos reactivos
 const model = reactive({
@@ -78,6 +86,20 @@ const agregarPaciente = async () => {
    } else {
       verificarTelefono.value = false
    }
+}
+
+const obtenerPerfil = async () =>{
+    let respuesta = await pacientesQueries.getPerfil(id.value)
+    model.nombre = respuesta.nombre
+    model.apellido = respuesta.apellido
+    model.edad = respuesta.edad
+    model.ocupacion = respuesta.ocupacion
+    model.telefono = respuesta.telefono
+    model.domicilio = respuesta.domicilio
+    model.codigoPostal = respuesta.codigoPostal
+    model.institucion = respuesta.institucion
+    console.log(id.value)
+    console.log(respuesta)
 }
 
 </script>

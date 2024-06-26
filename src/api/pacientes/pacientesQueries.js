@@ -52,4 +52,14 @@ export const pacientesQueries = {
          console.log(error)
       }
    },
+
+   getPerfil: async (id) => {
+      try{
+         const response = await axios.get(apiUrl + "/Pacientes/Paciente?id=" + id, autorization())
+         console.log(response)
+         return response.data
+      } catch (error){
+         console.log(error.data)
+      }
+   },
 }
