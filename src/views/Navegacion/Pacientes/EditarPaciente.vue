@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import ImagenDefault from '@/assets/icons/Usuario.png'
 import { irPacientes } from '@/router/rutasUtiles.js'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
@@ -98,9 +98,13 @@ const obtenerPerfil = async () =>{
     model.domicilio = respuesta.domicilio
     model.codigoPostal = respuesta.codigoPostal
     model.institucion = respuesta.institucion
+    imageUrl.value = respuesta.fotoPerfil
+    sexo.value = respuesta.sexo
     console.log(id.value)
     console.log(respuesta)
 }
+
+const Name = computed(() => model.nombre.split(' ')[0]);
 
 </script>
 
@@ -110,8 +114,8 @@ const obtenerPerfil = async () =>{
       <section class="mr-3">
          <div class="flex flex-col items-center gap-6 text-center telefono:justify-around tablet:justify-center">
             <header class="flex flex-col items-center gap-4 telefono:w-full telefono:items-center">
-               <h1 class="text-[24px] text-gray-600 font-bold text-center">
-                  Nombre del usuario
+               <h1 class="text-[24px] text-gray-600 font-bold text-center text-wrap">
+                   {{ Name }}
                </h1>
                <img :src="imageUrl"
                     class="h-40 w-40 object-cover rounded-full">
@@ -179,7 +183,7 @@ const obtenerPerfil = async () =>{
                <div>
                   <label class="block mb-2 text-sm font-medium text-gray-600">Fecha de
                      nacimiento <span class="text-blue-600">*</span> </label>
-                  <input type="date" class="input-primary" placeholder="Select date" v-model="model.edad">
+                  <input type="text" class="input-primary" placeholder="Select date" v-model="model.edad" readonly>
                   <span v-if="$v.edad.$error" class="text-red-500 text-xs">La edad es obligatoria</span>
                </div>
 
