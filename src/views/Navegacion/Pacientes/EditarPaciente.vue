@@ -92,7 +92,7 @@ const obtenerPerfil = async () =>{
     let respuesta = await pacientesQueries.getPerfil(id.value)
     model.nombre = respuesta.nombre
     model.apellido = respuesta.apellido
-
+    //El back debe devolver el string '' en formato YYYY-MM-DD
     let indiceT = respuesta.edad.indexOf('T')
     model.edad = respuesta.edad.substring(0, indiceT)
 
