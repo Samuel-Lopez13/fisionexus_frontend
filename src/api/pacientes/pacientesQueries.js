@@ -3,11 +3,12 @@ import { apiUrl, autorization } from '@/api/headers.js'
 
 export const pacientesQueries = {
 
-   getPaginas: async () => {
+   //Devuelve una lista de pacientes
+   getPacientes: async (pagina) => {
       try{
-         const response = await axios.get(apiUrl + "/Pacientes/paginas", autorization())
+         const response = await axios.get(apiUrl + "/Pacientes?pagina=" + pagina, autorization())
 
-         return response.data.numeroPaginas
+         return response.data
       } catch (error){
          console.log(error)
       }
@@ -16,16 +17,6 @@ export const pacientesQueries = {
    getDatosPaciente: async (id) => {
       try{
          const response = await axios.get(apiUrl + "/Pacientes/Datos?paciente=" + id, autorization())
-
-         return response.data
-      } catch (error){
-         console.log(error)
-      }
-   },
-
-   getPacientes: async (pagina) => {
-      try{
-         const response = await axios.get(apiUrl + "/Pacientes?pagina=" + pagina, autorization())
 
          return response.data
       } catch (error){

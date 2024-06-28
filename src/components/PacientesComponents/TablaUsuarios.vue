@@ -6,16 +6,20 @@ import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral
 
 let props = defineProps({
     pagina: Number,
-    buscador: String,
+    buscador: String
 })
 
 let pacientes = ref([])
 let paginas = ref(null)
-let paginaActual = ref(null)
+let paginaActual = ref(1)
 let ultimaPagina = ref(null)
-let loader = ref(false)
+let totalPacientes = ref(null)
+let inicioPaciente = ref(null)
+let finalPaciente = ref(null)
 let buscador = ref(props.buscador)
+let loader = ref(false)
 
+//El watch sera para we este a la escucha de que el props cambie
 watch(() => props.buscador, (newVal) => {
     buscador.value = newVal
     obtenerTablaPacientes(1)
@@ -25,32 +29,77 @@ onMounted(() => {
     obtenerTablaPacientes(1)
 })
 
-const obtenerPaginas = async (page) => {
-    const totalPaginas = page
-    // Calculamos el rango de páginas a mostrar
-    const rangoInicial = Math.max(1, paginaActual.value - 2)
-    const rangoFinal = Math.min(totalPaginas, rangoInicial + 4)
-    paginas.value = Array.from({ length: (rangoFinal - rangoInicial + 1) }, (_, index) => rangoInicial + index)
-    ultimaPagina.value = totalPaginas
+let actualizar = ref(true)
+
+const paginacion = (page) => {
+    ultimaPagina.value = page
+
+    muestraPacientes(paginaActual, totalPacientes.value)
+
+    if (page > 5) {
+        let alto = page - 1
+
+        let inicial = Math.max(1, paginaActual.value - 2)
+
+        if (paginas.value !== null) {
+            /* Hacia adelante */
+            let posicion = paginas.value[3]
+
+            if (posicion <= paginaActual.value) {
+                actualizar.value = true
+                if (paginaActual.value === page - 1) {
+                    inicial = Math.max(1, paginaActual.value - 3)
+                }
+            }
+
+            if (posicion === alto) {
+                actualizar.value = false
+            }
+
+            /* Hacia atras */
+            posicion = paginas.value[1]
+
+            if (posicion >= paginaActual.value) {
+                actualizar.value = true
+            }
+        }
+
+        if (actualizar.value) {
+            paginas.value = Array.from({ length: 5 }, (_, index) => inicial + index)
+            actualizar.value = false
+        }
+    } else {
+        paginas.value = Array.from({ length: page }, (_, index) => index + 1)
+    }
+}
+
+const muestraPacientes = (pagina, total) =>{
+    inicioPaciente.value = pagina.value === 1 ? "1" : (pagina.value - 1) + "1"
+    finalPaciente.value = paginaActual.value === Math.ceil(total / 10) ? (pagina.value - 1) + "" + (total % 10) : pagina.value + "0"
 }
 
 const obtenerTablaPacientes = async (pagina) => {
     loader.value = true
-    if(props.buscador.length > 0){
-        let searching = await pacientesQueries.getBuscador(pagina, buscador.value)
-        pacientes.value = searching.pacientes
-        paginaActual.value = 1;
-        obtenerPaginas(searching.numPaginas)
-
-    } else {
-        pacientes.value = await pacientesQueries.getPacientes(pagina)
-        obtenerPaginas(await pacientesQueries.getPaginas())
-    }
     paginaActual.value = pagina
+    //Si el buscador no hay nada devolvera todos los pacientes
+    if (props.buscador.length > 0) {
+        let searching = await pacientesQueries.getBuscador(pagina, buscador.value)
+        //Este es el numero de paginas total
+        pacientes.value = searching.pacientes
+        //Para cuando busquemos algo por defecto inicie en la pagina 1
+        //paginaActual.value = 1;
+        //Este es el que nos pintara las paginas
+        paginacion(searching.numPaginas)
+    } else {
+        let getAll = await pacientesQueries.getPacientes(pagina)
+        pacientes.value = getAll.pacientes
+        paginacion(getAll.numPaginas)
+        totalPacientes.value = getAll.total
+    }
     loader.value = false
 }
 
-const mas = async (id) => {
+const citas = async (id) => {
     const pregunta = await NotificacionesModal.PantallaWarning('Es necesario realizar el interrogatorio a este paciente', 'Continuar', 'Despues')
     if (pregunta.isConfirmed) {
         irInterrogatorio(id)
@@ -85,14 +134,15 @@ const eliminar = async () => {
                 <td class="py-3 telefono:p-4">{{ paciente.telefono }}</td>
                 <td class="py-3 telefono:p-4 flex gap-2">
                     <svg class="hover:stroke-green-500 cursor-pointer" width="28px" stroke="#758CA3"
-                         v-if="paciente.verificado === true" @click="NotificacionesModal.ExitosoSimple('Modal agregar cita')"
+                         v-if="paciente.verificado === true"
+                         @click="NotificacionesModal.ExitosoSimple('Modal agregar cita')"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                         <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round"
                               stroke-linejoin="round" />
                     </svg>
                     <svg v-else class="hover:stroke-green-500 cursor-pointer" width="28px" stroke="#758CA3"
-                         @click="mas(paciente.pacienteId)"
+                         @click="citas(paciente.pacienteId)"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                         <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round"
@@ -106,7 +156,8 @@ const eliminar = async () => {
                             d="M25.5 18.5L28.5 15.5L24.5 11.5L21.5 14.5M25.5 18.5L15.5 28.5H11.5V24.5L21.5 14.5M25.5 18.5L21.5 14.5"
                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    <svg v-if="paciente.verificado === false" @click="mas(paciente.pacienteId)" class="hover:stroke-blue-500 cursor-pointer"
+                    <svg v-if="paciente.verificado === false" @click="citas(paciente.pacienteId)"
+                         class="hover:stroke-blue-500 cursor-pointer"
                          stroke="#758CA3" width="28px"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
@@ -143,6 +194,7 @@ const eliminar = async () => {
         </table>
     </div>
     <div class="flex justify-between relative">
+        <!-- --------------------------------------------- Area Botones --------------------------------------------- -->
         <div class="relative flex items-center text-gray-600 button-with-hover group">
             <button class="group-hover:text-blue-600 flex gap-2 items-center" :disabled="paginaActual === 1"
                     @click="obtenerTablaPacientes(1)">
@@ -159,7 +211,6 @@ const eliminar = async () => {
                 <p class="telefono:hidden">Inicio</p>
             </button>
         </div>
-
         <div class="flex items-center h-[20px] text-gray-600 gap-3">
             <button @click="obtenerTablaPacientes(paginaActual - 1)" :disabled="paginaActual === 1"
                     class="hover:text-blue-600">
@@ -170,7 +221,7 @@ const eliminar = async () => {
                           d="M5 1 1 5l4 4" />
                 </svg>
             </button>
-            <button class="relative pr-2 pl-2" v-for="pagina in paginas"
+            <button class="relative pr-2 pl-2" v-for="pagina in paginas" :key="pagina.pacienteId"
                     :class="{'hover:text-blue-600': pagina !== paginaActual, 'border-blue-600 border-b text-blue-600': pagina === paginaActual}"
                     @click="obtenerTablaPacientes(pagina)">{{ pagina }}
             </button>
@@ -203,7 +254,7 @@ const eliminar = async () => {
         </div>
     </div>
     <div class="w-full mt-4 flex items-center gap-4 telefono:justify-center telefono:flex-col">
-        <span class="text-sm text-blue-800">Mostrando 1-10 pacientes de 122</span>
+        <span class="text-sm text-blue-800">Mostrando {{ inicioPaciente }} - {{ finalPaciente }} pacientes de {{ totalPacientes }}</span>
         <div class="gap-x-2 flex justify-center items-center animate-pulse" v-if="loader">
             <div class="w-2 bg-[#90e0ef] h-2 rounded-full animate-bounce"></div>
             <div class="w-2  h-2 bg-[#0077b6] rounded-full animate-bounce"></div>
