@@ -3,11 +3,23 @@ import { apiUrl, autorization } from '@/api/headers.js'
 
 export const pacientesQueries = {
 
-   getPaginas: async () => {
+   //Devuelve una lista de pacientes
+   getPacientes: async (pagina) => {
       try{
-         const response = await axios.get(apiUrl + "/Pacientes/paginas", autorization())
+         const response = await axios.get(apiUrl + "/Pacientes?pagina=" + pagina, autorization())
 
-         return response.data.numeroPaginas
+         return response.data
+      } catch (error){
+         console.log(error)
+      }
+   },
+
+   //Buscador de pacientes
+   getBuscador: async (pagina, nombre) => {
+      try{
+         const response = await axios.get(apiUrl + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
+
+         return response.data
       } catch (error){
          console.log(error)
       }
@@ -23,29 +35,9 @@ export const pacientesQueries = {
       }
    },
 
-   getPacientes: async (pagina) => {
-      try{
-         const response = await axios.get(apiUrl + "/Pacientes?pagina=" + pagina, autorization())
-
-         return response.data
-      } catch (error){
-         console.log(error)
-      }
-   },
-
    getUltimosPacientes: async () => {
       try{
          const response = await axios.get(apiUrl + "/Pacientes/UltimosRegistrados", autorization())
-
-         return response.data
-      } catch (error){
-         console.log(error)
-      }
-   },
-
-   getBuscador: async (pagina, nombre) => {
-      try{
-         const response = await axios.get(apiUrl + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
 
          return response.data
       } catch (error){
