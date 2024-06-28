@@ -88,8 +88,9 @@ const obtenerTablaPacientes = async (pagina) => {
         pacientes.value = searching.pacientes
         //Para cuando busquemos algo por defecto inicie en la pagina 1
         //paginaActual.value = 1;
-        //Este es el que nos pintara las paginas
+        //Nos pintara las paginas
         paginacion(searching.numPaginas)
+        totalPacientes.value = searching.total
     } else {
         let getAll = await pacientesQueries.getPacientes(pagina)
         pacientes.value = getAll.pacientes

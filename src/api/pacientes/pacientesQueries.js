@@ -14,6 +14,17 @@ export const pacientesQueries = {
       }
    },
 
+   //Buscador de pacientes
+   getBuscador: async (pagina, nombre) => {
+      try{
+         const response = await axios.get(apiUrl + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
+
+         return response.data
+      } catch (error){
+         console.log(error)
+      }
+   },
+
    getDatosPaciente: async (id) => {
       try{
          const response = await axios.get(apiUrl + "/Pacientes/Datos?paciente=" + id, autorization())
@@ -27,16 +38,6 @@ export const pacientesQueries = {
    getUltimosPacientes: async () => {
       try{
          const response = await axios.get(apiUrl + "/Pacientes/UltimosRegistrados", autorization())
-
-         return response.data
-      } catch (error){
-         console.log(error)
-      }
-   },
-
-   getBuscador: async (pagina, nombre) => {
-      try{
-         const response = await axios.get(apiUrl + "/Pacientes/Buscador?pagina=" + pagina + "&nombre=" + nombre, autorization())
 
          return response.data
       } catch (error){
