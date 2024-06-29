@@ -54,4 +54,13 @@ export const pacientesQueries = {
          console.log(error.data)
       }
    },
+
+   getExpediente : async (id) => {
+      try {
+         const response = await axios.get(apiUrl + "/Pacientes/Expediente?paciente=" + id, autorization())
+         return response.data
+      }catch (error){
+         console.log(error.data)
+      }
+   }
 }
