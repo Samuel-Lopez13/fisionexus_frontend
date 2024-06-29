@@ -18,7 +18,7 @@
 }
 
 .inactive-input{
-    opacity: 0.6;
+    opacity: .8;
     @apply hover:border-blue-600 border border-gray-300 text-black text-sm rounded-[3px] focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
 }
 
