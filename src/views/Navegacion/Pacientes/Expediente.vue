@@ -56,7 +56,7 @@ const datosPaciente = async () => {
             </div>
         </section>
         <section class="desktop:w-6/12 laptop:w-6/12 tablet:w-full tablet:order-3 telefono:w-full desktop:h-[766px] laptop:h-[766px] overflow-x-auto style_scroll">
-            <interrogatorio-expediente :pacienteId="pacienteId" :sexo="sexo"/>
+            <interrogatorio-expediente :pacienteId :sexo/>
         </section>
 
         <section
