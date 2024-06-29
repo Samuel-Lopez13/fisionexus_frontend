@@ -132,7 +132,9 @@ router.beforeEach(async (to, from, next) => {
 
       if (response == null) {
          return next({ name: 'NotFound' })
-      } else {
+      } else if(response.verificado === true){
+         return next({ name: 'NotFound' })
+      }else{
          return next()
       }
    }
