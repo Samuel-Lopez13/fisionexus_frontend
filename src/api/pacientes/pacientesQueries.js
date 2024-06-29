@@ -62,5 +62,14 @@ export const pacientesQueries = {
       }catch (error){
          console.log(error.data)
       }
+   },
+
+   eliminarPaciente: async (id) =>{
+      try {
+         const response = await axios.delete(apiUrl + "/Pacientes?id=" + id, autorization())
+         return response.status
+      }catch (error){
+         console.log(error)
+      }
    }
 }

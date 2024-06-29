@@ -139,6 +139,5 @@ export const pacientesCommand = {
          }
       }
 
-   }
-
+   },
 }
