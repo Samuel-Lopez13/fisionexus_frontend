@@ -47,6 +47,11 @@ const router = createRouter({
                      path: '',
                      name: 'Dashboard',
                      component: LayoutInicio
+                  },
+                  {
+                     path: 'Fisioterapeutas',
+                     name: 'Fisioterapeutas',
+                     component: Fisioterapeutas
                   }
                ]
             },
@@ -82,11 +87,6 @@ const router = createRouter({
                      path: 'EditarPaciente/:id',
                      name: 'EditarPaciente',
                      component: EditarPaciente
-                  },
-                  {
-                     path: 'Fisioterapeutas',
-                     name: 'Fisioterapeutas',
-                     component: Fisioterapeutas
                   },
                ]
             },

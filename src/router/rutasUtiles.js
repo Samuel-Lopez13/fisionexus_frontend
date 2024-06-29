@@ -41,3 +41,7 @@ export const irEditarPaciente = (id) => {
 export const irNotFound = () => {
    router.push({ name: 'NotFound' })
 }
+
+export const irFisioterapeutas = () =>{
+   router.push({ name: 'Fisioterapeutas' })
+}
