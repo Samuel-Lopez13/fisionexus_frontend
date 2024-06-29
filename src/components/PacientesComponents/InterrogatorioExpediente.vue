@@ -534,7 +534,7 @@ const editarDatos = () =>{
             leave-active-class="transition-opacity duration-200"
             leave-from-class="opacity-100"
             leave-to-class="opacity-0">
-            <button class="button-primary" v-show="!editar">Aceptar</button>
+            <button class="button-primary" v-show="!editar">Actualizar</button>
         </transition>
     </div>
 </template>
