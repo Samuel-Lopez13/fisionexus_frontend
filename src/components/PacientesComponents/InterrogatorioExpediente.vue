@@ -372,9 +372,7 @@ const editarDatos = () =>{
             <div class="px-6 py-3">
                 <section class="flex flex-col gap-3">
                     <div class="flex flex-col">
-                        <input v-model="model.antecedentesPatologicos" type="text" :disabled="editar"
-                               class="h-[40px] inactive-input"
-                               placeholder="Antecedentes patológicos">
+                        <textarea :disabled="editar" v-model="model.antecedentesPatologicos" class="inactive-input"  placeholder="Antecedentes patológicos"></textarea>
                         <span v-if="$v.antecedentesPatologicos.$error" class="text-red-500 text-xs">El antecedente patologico es obligatorio</span>
                     </div>
                 </section>
@@ -391,23 +389,19 @@ const editarDatos = () =>{
                     <div class="flex flex-col">
                         <label class="text-gray-600 mb-2">Medio laboral <span
                             class="text-blue-600">*</span></label>
-                        <input v-model="model.medioLaboral" type="text" :disabled="editar"
-                               class="h-[40px] inactive-input"
-                               placeholder="Medio laboral">
+                        <textarea :disabled="editar" v-model="model.medioLaboral" class="inactive-input"  placeholder="Medio laboral"></textarea>
                         <span v-if="$v.medioLaboral.$error" class="text-red-500 text-xs">El medio Laboral es obligatorio</span>
                     </div>
                     <div class="flex flex-col">
                         <label class="text-gray-600 mb-2">Medio Sociocultural <span
                             class="text-blue-600">*</span></label>
-                        <input v-model="model.medioSociocultural" class="h-[40px] inactive-input" :disabled="editar"
-                               type="text" placeholder="Medio Sociocultural">
+                        <textarea :disabled="editar" v-model="model.medioSociocultural" class="inactive-input" placeholder="Medio Sociocultural"></textarea>
                         <span v-if="$v.medioSociocultural.$error" class="text-red-500 text-xs">El medio Sociocultural es obligatorio</span>
                     </div>
                     <div class="flex flex-col">
                         <label class="text-gray-600 mb-2">Medio Fisicoambiental <span
                             class="text-blue-600">*</span></label>
-                        <input v-model="model.medioFisicoambiental" class="h-[40px] inactive-input" :disabled="editar"
-                               type="text" placeholder="Medio Fisicoambiental">
+                        <textarea :disabled="editar" v-model="model.medioFisicoambiental"  class="inactive-input" placeholder="Medio Fisicoambiental"></textarea>
                         <span v-if="$v.medioFisicoambiental.$error" class="text-red-500 text-xs">El medio Fisicoambiental es obligatorio</span>
                     </div>
                 </section>
