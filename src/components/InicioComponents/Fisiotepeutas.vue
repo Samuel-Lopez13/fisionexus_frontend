@@ -1,14 +1,14 @@
 <script setup>
-
+import { irFisioterapeutas } from '@/router/rutasUtiles.js'
 </script>
 
 <template>
     <div class="p-4 overflow-x-auto bg-white border border-gray-200 rounded-lg shadow sm:p-8">
         <div class="flex items-center justify-between mb-3">
             <h5 class="text-xl font-bold leading-none text-blue-600">Fisioterapeutas</h5>
-            <a href="#" class="text-sm font-medium text-blue-600 hover:underline">
+            <div @click="irFisioterapeutas" role="button" class="text-sm font-medium text-blue-600 hover:text-blue-700">
                 Ver a todos
-            </a>
+            </div>
         </div>
         <div class="flow-root">
             <ul role="list" class="divide-y divide-gray-200">

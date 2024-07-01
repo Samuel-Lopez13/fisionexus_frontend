@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2'
 
-const primaryColor = '#0062FF'
-const cancelColor = '#ce4257'
+export const primaryColor = '#0062FF'
+export const cancelColor = '#ce4257'
 
 export const NotificacionesModal = {
    ExitosoSimple: async (msg = 'Proceso completado con exito', textBtn = 'Aceptar') => {

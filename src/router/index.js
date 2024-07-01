@@ -47,6 +47,11 @@ const router = createRouter({
                      path: '',
                      name: 'Dashboard',
                      component: LayoutInicio
+                  },
+                  {
+                     path: 'Fisioterapeutas',
+                     name: 'Fisioterapeutas',
+                     component: Fisioterapeutas
                   }
                ]
             },
@@ -82,11 +87,6 @@ const router = createRouter({
                      path: 'EditarPaciente/:id',
                      name: 'EditarPaciente',
                      component: EditarPaciente
-                  },
-                  {
-                     path: 'Fisioterapeutas',
-                     name: 'Fisioterapeutas',
-                     component: Fisioterapeutas
                   },
                ]
             },
@@ -124,7 +124,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-
+   //AfterEach --NOTA--
    /* Verificamos si existe el id para el interrogatorio */
    if (to.meta.idExistente) {
 
@@ -132,7 +132,9 @@ router.beforeEach(async (to, from, next) => {
 
       if (response == null) {
          return next({ name: 'NotFound' })
-      } else {
+      } else if(response.verificado === true){
+         return next({ name: 'NotFound' })
+      }else{
          return next()
       }
    }

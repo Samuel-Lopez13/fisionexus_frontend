@@ -58,10 +58,10 @@ const regresarImagenDefault = () => {
 const agregarPaciente = async () => {
     //Habilitara los errores si existen
     $v.value.$touch()
-
-    let nombreCompleto = model.nombre + ' ' + model.apellido
+    //let nombreCompleto = model.nombre + ' ' + model.apellido
     let response = await pacientesCommand.postPacientes(
-        nombreCompleto,
+        model.nombre,
+        model.apellido,
         model.edad,
         sexo.value,
         model.institucion,

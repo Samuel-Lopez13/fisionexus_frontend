@@ -41,7 +41,7 @@ const ultimosPacientes = async () => {
       </thead>
 
       <tbody>
-      <tr class="bg-white border-b" v-for="pacientes in lastPacientes" :key="pacientes.id">
+      <tr class="bg-white border-b hover:bg-gray-100 cursor-pointer" v-for="pacientes in lastPacientes" :key="pacientes.id">
         <td class="px-6 py-4 tablet:p-4 laptop:p-4 font-medium text-gray-900 whitespace-nowrap">
           {{ pacientes.nombre }}
         </td>
