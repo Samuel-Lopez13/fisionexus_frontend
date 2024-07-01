@@ -124,7 +124,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-
+   //AfterEach --NOTA--
    /* Verificamos si existe el id para el interrogatorio */
    if (to.meta.idExistente) {
 

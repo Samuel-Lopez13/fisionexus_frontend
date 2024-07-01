@@ -6,7 +6,7 @@ import { irInterrogatorio, irPacientes } from '@/router/rutasUtiles.js'
 
 export const pacientesCommand = {
 
-   postPacientes: async (nombre, edad, sexo, institucion, domicilio, codigoPostal, ocupacion, telefono, estadoCivilId, foto) => {
+   postPacientes: async (nombre, apellido, edad, sexo, institucion, domicilio, codigoPostal, ocupacion, telefono, estadoCivilId, foto) => {
       try {
          let img = null
 
@@ -15,6 +15,7 @@ export const pacientesCommand = {
 
          const JSON = {
             'nombre': nombre,
+            'apellido': apellido,
             'edad': edad,
             'sexo': sexo,
             'institucion': institucion,
