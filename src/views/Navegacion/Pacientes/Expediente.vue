@@ -28,7 +28,7 @@ const datosPaciente = async () => {
     nombre.value = response.nombre
     apellido.value = response.apellido
     imagen.value = response.fotoPerfil
-    fechaNacimiento.value = response.fechaNacimiento.substring(0,10)
+    fechaNacimiento.value = response.fechaNacimiento.substring(0,10).replace(/-/g, '/')
     edad.value = response.edad
     if (response.sexo === false) {
         sexo.value = 'Mujer'

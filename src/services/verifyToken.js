@@ -6,3 +6,10 @@ export const verify = async () =>{
 
    return response
 }
+
+//FECHA ACTUAL
+const hoy = new Date();
+const anio = hoy.getFullYear();
+const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Meses en JavaScript van de 0 a 11
+const dia = String(hoy.getDate()).padStart(2, '0');
+export const fechaActual = `${anio}-${mes}-${dia}`;
