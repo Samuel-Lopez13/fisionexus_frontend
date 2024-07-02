@@ -78,7 +78,11 @@ onMounted(() => {
 const datosPaciente = async () => {
     let response = await pacientesQueries.getDatosPaciente(pacienteId.value)
     nombre.value = response.nombre
-    sexo.value = response.sexo
+    if (response.sexo === true){
+        sexo.value = 'Hombre'
+    }else{
+        sexo.value = 'Mujer'
+    }
 }
 
 const interrogatorioPaciente = async () => {
