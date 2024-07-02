@@ -27,7 +27,7 @@ export const pacientesQueries = {
 
    getDatosPaciente: async (id) => {
       try{
-         const response = await axios.get(apiUrl + "/Pacientes/Datos?paciente=" + id, autorization())
+         const response = await axios.get(apiUrl + "/Pacientes/Paciente?id=" + id, autorization())
 
          return response.data
       } catch (error){
@@ -45,19 +45,9 @@ export const pacientesQueries = {
       }
    },
 
-   getPerfil: async (id) => {
-      try{
-         const response = await axios.get(apiUrl + "/Pacientes/Paciente?id=" + id, autorization())
-         console.log(response)
-         return response.data
-      } catch (error){
-         console.log(error.data)
-      }
-   },
-
    getExpediente : async (id) => {
       try {
-         const response = await axios.get(apiUrl + "/Pacientes/Expediente?paciente=" + id, autorization())
+         const response = await axios.get(apiUrl + "/Expediente?paciente=" + id, autorization())
          return response.data
       }catch (error){
          console.log(error.data)
