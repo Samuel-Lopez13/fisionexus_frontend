@@ -2,7 +2,7 @@ import { apiUrl, autorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
 import { globalCommand } from '@/api/global/globaCommand.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
-import { irInterrogatorio, irPacientes } from '@/router/rutasUtiles.js'
+import { irExpediente, irInterrogatorio, irPacientes } from '@/router/rutasUtiles.js'
 
 export const pacientesCommand = {
 
@@ -129,10 +129,10 @@ export const pacientesCommand = {
          console.log(interrogatorio)
 
          const [data, config] = autorizationJSON(interrogatorio)
-         await axios.post(apiUrl + '/Pacientes/Interrogatorio', data, config)
+         await axios.post(apiUrl + '/Expediente', data, config)
 
          await NotificacionesModal.ExitosoSimple('Datos del paciente guardados con éxito', 'Aceptar')
-         irPacientes()
+         irExpediente(pacienteId)
 
       } catch (error) {
          if (error.response.status === 400) {
