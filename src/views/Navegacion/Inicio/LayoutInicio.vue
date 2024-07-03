@@ -7,7 +7,7 @@ import CitasChart from '@/components/InicioComponents/Charts/CitasChart.vue'
 import Fisiotepeutas from '@/components/InicioComponents/Fisiotepeutas.vue'
 
 const saludo = ref('')
-const nombre = ref(localStorage.getItem("Usuario"))
+const nombre = ref(localStorage.getItem('Usuario'))
 
 onMounted(() => {
     Saludar()
