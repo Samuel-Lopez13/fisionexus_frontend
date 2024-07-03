@@ -59,6 +59,10 @@ const CerrarMenu = (ruta) => {
             </div>
             <div data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
                          class="p-2 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">
+                <span class="absolute right-4 top-3 flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75"></span>
+                    <span class="absolute inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round"
