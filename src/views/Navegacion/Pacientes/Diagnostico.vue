@@ -3,6 +3,7 @@ import SignosVitales from '@/components/PacientesComponents/SignosVitales.vue'
 import CardCitas from '@/components/PacientesComponents/CardCitas.vue'
 import CardCitaExpediente from '@/components/PacientesComponents/CardCitaExpediente.vue'
 import DatosDiagnostico from '@/components/PacientesComponents/DatosDiagnostico.vue'
+import MapaCorporal from '@/components/PacientesComponents/MapaCorporal.vue'
 </script>
 
 <template>
@@ -27,6 +28,7 @@ import DatosDiagnostico from '@/components/PacientesComponents/DatosDiagnostico.
       </div>
     </section>
     <section class="laptop:h-[650px]  overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-6/12 tablet:w-full tablet:order-3 telefono:w-full">
+      <mapa-corporal></mapa-corporal>
       <datos-diagnostico/>
     </section>
 
