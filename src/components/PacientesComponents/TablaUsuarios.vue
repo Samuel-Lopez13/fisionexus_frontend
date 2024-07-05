@@ -3,7 +3,7 @@ import { irEditarPaciente, irExpediente, irInterrogatorio } from '@/router/rutas
 import { onMounted, ref, watch } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
-import { citasModal } from '@/helpers/notifications/ModalesCitas.js'
+import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 
 let props = defineProps({
     pagina: Number,
@@ -125,6 +125,7 @@ const eliminar = async (id, nombre) => {
         }
     }
 }
+
 </script>
 
 <template>
@@ -148,7 +149,7 @@ const eliminar = async (id, nombre) => {
                 <td class="py-3 telefono:p-4 flex gap-2">
                     <svg class="hover:stroke-green-500 cursor-pointer" width="28px" stroke="#758CA3"
                          v-if="paciente.verificado === true"
-                         @click="citasModal.agendarCita(paciente.nombre)"
+                         @click="notifiacionApi.agendarCita(paciente.nombre)"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                         <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round"
@@ -280,4 +281,17 @@ const eliminar = async (id, nombre) => {
 </template>
 
 <style scoped>
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Aumentar opacidad del fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
 </style>
