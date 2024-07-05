@@ -3,7 +3,7 @@ import { irEditarPaciente, irExpediente, irInterrogatorio } from '@/router/rutas
 import { onMounted, ref, watch } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
-import AgendarCita from '@/components/PacientesComponents/AgendarCita.vue'
+import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 
 let props = defineProps({
     pagina: Number,
@@ -19,8 +19,6 @@ let inicioPaciente = ref(null)
 let finalPaciente = ref(null)
 let buscador = ref(props.buscador)
 let loader = ref(false)
-let modalCita = ref(null)
-let pacienteId = ref(null)
 
 //El watch sera para we este a la escucha de que el props cambie
 watch(() => props.buscador, (newVal) => {
@@ -128,24 +126,10 @@ const eliminar = async (id, nombre) => {
     }
 }
 
-const abrirModalCitas = (paciente,id) =>{
-    modalCita.value = paciente
-    pacienteId.value = id
-    console.log(modalCita.value + pacienteId.value)
-}
-
-const cerrarModalCitas = () =>{
-    modalCita.value = null
-    pacienteId.value = null
-}
-
 </script>
 
 <template>
     <div class="relative overflow-x-auto mb-5 style_scroll">
-        <div class="popup" v-if="modalCita != null">
-            <AgendarCita :paciente="modalCita" :pacienteId="pacienteId" @cerrarModal="cerrarModalCitas"/>
-        </div>
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
             <tr>
@@ -165,7 +149,7 @@ const cerrarModalCitas = () =>{
                 <td class="py-3 telefono:p-4 flex gap-2">
                     <svg class="hover:stroke-green-500 cursor-pointer" width="28px" stroke="#758CA3"
                          v-if="paciente.verificado === true"
-                         @click="abrirModalCitas(paciente.nombre, paciente.pacienteId)"
+                         @click="notifiacionApi.agendarCita(paciente.nombre)"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                         <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round"

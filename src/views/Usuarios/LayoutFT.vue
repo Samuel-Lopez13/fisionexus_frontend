@@ -1,5 +1,6 @@
 <script setup>
 import UsuarioCard from '@/views/Usuarios/UsuarioCard.vue'
+import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 </script>
 
 <template>
@@ -24,7 +25,7 @@ import UsuarioCard from '@/views/Usuarios/UsuarioCard.vue'
             <UsuarioCard/>
         </section>
         <div class="fixed bottom-4 right-4 group hover:bg-gray-50">
-            <button class="button-primary">
+            <button class="button-primary" @click="notifiacionApi.agregarUsuario()">
                 Agregar integrante +
             </button>
         </div>
