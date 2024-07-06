@@ -9,7 +9,14 @@ export const usuariosQueries = {
 
          return response.data
       } catch (error){
+      }
+   },
 
+   getFisios: async () => {
+      try{
+         const response = await axios.get(apiUrl + "/Fisio", autorization())
+         return response.data
+      } catch (error){
       }
    }
 
