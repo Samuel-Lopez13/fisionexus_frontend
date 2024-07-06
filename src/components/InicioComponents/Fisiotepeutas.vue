@@ -27,7 +27,7 @@ const verFisios = async () => {
                 Ver a todos
             </div>
         </div>
-        <div class="animate-pulse w-[305px] telefono:w-full" v-if="spinner">
+        <div class="animate-pulse w-[305px] telefono:w-full mt-2" v-if="spinner">
             <div class="px-6 py-4 bg-gray-300 mb-4 rounded" v-for="load in 7"></div>
         </div>
         <div v-else class="flex items-center py-2" v-for="fisio in fisios" :key="fisio.id">
