@@ -80,7 +80,6 @@ export const notifiacionApi = {
                   agendarBtn.innerHTML = 'Agendar'
                }
             })
-
             document.getElementById('cancelar-btn').addEventListener('click', () => {
                Swal.close()
             })
@@ -114,6 +113,7 @@ export const notifiacionApi = {
             <input id="especialidad" type="text" class="input-primary" placeholder="Especialidad">
             <label>Foto:</label>
             <input id="foto" type="file" class="hover:border-blue-300 border border-gray-300 text-gray-900 text-sm rounded-[3px] focus:ring-blue-500 focus:border-blue-500 block focus:text-blue-900">
+            <p id="error" class="text-red-400 text-sm" style="display: none;">Por favor, complete todos los campos</p>
         </div> 
         `,
          preConfirm: () => {
@@ -122,12 +122,15 @@ export const notifiacionApi = {
             let telefono = document.getElementById('telefono').value
             let especialidad = document.getElementById('especialidad').value
             let foto = document.getElementById('foto').files[0]
+            const error = document.getElementById('error')
 
             if (!nombre || !correo || !telefono || !especialidad || !foto) {
-               Swal.showValidationMessage('Por favor, complete todos los campos')
+               error.style.display = 'block'
                return false
+            } else {
+               error.style.display = 'none'
+               return { nombre, correo, telefono, especialidad, foto }
             }
-            return { nombre, correo, telefono, especialidad, foto }
          }
       })
 
