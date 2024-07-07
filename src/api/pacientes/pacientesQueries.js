@@ -70,5 +70,14 @@ export const pacientesQueries = {
       } catch (error) {
          console.log(error)
       }
+   },
+
+   getCitasPaciente: async (id) =>{
+      try {
+         const response = await axios.get(apiUrl + '/Date/Paciente?id=' + id, autorization())
+         return response.data
+      } catch (error) {
+         console.log(error)
+      }
    }
 }
