@@ -8,7 +8,7 @@ import MapaCorporal from '@/components/PacientesComponents/MapaCorporal.vue'
 
 <template>
   <div class="flex gap-3 tablet:flex-wrap tablet:gap-0 telefono:flex-wrap">
-    <section class="desktop:w-3/12 laptop:w-3/12 tablet:w-6/12 tablet:order-1 telefono:w-full mb-4">
+    <section class="desktop:w-3/12 laptop:w-3/12 tablet:w-full telefono:w-full mb-4">
       <header class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm mb-2 items-center telefono:flex-col">
         <div>
           <img
@@ -27,26 +27,10 @@ import MapaCorporal from '@/components/PacientesComponents/MapaCorporal.vue'
         <signos-vitales />
       </div>
     </section>
-    <section class="laptop:h-[650px]  overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-6/12 tablet:w-full tablet:order-3 telefono:w-full">
+    <section class="laptop:h-[650px] overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-8/12 laptop:w-8/12 tablet:w-full telefono:w-full">
       <mapa-corporal></mapa-corporal>
       <datos-diagnostico/>
     </section>
-
-    <section
-      class="desktop:w-3/12 laptop:w-3/12 tablet:w-5/12 tablet:ml-5 tablet:order-2 telefono:w-full flex flex-col gap-3">
-      <button class="button-primary w-full">Iniciar Consulta</button>
-      <card-citas />
-      <button
-        class="bg-principal font-poppins text-white rounded-[3px] w-1/2 hover:bg-pHover telefono:w-full p-2 py-3">
-        Agendar cita
-      </button>
-      <h5 class="text-gray-500 font-bold telefono:text-center mt-3 mb-2">Consultas agendadas</h5>
-      <div class="h-[450px] laptop:h-[350px] tablet:h-[250px] telefono:h-[200px] overflow-y-auto flex-col flex gap-5 style_scroll">
-        <card-cita-expediente />
-
-      </div>
-    </section>
-
   </div>
 </template>
 
