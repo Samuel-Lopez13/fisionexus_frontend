@@ -124,7 +124,7 @@ export const notifiacionApi = {
             let foto = document.getElementById('foto').files[0]
 
             if (!nombre || !correo || !telefono || !especialidad || !foto) {
-               Swal.showValidationMessage('Todos los campos son obligatorios')
+               Swal.showValidationMessage('Por favor, complete todos los campos')
                return false
             }
             return { nombre, correo, telefono, especialidad, foto }
