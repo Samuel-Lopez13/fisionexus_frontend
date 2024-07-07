@@ -147,9 +147,12 @@ export const pacientesCommand = {
          const JSON ={
             pacienteId,
             fecha,
-            hora,
+            hora: hora + ':00',
             motivo
          }
+         const [data, config] = autorizationJSON(JSON)
+         const response = await axios.post(apiUrl + '/Date', data, config)
+         return response.data
       }catch (error){
          console.log(error)
       }

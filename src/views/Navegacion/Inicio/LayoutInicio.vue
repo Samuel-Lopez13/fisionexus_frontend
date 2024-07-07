@@ -5,17 +5,27 @@ import NuevosUsuarios from '@/components/InicioComponents/Charts/NuevosUsuarios.
 import UltimosUsuarios from '@/components/InicioComponents/UltimosUsuarios.vue'
 import CitasChart from '@/components/InicioComponents/Charts/CitasChart.vue'
 import Fisiotepeutas from '@/components/InicioComponents/Fisiotepeutas.vue'
+import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 
-const saludo = ref('')
-const nombre = ref(localStorage.getItem('Usuario'))
+let saludo = ref('')
+let nombre = ref(localStorage.getItem('Usuario'))
+let citas = ref([])
+let loader = ref(false)
 
 onMounted(() => {
     Saludar()
+    citasDia()
 })
 
 const Saludar = () => {
     const horaActual = new Date().getHours()
     saludo.value = horaActual < 12 ? 'Buenos días 🌤️' : (horaActual < 19 ? 'Buenas tardes 🌇' : 'Buenas noches 🌙')
+}
+
+const citasDia = async () => {
+    loader.value = true
+    citas.value = await pacientesQueries.getCitasDia()
+    loader.value = false
 }
 </script>
 
@@ -30,13 +40,11 @@ const Saludar = () => {
         <section>
             <p class="text-lg font-bold text-gray-500 mb-2"> Citas del dia </p>
             <div class="style_scroll flex gap-4 w-12/12 overflow-x-auto py-2">
-                <CardCita />
-                <CardCita />
-                <CardCita />
-                <CardCita />
-                <CardCita />
-                <CardCita />
-                <CardCita />
+                <div v-if="loader" v-for="load in 6"
+                     class="flex-none bg-gray-300 animate-pulse h-[130px] w-[280px] telefono:w-[180px] telefono:h-[150px] max-w-sm rounded-lg hover:bg-blue-300">
+                </div>
+                <CardCita v-else v-for="cita in citas" :foto="cita.foto" :nombre="cita.nombre"
+                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono" />
             </div>
         </section>
         <section

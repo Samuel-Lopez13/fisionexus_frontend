@@ -149,7 +149,7 @@ const eliminar = async (id, nombre) => {
                 <td class="py-3 telefono:p-4 flex gap-2">
                     <svg class="hover:stroke-green-500 cursor-pointer" width="28px" stroke="#758CA3"
                          v-if="paciente.verificado === true"
-                         @click="notifiacionApi.agendarCita(paciente.nombre)"
+                         @click="notifiacionApi.agendarCita(paciente.nombre, paciente.pacienteId)"
                          viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="38" height="38" rx="19" stroke-width="2" />
                         <path d="M11.5 20H28.5M20 11.5V28.5" stroke-width="2" stroke-linecap="round"

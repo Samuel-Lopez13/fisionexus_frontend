@@ -1,18 +1,37 @@
 <script setup>
-
+let props = defineProps({
+    nombre: String,
+    foto: String,
+    hora: String,
+    numero: Number
+})
 </script>
 
 <template>
     <a href="#"
        class="group flex-none duration-200 h-[130px] w-[280px] telefono:w-[180px] telefono:h-[150px] flex flex-col gap-2 py-4 px-5 max-w-sm bg-white border rounded-lg shadow hover:bg-blue-600">
         <div class="flex items-center justify-between">
-            <p class="font-bold text-lg tracking-tight text-blue-600 group-hover:text-white">Edson Dzec
-                Lopez</p>
-            <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/360103942_2325676080953682_1164423176836546274_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEkItcb2N8NSYQA_YYUKl8rM_w6KbbzCv8z_DoptvMK_88cnH_GPjF1TsIOjHI5WnzmsBoG6EDS8txQtNBOrTTS&_nc_ohc=2_gXv9G4jOsQ7kNvgEF-N9y&_nc_ht=scontent-mia3-1.xx&oh=00_AYC4qfMxvdyxCPZXBoUYY0oAR1WiNmtRcmUtGr-N4loHLQ&oe=66782FA6"
-                class="rounded-full h-8 w-8">
+            <p class="font-bold text-lg tracking-tight text-blue-600 group-hover:text-white">{{ props.nombre }}</p>
+            <img :src="props.foto"
+                 class="rounded-full h-8 w-8">
         </div>
-        <p class="font-bold text-blue-600 group-hover:text-white">10:25 am</p>
-        <p class="group-hover:text-white text-blue-600">9812028610</p>
+        <p class="font-bold text-blue-600 group-hover:text-white flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            {{ props.hora }}
+        </p>
+
+        <p class="group-hover:text-white text-blue-600 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+            {{ props.numero }}
+        </p>
     </a>
 </template>
 
