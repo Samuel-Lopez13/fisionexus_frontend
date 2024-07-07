@@ -90,7 +90,7 @@ const router = createRouter({
                      component: EditarPaciente
                   },
                   {
-                     path: 'Diagnostico',
+                     path: 'Diagnostico/:id',
                      name: 'Diagnostico',
                      component: Diagnostico
                   }

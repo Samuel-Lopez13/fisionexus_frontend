@@ -6,6 +6,7 @@ import UltimosUsuarios from '@/components/InicioComponents/UltimosUsuarios.vue'
 import CitasChart from '@/components/InicioComponents/Charts/CitasChart.vue'
 import Fisiotepeutas from '@/components/InicioComponents/Fisiotepeutas.vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
+import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 
 let saludo = ref('')
 let nombre = ref(localStorage.getItem('Usuario'))
@@ -44,7 +45,7 @@ const citasDia = async () => {
                      class="flex-none bg-gray-300 animate-pulse h-[130px] w-[280px] telefono:w-[180px] telefono:h-[150px] max-w-sm rounded-lg hover:bg-blue-300">
                 </div>
                 <CardCita v-else v-for="cita in citas" :foto="cita.foto" :nombre="cita.nombre"
-                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono" />
+                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono" @click="notifiacionApi.accionCita(cita.nombre,cita.pacienteId,cita.fecha,cita.hora)"/>
             </div>
         </section>
         <section

@@ -45,3 +45,7 @@ export const irNotFound = () => {
 export const irFisioterapeutas = () =>{
    router.push({ name: 'Fisioterapeutas' })
 }
+
+export const irDiagnostico = (id) => {
+   router.push({ name: 'Diagnostico', params: { id: id } })
+}
