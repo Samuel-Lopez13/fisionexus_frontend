@@ -40,10 +40,10 @@ export const usuarioCommand = {
          if (foto != null)
             img = await globalCommand.postImage(nombre.trim().replace(/\s+/g, ''), foto)
          const JSON = {
-            nombre: nombre,
-            correo: correo,
-            telefono: telefono,
-            especialidad: especialidad,
+            nombre,
+            correo,
+            telefono,
+            especialidad,
             foto: img == null ? img : img.secure_url
          }
          const [data, config] = autorizationJSON(JSON)

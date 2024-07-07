@@ -141,4 +141,17 @@ export const pacientesCommand = {
       }
 
    },
+
+   crearCita: async (pacienteId,fecha,hora,motivo) => {
+      try {
+         const JSON ={
+            pacienteId,
+            fecha,
+            hora,
+            motivo
+         }
+      }catch (error){
+         console.log(error)
+      }
+   }
 }
