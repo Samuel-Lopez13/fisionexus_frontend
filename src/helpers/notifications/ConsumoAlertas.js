@@ -28,7 +28,7 @@ export const notifiacionApi = {
           <input type="text" id="motivo" placeholder="Motivo de la consulta" class="w-full border-none focus:ring-0">
         </div>
         <div>
-          <p id="error" class="text-red-400 text-sm py-2" style="display: none;"></p>
+          <p id="error" class="text-red-400 text-sm py-2" style="display: none;">Por favor, complete todos los campos</p>
         </div>
         <div class="p-2 flex gap-1">
           <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Agendar</button>
@@ -44,11 +44,9 @@ export const notifiacionApi = {
                const error = document.getElementById('error');
 
                if (!fecha || !hora || !motivo) {
-                  error.innerHTML = 'Por favor, complete todos los campos';
                   error.style.display = 'block';
                   return;
                } else {
-                  error.innerHTML = '';
                   error.style.display = 'none';
                }
 
