@@ -27,7 +27,7 @@ import MapaCorporal from '@/components/PacientesComponents/MapaCorporal.vue'
         <signos-vitales />
       </div>
     </section>
-    <section class="laptop:h-[650px] overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-8/12 laptop:w-8/12 tablet:w-full telefono:w-full">
+    <section class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-8/12 laptop:w-8/12 tablet:w-full telefono:w-full">
       <mapa-corporal></mapa-corporal>
       <datos-diagnostico/>
     </section>
