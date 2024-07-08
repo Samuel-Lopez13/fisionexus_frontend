@@ -50,14 +50,16 @@ const datosPaciente = async () => {
                         <div class="h-4 w-3/5 rounded-lg bg-blue-300 text-lg"></div>
                     </div>
                 </div>
-                <header v-else class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm mb-2 items-center telefono:flex-col">
+                <header v-else
+                        class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm mb-2 items-center telefono:flex-col">
                     <div>
                         <img
                             :src="imagen"
                             class="rounded-full h-12 w-12">
                     </div>
                     <div class="text-gray-600">
-                        <h4 class="font-bold">{{ nombre + ' ' + apellido }}  <span class="text-blue-500">({{ sexo }})</span> </h4>
+                        <h4 class="font-bold">{{ nombre + ' ' + apellido }} <span class="text-blue-500">({{ sexo
+                            }})</span></h4>
                         <div class="flex text-sm text-blue-800">
                             <p>{{ fechaNacimiento }} - <span>{{ edad }} años</span></p>
                         </div>
@@ -67,38 +69,34 @@ const datosPaciente = async () => {
                     <signos-vitales />
                 </div>
                 <!--Firma y refiere-->
-                <div class="telefono:hidden">
-                    <section class="text-black">
-                        <div class="flex flex-col telefono:flex-wrap telefono:gap-1">
-                            <div class="mb-6 basis-2/4 telefono:basis-full">
-                                <label class="block mb-2 text-sm font-medium">Refiere <span
-                                    class="text-blue-600">*</span></label>
-                                <input type="text"
-                                       class="input-primary"
-                                       placeholder="Ingrese su nombre"/>
-                            </div>
-                            <div class="mb-6 basis-2/4 telefono:basis-full">
-                                <label class="block mb-2 text-sm font-medium">Cédula profesional
-                                    <span class="text-blue-600">*</span></label>
-                                <input type="text"
-                                       class="input-primary"
-                                       placeholder="Ingrese la cédula profesional"
-                                       maxlength="5" />
-                            </div>
-                        </div>
-                    </section>
-                    <section class="telefono:w-full">
-                        <div class="sticky top-0">
-                            <button class="button-primary w-full mb-2">Finalizar cita</button>
-                            <button class="text-blue-700 w-full underline hover:text-gray-500 telefono:basis-full">Volver</button>
-                        </div>
+                <div class="telefono:hidden flex flex-col gap-2">
+                    <div class="basis-2/4">
+                        <label class="block mb-2 text-sm font-medium">Refiere <span
+                            class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary"
+                               placeholder="Ingrese su nombre" />
+                    </div>
+                    <div class="basis-2/4">
+                        <label class="block mb-2 text-sm font-medium">Cédula profesional
+                            <span class="text-blue-600">*</span></label>
+                        <input type="text"
+                               class="input-primary"
+                               placeholder="Ingrese la cédula profesional"
+                               maxlength="5" />
+                    </div>
+                    <section class="telefono:w-full flex flex-col">
+                        <button class="button-primary w-full">Finalizar cita</button>
+                        <button class="text-blue-700 w-full underline hover:text-gray-500 telefono:basis-full">Volver
+                        </button>
                     </section>
                 </div>
             </div>
         </section>
-        <section class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-8/12 laptop:w-8/12 tablet:w-full telefono:w-full">
+        <section
+            class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-8/12 laptop:w-8/12 tablet:w-full telefono:w-full">
             <mapa-corporal></mapa-corporal>
-            <datos-diagnostico/>
+            <datos-diagnostico />
         </section>
     </div>
 </template>
