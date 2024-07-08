@@ -107,7 +107,7 @@ export const notifiacionApi = {
         <div class="p-2 flex gap-1">
           <button id="iniciar" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Iniciar</button>
           <button id="modificar" class="rounded-[3px] p-2 text-white bg-yellow-500 w-full hover:bg-yellow-400">Modificar</button>
-          <button id="cancelar" class="rounded-[3px] p-2 text-white bg-red-500 w-full hover:bg-red-400">Cancelar</button>
+          <button id="cancelar" class="rounded-[3px] p-2 text-white bg-gray-600 w-full hover:bg-gray-500">Volver</button>
         </div>
       </div>
     `,
@@ -154,7 +154,8 @@ export const notifiacionApi = {
             </div>
             <div class="p-2 flex gap-1">
                <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Modificar</button>
-               <button id="cancelar-btn" class="rounded-[3px] p-2 text-white bg-gray-600 w-full hover:bg-gray-500">Cancelar</button>
+               <button id="cancelar-cita" class="rounded-[3px] p-2 bg-red-600 text-white w-full hover:bg-red-500">Cancelar</button>
+               <button id="cancelar-btn" class="rounded-[3px] p-2 text-white bg-gray-600 w-full hover:bg-gray-500">Volver</button>
             </div>
          </div>
       `,
