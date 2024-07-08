@@ -297,26 +297,33 @@
         </div>
       </details>
     </section>
-    <!--Firma y refiere-->
-    <section class="px-6 py-3 text-black">
-      <div class="flex gap-6 telefono:flex-wrap telefono:gap-1">
-        <div class="mb-6 basis-2/4 telefono:basis-full">
-          <label class="block mb-2 text-sm font-medium">Refiere <span
-            class="text-blue-600">*</span></label>
-          <input type="text"
-                 class="input-primary"
-                 placeholder="Ingrese su nombre" required />
-        </div>
-        <div class="mb-6 basis-2/4 telefono:basis-full">
-          <label class="block mb-2 text-sm font-medium">Cédula profesional
-            <span class="text-blue-600">*</span></label>
-          <input type="text"
-                 class="input-primary"
-                 placeholder="Ingrese la cédula profesional"
-                 maxlength="5"
-                 required />
-        </div>
+      <!--Firma y refiere-->
+      <div class="tablet:hidden laptop:hidden desktop:hidden">
+          <section class="text-black">
+              <div class="flex flex-col telefono:flex-wrap telefono:gap-1">
+                  <div class="mb-6 basis-2/4 telefono:basis-full">
+                      <label class="block mb-2 text-sm font-medium">Refiere <span
+                          class="text-blue-600">*</span></label>
+                      <input type="text"
+                             class="input-primary"
+                             placeholder="Ingrese su nombre"/>
+                  </div>
+                  <div class="mb-6 basis-2/4 telefono:basis-full">
+                      <label class="block mb-2 text-sm font-medium">Cédula profesional
+                          <span class="text-blue-600">*</span></label>
+                      <input type="text"
+                             class="input-primary"
+                             placeholder="Ingrese la cédula profesional"
+                             maxlength="5" />
+                  </div>
+              </div>
+          </section>
+          <section class="telefono:w-full">
+              <div class="sticky top-0">
+                  <button class="button-primary w-full mb-2">Finalizar cita</button>
+                  <button class="text-blue-700 w-full underline hover:text-gray-500 telefono:basis-full">Volver</button>
+              </div>
+          </section>
       </div>
-    </section>
   </div>
 </template>
