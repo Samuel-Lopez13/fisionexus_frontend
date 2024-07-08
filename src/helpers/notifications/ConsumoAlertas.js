@@ -23,7 +23,7 @@ export const notifiacionApi = {
         </div>
         <div class="flex p-2 gap-2 text-gray-600">
           <input type="date" id="fecha" placeholder="Select date" class="w-full border-none focus:ring-0">
-          <input type="time" id="hora" min="09:00" max="18:00" value="00:00" class="w-full border-none focus:ring-0"/>
+          <input type="time" id="hora" value="00:00" class="w-full border-none focus:ring-0"/>
         </div>
         <div class="p-2 border-t border-b">
           <input type="text" id="motivo" placeholder="Motivo de la consulta" class="w-full border-none focus:ring-0">
@@ -63,10 +63,9 @@ export const notifiacionApi = {
                 </div>`
 
                try {
-                  const fechaHora = new Date(`${fecha}T${hora}`).toISOString()
-                  const response = await pacientesCommand.crearCita(id, fechaHora, hora, motivo)
-                  console.log(id, fechaHora, hora, motivo)
-
+                  console.log(id, fecha, hora, motivo)
+                  const response = await pacientesCommand.crearCita(id, fecha, hora, motivo)
+                  console.log(id, fecha, hora, motivo)
                   if (response === 'Se creo la cita correctamente') {
                      NotificacionesModal.ExitosoSimple('Cita agendada con exito').then(() => {
                         Swal.close()
