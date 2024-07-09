@@ -9,7 +9,6 @@ export const notifiacionApi = {
       return await Swal.fire({
          allowOutsideClick: true,
          allowEscapeKey: true,
-         showCloseButton: true,
          showConfirmButton: false,
          customClass: {
             popup: 'rounded-sm bg-transparent'
