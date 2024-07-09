@@ -196,7 +196,7 @@ export const notifiacionApi = {
                   </svg>
                   <span>Cambiando</span>
                </div>`
-               const fechaHora = new Date(`${fecha}T${hora}`).toISOString()
+               const fechaHora = new Date(fechaISO).toISOString()
                try {
                   if (hora.length < 8){
                      hora = hora + ':00'
