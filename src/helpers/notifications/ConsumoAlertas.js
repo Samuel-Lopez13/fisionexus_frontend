@@ -7,8 +7,9 @@ import { irDiagnostico } from '@/router/rutasUtiles.js'
 export const notifiacionApi = {
    agendarCita: async (paciente, id) => {
       return await Swal.fire({
-         allowOutsideClick: false,
-         allowEscapeKey: false,
+         allowOutsideClick: true,
+         allowEscapeKey: true,
+         showCloseButton: true,
          showConfirmButton: false,
          customClass: {
             popup: 'rounded-sm bg-transparent'
@@ -33,7 +34,6 @@ export const notifiacionApi = {
         </div>
         <div class="p-2 flex gap-1">
           <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Agendar</button>
-          <button id="cancelar-btn" class="rounded-[3px] p-2 text-white bg-gray-600 w-full hover:bg-gray-500">Cancelar</button>
         </div>
       </div>
     `,
@@ -79,9 +79,6 @@ export const notifiacionApi = {
                   agendarBtn.disabled = false
                   agendarBtn.innerHTML = 'Agendar'
                }
-            })
-            document.getElementById('cancelar-btn').addEventListener('click', () => {
-               Swal.close()
             })
          }
       })
