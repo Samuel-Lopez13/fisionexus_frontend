@@ -26,6 +26,7 @@ const Saludar = () => {
 const citasDia = async () => {
     loader.value = true
     citas.value = await pacientesQueries.getCitasDia()
+    console.log(citas.value)
     loader.value = false
 }
 </script>
