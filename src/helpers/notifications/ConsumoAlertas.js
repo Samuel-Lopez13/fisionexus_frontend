@@ -85,8 +85,8 @@ export const notifiacionApi = {
 
    accionCita: async (paciente, id, fecha, hora, motivo, citaId) => {
       return await Swal.fire({
-         allowOutsideClick: false,
-         allowEscapeKey: false,
+         allowOutsideClick: true,
+         allowEscapeKey: true,
          showConfirmButton: false,
          customClass: {
             popup: 'rounded-sm bg-transparent'
@@ -102,7 +102,7 @@ export const notifiacionApi = {
         <div class="p-2 flex gap-1">
           <button id="iniciar" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Iniciar</button>
           <button id="modificar" class="rounded-[3px] p-2 text-white bg-yellow-500 w-full hover:bg-yellow-400">Modificar</button>
-          <button id="cancelar" class="rounded-[3px] p-2 text-white bg-gray-600 w-full hover:bg-gray-500">Volver</button>
+          <button id="cancelar-cita" class="rounded-[3px] p-2 bg-red-600 text-white w-full hover:bg-red-500">Cancelar</button>
         </div>
       </div>
     `,
@@ -111,11 +111,17 @@ export const notifiacionApi = {
                irDiagnostico(id)
                Swal.close()
             })
+            document.getElementById('cancelar-cita').addEventListener('click', async () =>{
+               const response = await pacientesCommand.editarCita(citaId,true, null,null,motivo)
+               console.log(citaId,motivo)
+               if (response === 'Se modifico la cita correctamente') {
+                  NotificacionesModal.ExitosoSimple('Cita cancelada con exito')
+               }else{
+                  NotificacionesModal.PantallaError('No se pudo cancelar la cita')
+               }
+            })
             document.getElementById('modificar').addEventListener('click', () => {
                notifiacionApi.modificarCita(paciente,  citaId, fecha, hora, motivo)
-            })
-            document.getElementById('cancelar').addEventListener('click', () => {
-               Swal.close()
             })
          }
       })
@@ -123,8 +129,8 @@ export const notifiacionApi = {
 
    modificarCita: async (paciente, citaId, fecha, hora, motivo) => {
       return await Swal.fire({
-         allowOutsideClick: false,
-         allowEscapeKey: false,
+         allowOutsideClick: true,
+         allowEscapeKey: true,
          showConfirmButton: false,
          customClass: {
             popup: 'rounded-sm bg-transparent'
@@ -149,8 +155,6 @@ export const notifiacionApi = {
             </div>
             <div class="p-2 flex gap-1">
                <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Modificar</button>
-               <button id="cancelar-cita" class="rounded-[3px] p-2 bg-red-600 text-white w-full hover:bg-red-500">Cancelar</button>
-               <button id="cancelar-btn" class="rounded-[3px] p-2 text-white bg-gray-600 w-full hover:bg-gray-500">Volver</button>
             </div>
          </div>
       `,
@@ -159,13 +163,11 @@ export const notifiacionApi = {
             document.getElementById('fecha').value = fechaISO
             document.getElementById('hora').value = hora
             document.getElementById('motivo').value = motivo
-
             document.getElementById('agendar-btn').addEventListener('click', async () => {
                fecha = document.getElementById('fecha').value
                hora = document.getElementById('hora').value
                motivo = document.getElementById('motivo').value
                const error = document.getElementById('error')
-
                if (!fecha || !hora || !motivo) {
                   error.style.display = 'block'
                   return
@@ -186,9 +188,11 @@ export const notifiacionApi = {
 
                try {
                   const fechaHora = new Date(`${fecha}T${hora}`).toISOString()
-                  const response = await pacientesCommand.editarCita(citaId,fechaHora, hora, motivo)
-                  console.log(citaId,fechaHora, hora, motivo)
-                  if (response === 'La cita se actualizo correctamente') {
+                  if (hora.length < 8){
+                     hora = hora + ':00'
+                  }
+                  const response = await pacientesCommand.editarCita(citaId,false,fechaHora, hora, motivo)
+                  if (response === 'Se modifico la cita correctamente') {
                      NotificacionesModal.ExitosoSimple('Cita actualizada con éxito').then(() => {
                         Swal.close()
                      })
@@ -202,10 +206,6 @@ export const notifiacionApi = {
                   agendarBtn.disabled = false
                   agendarBtn.innerHTML = 'Agendar'
                }
-            })
-
-            document.getElementById('cancelar-btn').addEventListener('click', () => {
-               Swal.close()
             })
          }
       })

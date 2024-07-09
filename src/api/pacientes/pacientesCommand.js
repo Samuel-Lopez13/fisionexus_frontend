@@ -158,13 +158,13 @@ export const pacientesCommand = {
       }
    },
 
-   editarCita: async (citaId,status,fecha,hora,motivo) => {
+   editarCita: async (citaId,cancelar,fecha,hora,motivo) => {
       try {
          const JSON ={
             citaId,
-            status,
+            cancelar,
             fecha,
-            hora: hora + ':00',
+            hora,
             motivo
          }
          const [data, config] = autorizationJSON(JSON)
