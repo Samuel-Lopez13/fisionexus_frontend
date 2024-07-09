@@ -53,7 +53,7 @@ const citasDia = async () => {
                     <span class="text-gray-500">No hay citas pendientes para este dia</span>
                 </div>
                 <CardCita v-else v-for="cita in citas" :foto="cita.foto" :nombre="cita.nombre"
-                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono" @click="notifiacionApi.accionCita(cita.nombre,cita.pacienteId,cita.fecha,cita.hora)"/>
+                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono" @click="notifiacionApi.accionCita(cita.nombre,cita.pacienteId,cita.fecha,cita.hora, cita.motivo, cita.citasId)"/>
             </div>
         </section>
         <section

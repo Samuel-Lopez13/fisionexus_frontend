@@ -156,5 +156,22 @@ export const pacientesCommand = {
       }catch (error){
          console.log(error)
       }
+   },
+
+   editarCita: async (citaId,status,fecha,hora,motivo) => {
+      try {
+         const JSON ={
+            citaId,
+            status,
+            fecha,
+            hora: hora + ':00',
+            motivo
+         }
+         const [data, config] = autorizationJSON(JSON)
+         const response = await axios.patch(apiUrl + '/Date', data, config)
+         return response.data
+      }catch (error){
+         console.log(error)
+      }
    }
 }
