@@ -39,10 +39,10 @@ const datosPaciente = async () => {
 
 <template>
     <div class="flex gap-3 tablet:flex-wrap tablet:gap-0 telefono:flex-wrap">
-        <section class="desktop:w-3/12 laptop:w-3/12 tablet:w-full telefono:w-full mb-4">
-            <div class="sticky top-0">
+        <section class="desktop:w-3/12 laptop:w-3/12 tablet:w-full telefono:w-full">
+            <div class="sticky top-0 flex flex-col gap-2">
                 <div
-                    class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm mb-2 items-center telefono:flex-col animate-pulse"
+                    class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm items-center telefono:flex-col animate-pulse"
                     v-if="loader">
                     <div class="h-12 w-12 rounded-full bg-blue-300"></div>
                     <div class="flex-1">
@@ -51,7 +51,7 @@ const datosPaciente = async () => {
                     </div>
                 </div>
                 <header v-else
-                        class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm mb-2 items-center telefono:flex-col">
+                        class="flex gap-2 py-3 px-2 border shadow-sm rounded-sm items-center telefono:flex-col">
                     <div>
                         <img
                             :src="imagen"
@@ -65,7 +65,7 @@ const datosPaciente = async () => {
                         </div>
                     </div>
                 </header>
-                <div class="mb-2">
+                <div>
                     <signos-vitales />
                 </div>
                 <!--Firma y refiere-->
@@ -85,7 +85,7 @@ const datosPaciente = async () => {
                                placeholder="Ingrese la cédula profesional"
                                maxlength="5" />
                     </div>
-                    <section class="telefono:w-full flex flex-col">
+                    <section class="telefono:w-full flex flex-col gap-1">
                         <button class="button-primary w-full">Finalizar cita</button>
                         <button class="text-blue-700 w-full underline hover:text-gray-500 telefono:basis-full">Volver
                         </button>
