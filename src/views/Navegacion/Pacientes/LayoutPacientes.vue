@@ -3,7 +3,7 @@ import TablaUsuarios from '@/components/PacientesComponents/TablaUsuarios.vue'
 import { irAgregarPacientes } from '@/router/rutasUtiles.js'
 import { ref } from 'vue'
 
-let buscador = ref("")
+let buscador = ref('')
 </script>
 
 <template>
@@ -19,7 +19,7 @@ let buscador = ref("")
                 </div>
                 <input v-model="buscador" type="search" id="default-search"
                        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 focus:text-blue-600"
-                       placeholder="Buscar"/>
+                       placeholder="Buscar" />
             </div>
         </div>
         <div class="w-2/2 telefono:w-full">
@@ -29,7 +29,7 @@ let buscador = ref("")
         </div>
     </section>
     <section>
-        <TablaUsuarios :buscador/>
+        <TablaUsuarios :buscador />
     </section>
 </template>
 

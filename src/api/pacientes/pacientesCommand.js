@@ -141,4 +141,37 @@ export const pacientesCommand = {
       }
 
    },
+
+   crearCita: async (pacienteId,fecha,hora,motivo) => {
+      try {
+         const JSON ={
+            pacienteId,
+            fecha,
+            hora: hora + ':00',
+            motivo
+         }
+         const [data, config] = autorizationJSON(JSON)
+         const response = await axios.post(apiUrl + '/Date', data, config)
+         return response.data
+      }catch (error){
+         console.log(error)
+      }
+   },
+
+   editarCita: async (citaId,cancelar,fecha,hora,motivo) => {
+      try {
+         const JSON ={
+            citaId,
+            cancelar,
+            fecha,
+            hora,
+            motivo
+         }
+         const [data, config] = autorizationJSON(JSON)
+         const response = await axios.patch(apiUrl + '/Date', data, config)
+         return response.data
+      }catch (error){
+         console.log(error)
+      }
+   }
 }

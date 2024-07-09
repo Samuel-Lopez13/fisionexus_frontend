@@ -14,14 +14,7 @@ import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
                 Descripcion del equipo de fisioterapeutas.
             </p>
         </header>
-        <section class="grid grid-cols-5 gap-5 telefono:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-5 telefono:place-items-center animate-fade-up animate-once">
-            <UsuarioCard/>
-            <UsuarioCard/>
-            <UsuarioCard/>
-            <UsuarioCard/>
-            <UsuarioCard/>
-            <UsuarioCard/>
-            <UsuarioCard/>
+        <section class="grid grid-cols-5 gap-5 telefono:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-5 telefono:place-items-center">
             <UsuarioCard/>
         </section>
         <div class="fixed bottom-4 right-4 group hover:bg-gray-50">

@@ -93,7 +93,7 @@ const isSelected = (vista, areaName) => {
 </script>
 
 <template>
-  <div class="flex justify-around telefono:flex-wrap">
+  <div class="flex justify-around telefono:flex-wrap border rounded-sm">
     <!-- Vista Anterior -->
     <section class="relative">
       <img src="/src/assets/CuerpoHumano/VistaAnterior.jpeg" alt="Cuerpo Humano" class="w-[225px] h-[400px]">
@@ -137,7 +137,7 @@ const isSelected = (vista, areaName) => {
           <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
         </svg>
       </summary>
-      <div class="px-6 py-3 text-gray-500 flex flex-col gap-3">
+      <div class="px-6 py-3 text-gray-500 flex flex-col gap-3 animate-fade-down">
         <div v-for="(selectedAreas, index) in [selectedAreasAnterior, selectedAreasOtraVista]" :key="index">
           <div v-if="selectedAreas.length > 0">
             <section v-for="area in selectedAreas" :key="(index === 0 ? 'anterior-' : 'otra-') + area"
