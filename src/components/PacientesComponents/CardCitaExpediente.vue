@@ -40,11 +40,11 @@ const citasPaciente = async () => {
     </div>
     <div v-else class="px-1 rounded-sm" v-for="cita in citas" :key="cita.id">
         <ul class="relative border-s border-gray-200 dark:border-gray-700">
-            <li class="mb-10 ms-4">
+            <li class="pl-6 pb-6">
                 <div
-                    class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    {{ cita.fecha.substring(0, 10).replace(/-/g, '/') }} {{ cita.hora.substring(0, 5) }}
+                    class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
+                <time class="mb-1 text-sm font-normal leading-none text-gray-400">
+                    {{ cita.fecha.substring(0, 10).replace(/-/g, '/') }} {{ cita.hora.substring(0, 5) }} hrs.
                 </time>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ cita.nombre }}</h3>
                 <div class="flex items-center gap-2 text-gray-500">

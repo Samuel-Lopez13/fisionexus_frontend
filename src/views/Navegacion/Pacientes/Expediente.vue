@@ -85,7 +85,7 @@ const datosPaciente = async () => {
             </button>
             <h5 class="text-gray-500 font-bold telefono:text-center mt-3 mb-2">Consultas agendadas</h5>
             <div
-                class="h-[450px] laptop:h-[450px] tablet:h-[220px] telefono:h-[200px] overflow-y-auto flex-col flex gap-5 style_scroll">
+                class="h-[450px] laptop:h-[450px] tablet:h-[220px] telefono:h-[200px] overflow-y-auto flex-col flex style_scroll">
                 <card-cita-expediente />
             </div>
         </section>

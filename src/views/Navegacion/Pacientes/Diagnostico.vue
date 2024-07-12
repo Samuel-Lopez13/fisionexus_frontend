@@ -69,7 +69,7 @@ const datosPaciente = async () => {
                     <signos-vitales />
                 </div>
                 <!--Firma y refiere-->
-                <div class="telefono:hidden flex flex-col gap-2">
+                <div class="telefono:hidden flex flex-col gap-2 telefono:mb-2">
                     <div class="basis-2/4">
                         <label class="block mb-2 text-sm font-medium">Refiere <span
                             class="text-blue-600">*</span></label>
@@ -85,18 +85,39 @@ const datosPaciente = async () => {
                                placeholder="Ingrese la cédula profesional"
                                maxlength="5" />
                     </div>
-                    <section class="telefono:w-full flex flex-col gap-1">
-                        <button class="button-primary w-full">Finalizar cita</button>
-                        <button class="text-blue-700 w-full underline hover:text-gray-500 telefono:basis-full">Volver
-                        </button>
+                    <section class="telefono:w-full flex flex-col items-center">
+                        <button class="button-primary w-full">Finalizar diagnostico</button>
+                        <a class="text-blue-700 p-2 underline hover:text-gray-500 telefono:basis-full">Volver</a>
                     </section>
                 </div>
             </div>
         </section>
         <section
-            class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-8/12 laptop:w-8/12 tablet:w-full telefono:w-full">
+            class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-6/12 tablet:w-full telefono:w-full">
             <mapa-corporal></mapa-corporal>
             <datos-diagnostico />
+        </section>
+        <section>
+            <h3 class="text-gray-600 text-lg font-semibold mb-3">Revisiones</h3>
+                <ul class="relative border-s border-gray-200 w-[400px]">
+                    <li class="pl-6 pb-6" v-for="loead in 11">
+                        <div
+                            class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400">
+                            18/04/2024 14:30 hrs.
+                        </time>
+                        <h3 class="text-lg font-semibold text-gray-900">Dolor de pierna</h3>
+                        <div class="flex items-center gap-2 text-gray-500">
+                            <p>Paciente de sexo femenino acude a terapia fisica primero vez, se observa dificultad al realizar la marcha, se aplica:
+                                CHC X10 1,
+                                TMI EN TRIPCEPS
+                                BANO DIANADITOC
+                                ESTIRAMIENTO DE TRICEPSE
+                                SOBADA DE RODILLA
+                            </p>
+                        </div>
+                    </li>
+                </ul>
         </section>
     </div>
 </template>
