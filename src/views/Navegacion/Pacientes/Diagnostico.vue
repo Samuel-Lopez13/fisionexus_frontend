@@ -101,6 +101,10 @@ const verFisios = async () => {
         </section>
         <section
             class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-8/12 tablet:w-full telefono:w-full">
+            <div
+                class="flex items-center w-full text-left rtl:text-right text-black bg-gray-100 px-6 py-3 telefono:text-center">
+                <p>Motivo: <span class="text-blue-600">Dolor de espalda</span></p>
+            </div>
             <mapa-corporal></mapa-corporal>
             <datos-diagnostico />
         </section>
@@ -114,7 +118,7 @@ const verFisios = async () => {
                         18/04/2024 14:30 hrs.
                     </time>
                     <div class="w-full flex items-end gap-2">
-                        <h3 class="text-lg font-semibold text-gray-900">Dolor de pierna</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">Descargar comprobante</h3>
                         <div class="hover:text-blue-600" role="button" title="Descargar comprobante de pago">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />

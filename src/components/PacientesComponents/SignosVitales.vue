@@ -5,7 +5,7 @@
 <template>
   <div class="border text-gray-500 rounded-sm shadow">
     <header class="bg-gray-100 border-b text-sm text-black">
-      <h3 class="text-left py-3 p-4 telefono:text-center">Signos Vitales</h3>
+      <h3 class="text-left py-3 p-4 telefono:text-center">Signos Vitales<span class="text-blue-600">*</span></h3>
     </header>
     <section class="p-4">
       <div class="flex">
