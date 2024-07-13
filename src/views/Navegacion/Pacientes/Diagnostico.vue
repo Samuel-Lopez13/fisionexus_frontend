@@ -100,7 +100,7 @@ const datosPaciente = async () => {
         <section>
             <h3 class="text-gray-600 text-lg font-semibold mb-3">Revisiones</h3>
                 <ul class="relative border-s border-gray-200 w-[400px]">
-                    <li class="pl-6 pb-6" v-for="loead in 11">
+                    <li class="pl-6 pb-6" v-for="loead in 3">
                         <div
                             class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
                         <time class="mb-1 text-sm font-normal leading-none text-gray-400">
@@ -108,12 +108,8 @@ const datosPaciente = async () => {
                         </time>
                         <h3 class="text-lg font-semibold text-gray-900">Dolor de pierna</h3>
                         <div class="flex items-center gap-2 text-gray-500">
-                            <p>Paciente de sexo femenino acude a terapia fisica primero vez, se observa dificultad al realizar la marcha, se aplica:
-                                CHC X10 1,
-                                TMI EN TRIPCEPS
-                                BANO DIANADITOC
-                                ESTIRAMIENTO DE TRICEPSE
-                                SOBADA DE RODILLA
+                            <p>Esto es un texto de prueba para ver como se comporta el input que agrega todo esto, al parecer me esta dejando bastante espacio, no se porque
+                                pero bueno, sigo escribiendo a ver como queda asi que sigo sigo y sigo
                             </p>
                         </div>
                     </li>
