@@ -5,6 +5,7 @@ import MapaCorporal from '@/components/PacientesComponents/MapaCorporal.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
+import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 
 const route = useRoute()
 let nombre = ref('')
@@ -15,6 +16,7 @@ let loader = ref(false)
 let imagen = ref(null)
 let fechaNacimiento = ref(null)
 let edad = ref(null)
+let fisios = ref([])
 
 onMounted(() => {
     datosPaciente()
@@ -34,6 +36,10 @@ const datosPaciente = async () => {
         sexo.value = 'Hombre'
     }
     loader.value = false
+}
+
+const verFisios = async () => {
+    fisios.value = await usuariosQueries.getFisios()
 }
 </script>
 
@@ -71,11 +77,12 @@ const datosPaciente = async () => {
                 <!--Firma y refiere-->
                 <div class="telefono:hidden flex flex-col gap-2 telefono:mb-2">
                     <div class="basis-2/4">
-                        <label class="block mb-2 text-sm font-medium">Refiere <span
+                        <label class="block mb-2 text-sm font-medium">Fisioterapeuta<span
                             class="text-blue-600">*</span></label>
-                        <input type="text"
-                               class="input-primary"
-                               placeholder="Ingrese su nombre" />
+                        <input type="text" list="fisios" class="input-primary" placeholder="Ingrese su nombre" @focus="verFisios">
+                        <datalist id="fisios">
+                            <option v-for="fisio in fisios" :key="fisio.id" :value="fisio.nombre"> {{ fisio.nombre }}</option>
+                        </datalist>
                     </div>
                     <div class="basis-2/4">
                         <label class="block mb-2 text-sm font-medium">Cédula profesional
@@ -99,21 +106,22 @@ const datosPaciente = async () => {
         </section>
         <section>
             <h3 class="text-gray-600 text-lg font-semibold mb-3">Revisiones</h3>
-                <ul class="relative border-s border-gray-200 w-[400px]">
-                    <li class="pl-6 pb-6" v-for="loead in 3">
-                        <div
-                            class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
-                        <time class="mb-1 text-sm font-normal leading-none text-gray-400">
-                            18/04/2024 14:30 hrs.
-                        </time>
-                        <h3 class="text-lg font-semibold text-gray-900">Dolor de pierna</h3>
-                        <div class="flex items-center gap-2 text-gray-500">
-                            <p>Esto es un texto de prueba para ver como se comporta el input que agrega todo esto, al parecer me esta dejando bastante espacio, no se porque
-                                pero bueno, sigo escribiendo a ver como queda asi que sigo sigo y sigo
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+            <ul class="relative border-s border-gray-200 w-[400px]">
+                <li class="pl-6 pb-6" v-for="loead in 3">
+                    <div
+                        class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400">
+                        18/04/2024 14:30 hrs.
+                    </time>
+                    <h3 class="text-lg font-semibold text-gray-900">Dolor de pierna</h3>
+                    <div class="flex items-center gap-2 text-gray-500">
+                        <p>Esto es un texto de prueba para ver como se comporta el input que agrega todo esto, al
+                            parecer me esta dejando bastante espacio, no se porque
+                            pero bueno, sigo escribiendo a ver como queda asi que sigo sigo y sigo
+                        </p>
+                    </div>
+                </li>
+            </ul>
         </section>
     </div>
 </template>

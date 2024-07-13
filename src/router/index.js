@@ -76,6 +76,7 @@ const router = createRouter({
                   {
                      path: 'Expediente/:id',
                      name: 'Expediente',
+                     meta: { title: 'Expediente - Fisiolabs' },
                      component: Expediente
                   },
                   {
@@ -87,11 +88,13 @@ const router = createRouter({
                   {
                      path: 'EditarPaciente/:id',
                      name: 'EditarPaciente',
+                     meta: { title: 'Perfil - Fisiolabs' },
                      component: EditarPaciente
                   },
                   {
                      path: 'Diagnostico/:id',
                      name: 'Diagnostico',
+                     meta: { title: 'Diagnostico - Fisiolabs' },
                      component: Diagnostico
                   }
                ]
