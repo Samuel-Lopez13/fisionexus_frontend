@@ -100,11 +100,11 @@ const verFisios = async () => {
             </div>
         </section>
         <section
-            class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-6/12 tablet:w-full telefono:w-full">
+            class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-8/12 tablet:w-full telefono:w-full">
             <mapa-corporal></mapa-corporal>
             <datos-diagnostico />
         </section>
-        <section>
+        <section v-show="true">
             <h3 class="text-gray-600 text-lg font-semibold mb-3">Revisiones</h3>
             <ul class="relative border-s border-gray-200 w-[400px]">
                 <li class="pl-6 pb-6" v-for="loead in 3">
