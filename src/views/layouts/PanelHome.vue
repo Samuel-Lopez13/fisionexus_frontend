@@ -15,7 +15,7 @@ onMounted(() => {
         <Sidebar/>
         <section class="flex flex-col w-full overflow-hidden">
             <Header/>
-            <section class="flex-grow p-5 overflow-auto style_scroll">
+            <section class="flex-grow px-5 pt-5 overflow-auto style_scroll">
                 <router-view></router-view>
                 <Footer/>
             </section>

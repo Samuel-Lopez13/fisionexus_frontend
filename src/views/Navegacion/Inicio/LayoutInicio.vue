@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import CardCita from '@/components/InicioComponents/CardCita.vue'
 import NuevosUsuarios from '@/components/InicioComponents/Charts/NuevosUsuarios.vue'
 import UltimosUsuarios from '@/components/InicioComponents/UltimosUsuarios.vue'
@@ -7,16 +7,31 @@ import CitasChart from '@/components/InicioComponents/Charts/CitasChart.vue'
 import Fisiotepeutas from '@/components/InicioComponents/Fisiotepeutas.vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
+import { clavesStore } from '@/stores/clavesStore.js'
 
 let saludo = ref('')
 let nombre = ref(localStorage.getItem('Usuario'))
 let citas = ref([])
 let loader = ref(false)
 
+let date = ref(null)
+
 onMounted(() => {
     Saludar()
     citasDia()
 })
+
+watch(() => clavesStore().modificacionCita, async () => {
+    ModificacionCita();
+    clavesStore().modificacionCita = false
+})
+
+const scheduleTime = () => {
+    //clavesStore().setVigencia(date.value) // Actualiza la fecha
+    //clavesStore().programarEjecucion() // Ejecuta el temporizador
+    clavesStore().setVigencia(date.value); // Agrega la nueva fecha
+    clavesStore().programarEjecucion(date.value); // Ejecuta el temporizador
+}
 
 const Saludar = () => {
     const horaActual = new Date().getHours()
@@ -26,8 +41,15 @@ const Saludar = () => {
 const citasDia = async () => {
     loader.value = true
     citas.value = await pacientesQueries.getCitasDia()
-    console.log(citas.value)
+    date.value = citas.value.length == 0 ? null : new Date(citas.value[0].fecha).toISOString().substring(0, 10) + 'T' + citas.value[0].hora
+    scheduleTime()
     loader.value = false
+}
+
+const ModificacionCita = async () =>{
+    citas.value = await pacientesQueries.getCitasDia()
+    date.value = citas.value.length == 0 ? null : new Date(citas.value[0].fecha).toISOString().substring(0, 10) + 'T' + citas.value[0].hora
+    scheduleTime()
 }
 </script>
 
@@ -45,7 +67,8 @@ const citasDia = async () => {
                 <div v-if="loader" v-for="load in 6"
                      class="flex-none bg-gray-300 animate-pulse h-[130px] w-[280px] telefono:w-[180px] telefono:h-[150px] max-w-sm rounded-lg hover:bg-blue-300">
                 </div>
-                <div class="h-[130px] w-full flex justify-center flex-col items-center gap-4 text-gray-500" v-else-if="citas.length === 0">
+                <div class="h-[130px] w-full flex justify-center flex-col items-center gap-4 text-gray-500"
+                     v-else-if="citas.length === 0">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" class="size-10">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -54,7 +77,8 @@ const citasDia = async () => {
                     <span class="text-gray-500">No hay citas pendientes para este dia</span>
                 </div>
                 <CardCita v-else v-for="cita in citas" :foto="cita.foto" :nombre="cita.nombre"
-                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono" @click="notifiacionApi.accionCita(cita.nombre,cita.pacienteId,cita.fecha,cita.hora, cita.motivo, cita.citasId)"/>
+                          :hora="cita.hora.substring(0,5)" :numero="cita.telefono"
+                          @click="notifiacionApi.accionCita(cita.nombre,cita.pacienteId,cita.fecha,cita.hora, cita.motivo, cita.citasId)" />
             </div>
         </section>
         <section
