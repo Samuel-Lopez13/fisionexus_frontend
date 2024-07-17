@@ -7,6 +7,7 @@ import { onMounted, ref } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 import router from '@/router/index.js'
+import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 
 const route = useRoute()
 let nombre = ref('')
@@ -18,7 +19,7 @@ let imagen = ref(null)
 let fechaNacimiento = ref(null)
 let edad = ref(null)
 let fisios = ref([])
-let citaInicial = ref(false)
+let citaInicial = ref(true)
 
 onMounted(() => {
     datosPaciente()
@@ -81,7 +82,7 @@ const verFisios = async () => {
                     <p>Motivo: <span class="text-blue-600">Dolor de espalda</span></p>
                 </div>
                 <div v-show="citaInicial">
-                    <button class="input-primary"><span class="text-gray-600">Finalizar</span></button>
+                    <button class="input-primary" @click="NotificacionesModal.PantallaWarning('¿Estas seguro que deseas concluir el caso?')"><span class="text-gray-600">Finalizar</span></button>
                 </div>
             </div>
         </section>
@@ -119,7 +120,7 @@ const verFisios = async () => {
                            maxlength="5" />
                 </div>
                 <section class="telefono:w-full flex flex-col items-center">
-                    <button class="button-primary w-full">Finalizar</button>
+                    <button class="button-primary w-full" @click="NotificacionesModal.PantallaWarning('¿Estas seguro que deseas finalizar?')">Finalizar</button>
                     <a class="text-blue-700 p-2 underline hover:text-gray-500 telefono:basis-full cursor-pointer" @click="router.back()">Volver</a>
                 </section>
             </div>
