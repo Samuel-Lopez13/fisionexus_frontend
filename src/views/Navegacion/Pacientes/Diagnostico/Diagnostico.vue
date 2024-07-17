@@ -6,6 +6,7 @@ import { useRoute } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
+import router from '@/router/index.js'
 
 const route = useRoute()
 let nombre = ref('')
@@ -118,8 +119,8 @@ const verFisios = async () => {
                            maxlength="5" />
                 </div>
                 <section class="telefono:w-full flex flex-col items-center">
-                    <button class="button-primary w-full">Finalizar cita</button>
-                    <a class="text-blue-700 p-2 underline hover:text-gray-500 telefono:basis-full">Volver</a>
+                    <button class="button-primary w-full">Finalizar</button>
+                    <a class="text-blue-700 p-2 underline hover:text-gray-500 telefono:basis-full cursor-pointer" @click="router.back()">Volver</a>
                 </section>
             </div>
             <div v-show="citaInicial">
