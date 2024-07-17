@@ -1,15 +1,13 @@
 <script setup>
-import SignosVitales from '@/components/PacientesComponents/SignosVitales.vue'
 import InterrogatorioExpediente from '@/components/PacientesComponents/InterrogatorioExpediente.vue'
-import CardCitas from '@/components/PacientesComponents/CardCitas.vue'
 import CardCitaExpediente from '@/components/PacientesComponents/CardCitaExpediente.vue'
 import { onMounted, ref } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { useRoute } from 'vue-router'
-import UltimosSignosV from '@/components/PacientesComponents/UltimosSignosV.vue'
 import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 import { irDiagnostico } from '@/router/rutasUtiles.js'
+import SignosEspecificos from '@/components/PacientesComponents/SignosVitales/SignosEspecificos.vue'
 
 const route = useRoute()
 let nombre = ref('')
@@ -87,7 +85,7 @@ const agendarCita = async () =>{
                 </div>
             </header>
             <div>
-                <UltimosSignosV/>
+                <SignosEspecificos/>
             </div>
         </section>
         <section

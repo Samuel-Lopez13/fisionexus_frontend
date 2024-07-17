@@ -49,3 +49,7 @@ export const irFisioterapeutas = () =>{
 export const irDiagnostico = (id) => {
    router.push({ name: 'Diagnostico', params: { id: id } })
 }
+
+export const irDiagnosticos = (id) => {
+   router.push({ name: 'Diagnosticos', params: { id: id } })
+}
