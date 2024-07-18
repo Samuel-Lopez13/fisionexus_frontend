@@ -234,7 +234,7 @@ export const notifiacionApi = {
          html: `
       <div class="rounded-sm border bg-white">
         <header class="text-gray-600 p-3 border-b bg-gray-100">
-          <h5 class="telefono:text-center text-lg">Revision</h5>
+          <h5 class="telefono:text-center text-lg">Revisión</h5>
         </header>
         <div class="flex flex-col p-3 gap-2 text-gray-600 text-start">
          <label class="text-sm font-medium">Fisioterapeuta<span class="text-blue-600">*</span></label>
@@ -251,7 +251,7 @@ export const notifiacionApi = {
           <p id="error" class="text-red-400 text-sm py-2 animate-fade" style="display: none;">Por favor, complete todos los campos</p>
         </div>
         <div class="p-2 flex gap-1">
-          <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Subir revision</button>
+          <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Subir revisión</button>
         </div>
       </div>
     `,
