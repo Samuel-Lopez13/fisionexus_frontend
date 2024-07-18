@@ -1,9 +1,9 @@
 <script setup>
-
+import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 </script>
 
 <template>
-  Calendario
+  <button @click="notifiacionApi.subirRevision()">Calendario</button>
 </template>
 
 <style scoped>
