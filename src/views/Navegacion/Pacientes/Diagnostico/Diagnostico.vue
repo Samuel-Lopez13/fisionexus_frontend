@@ -19,7 +19,7 @@ let imagen = ref(null)
 let fechaNacimiento = ref(null)
 let edad = ref(null)
 let fisios = ref([])
-let citaInicial = ref(true)
+let citaInicial = ref(false)
 
 onMounted(() => {
     datosPaciente()
