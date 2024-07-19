@@ -52,9 +52,9 @@ const handleFocus = () =>{
                     </div>
                 </transition>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
-                    <label class="text-gray-600">Correo electronico</label>
+                    <label class="text-gray-600">Nombre de usuario</label>
                     <input v-model="username" @focus="handleFocus()" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="text"
-                           placeholder="Correo electronico">
+                           placeholder="Nombre de usuario">
                 </div>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Contraseña</label>
