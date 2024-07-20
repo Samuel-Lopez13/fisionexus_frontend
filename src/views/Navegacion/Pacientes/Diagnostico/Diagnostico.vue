@@ -75,7 +75,10 @@ const finalizarDiagnostico = () =>{
 }
 
 const diagnosticoListo = async () =>{
-    console.log("Hola")
+    const pregunta = await NotificacionesModal.PantallaWarning('¿Estas seguro que deseas concluir el caso?')
+
+    if(pregunta.isConfirmed)
+        console.log("Se termino el diagnostico")
 }
 
 const ejecucionFinal = () => {
