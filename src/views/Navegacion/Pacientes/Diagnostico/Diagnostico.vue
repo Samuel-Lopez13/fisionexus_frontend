@@ -3,11 +3,13 @@ import SignosVitales from '@/components/PacientesComponents/SignosVitales/Signos
 import DatosDiagnostico from '@/components/PacientesComponents/Diagnostico/DatosDiagnostico.vue'
 import MapaCorporal from '@/components/PacientesComponents/Diagnostico/MapaCorporal.vue'
 import { useRoute } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
 import router from '@/router/index.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
+import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
+import AltaUsuario from '@/components/PacientesComponents/Diagnostico/AltaUsuario.vue'
 
 const route = useRoute()
 let nombre = ref('')
@@ -20,6 +22,7 @@ let fechaNacimiento = ref(null)
 let edad = ref(null)
 let fisios = ref([])
 let citaInicial = ref(true)
+let notaFinal = ref(false)
 
 onMounted(() => {
     datosPaciente()
@@ -41,8 +44,45 @@ const datosPaciente = async () => {
     loader.value = false
 }
 
+const revisionNueva = async () => {
+    await notifiacionApi.subirRevision();
+}
+
 const verFisios = async () => {
     fisios.value = await usuariosQueries.getFisios()
+}
+
+/* Scroll para terminar el diagnostico */
+
+const container = ref(null);
+const final = ref(null);
+
+const irFinal = () =>{
+    notaFinal.value = true
+
+    nextTick().then(() => {
+        if (final.value) {
+            final.value.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
+/* Confirmación de finalizacion */
+
+const finalizarDiagnostico = () =>{
+    irFinal()
+    console.log(notaFinal.value)
+}
+
+const diagnosticoListo = async () =>{
+    console.log("Hola")
+}
+
+const ejecucionFinal = () => {
+    if(notaFinal.value)
+        diagnosticoListo()
+    else
+        finalizarDiagnostico()
 }
 </script>
 
@@ -82,14 +122,17 @@ const verFisios = async () => {
                     <p>Motivo: <span class="text-blue-600">Dolor de espalda</span></p>
                 </div>
                 <div v-show="citaInicial">
-                    <button class="input-primary" @click="NotificacionesModal.PantallaWarning('¿Estas seguro que deseas concluir el caso?')"><span class="text-gray-600">Finalizar</span></button>
+                    <button class="input-primary" @click="ejecucionFinal()"><span class="text-gray-600">Finalizar</span></button>
                 </div>
             </div>
         </section>
-        <section
+        <section ref="container"
             class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-8/12 tablet:w-full telefono:w-full">
             <mapa-corporal></mapa-corporal>
             <datos-diagnostico />
+            <div ref="final" v-show="notaFinal">
+                <AltaUsuario></AltaUsuario>
+            </div>
         </section>
         <section class="laptop:w-3/12 tablet:w-full telefono:w-full desktop:w-3/12">
             <!--Firma y refiere-->
@@ -119,14 +162,14 @@ const verFisios = async () => {
                            class="border border-gray-300 hover:border-blue-300 rounded-[3px] text-sm text-gray-500 w-full"
                            maxlength="5" />
                 </div>
-                <section class="telefono:w-full flex flex-col items-center">
+                <section class="telefono:w-full flex flex-col items-center pt-2">
                     <button class="button-primary w-full" @click="NotificacionesModal.PantallaWarning('¿Estas seguro que deseas finalizar?')">Finalizar</button>
                     <a class="text-blue-700 p-2 underline hover:text-gray-500 telefono:basis-full cursor-pointer" @click="router.back()">Volver</a>
                 </section>
             </div>
             <div v-show="citaInicial">
                 <div>
-                    <button class="button-primary w-full mb-4">Nueva revisión</button>
+                    <button @click="revisionNueva" class="button-primary w-full mb-4">Nueva revisión</button>
                     <h3 class="text-gray-600 text-lg font-semibold mb-3">Revisiones</h3>
                 </div>
                 <ul class="relative border-s border-gray-200 w-[400px] telefono:w-full tablet:w-full">
