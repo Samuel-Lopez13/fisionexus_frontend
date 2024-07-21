@@ -129,7 +129,7 @@ const eliminar = async (id, nombre) => {
 </script>
 
 <template>
-    <div class="relative overflow-x-auto mb-5 style_scroll">
+    <div class=" overflow-x-auto mb-5 style_scroll">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
             <tr>

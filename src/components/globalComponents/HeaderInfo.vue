@@ -5,6 +5,7 @@ import router from '@/router/index.js'
 
 const menu = ref(false)
 const nombre = ref(localStorage.getItem("Usuario"))
+let notis = ref(false)
 
 const MenuMobile = () =>{
     menu.value = !menu.value
@@ -14,6 +15,11 @@ const CerrarMenu = (ruta) => {
     ruta()
     menu.value = !menu.value
 }
+
+const popNotificaciones = () =>{
+    notis.value = !notis.value
+}
+
 
 </script>
 
@@ -57,7 +63,7 @@ const CerrarMenu = (ruta) => {
                 <img src="../../assets/icons/Usuario.png" class="h-7 w-7">
                 <p class="font-semibold flex items-center text-gray-600 telefono:hidden group-hover:text-blue-600">{{ nombre }}</p>
             </div>
-            <div data-tooltip-target="Notificaciones" data-tooltip-placement="bottom"
+            <div data-tooltip-target="Notificaciones" data-tooltip-placement="bottom" @click="notis = true"
                          class="p-2 text-gray-500 duration-200 hover:text-blue-600 hover:border-blue-600 flex justify-center border rounded-full">
                 <span class="absolute right-4 top-3 flex h-3 w-3">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75"></span>
@@ -68,6 +74,11 @@ const CerrarMenu = (ruta) => {
                     <path stroke-linecap="round" stroke-linejoin="round"
                           d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
                 </svg>
+            </div>
+            <div v-if="notis" class="w-[300px] h-[400px] overflow-y-auto style_scroll absolute bg-white border top-12 right-12 rounded-md" v-click-away="popNotificaciones" >
+                <p v-for="load in 7" class="p-3 text-sm border-b text-gray-600 hover:bg-gray-50">
+                    La cita de las 6:00 pm (Paciente) fue marcada como inasistencia <span class="text-blue-600">(20/07/2024)</span>
+                </p>
             </div>
         </section>
         <div id="Notificaciones" role="tooltip"
