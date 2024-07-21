@@ -327,6 +327,8 @@ export const notifiacionApi = {
             <input id="telefono" maxlength="10" type="text" class="input-primary" placeholder="Telefono">
             <label>Especialidad:</label>
             <input id="especialidad" type="text" class="input-primary" placeholder="Especialidad">
+            <label>Cedula:</label>
+            <input id="cedula" type="text" class="input-primary" placeholder="Cedula">
             <label>Foto:</label>
             <input id="foto" type="file" class="hover:border-blue-300 border border-gray-300 text-gray-900 text-sm rounded-[3px] focus:ring-blue-500 focus:border-blue-500 block focus:text-blue-900">
             <p id="error" class="text-red-400 text-sm animate-fade" style="display: none;">Por favor, complete todos los campos</p>
@@ -337,23 +339,24 @@ export const notifiacionApi = {
             let correo = document.getElementById('correo').value
             let telefono = document.getElementById('telefono').value
             let especialidad = document.getElementById('especialidad').value
+            let cedula = document.getElementById('cedula').value
             let foto = document.getElementById('foto').files[0]
             const error = document.getElementById('error')
 
-            if (!nombre || !correo || !telefono || !especialidad || !foto) {
+            if (!nombre || !correo || !telefono || !especialidad || !foto ||!cedula) {
                error.style.display = 'block'
                return false
             } else {
                error.style.display = 'none'
-               return { nombre, correo, telefono, especialidad, foto }
+               return { nombre, correo, telefono, especialidad, foto, cedula }
             }
          }
       })
 
       if (formValue) {
-         const { nombre, correo, telefono, especialidad, foto } = formValue
+         const { nombre, correo, telefono, especialidad, foto, cedula } = formValue
          try {
-            let response = await usuarioCommand.agregarIntegrante(nombre, correo, telefono, especialidad, foto)
+            let response = await usuarioCommand.agregarIntegrante(nombre, correo, telefono, especialidad, cedula, foto)
             if (response === 'Se creo el fisioterapeuta correctamente') {
                NotificacionesModal.ExitosoSimple('Se agrego un nuevo integrante')
             } else {
