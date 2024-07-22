@@ -9,8 +9,8 @@ let buscador = ref('')
 <template>
     <section class="flex justify-between align-mid mb-5 flex-wrap gap-3 telefono:flex-col-reverse">
         <div class="w-1/2 telefono:w-full">
-            <div class="relative group max-w-md w-full">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div class="group max-w-md w-full">
+                <div class="relative flex top-[26px] items-center pl-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 group-focus-within:text-blue-500" aria-hidden="true"
                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -18,7 +18,7 @@ let buscador = ref('')
                     </svg>
                 </div>
                 <input v-model="buscador" type="search" id="default-search"
-                       class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 focus:text-blue-600"
+                       class="w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 focus:text-blue-600"
                        placeholder="Buscar" />
             </div>
         </div>

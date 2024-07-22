@@ -16,6 +16,7 @@ import Fisioterapeutas from '@/views/Usuarios/LayoutFT.vue'
 import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import Diagnostico from '@/views/Navegacion/Pacientes/Diagnostico/Diagnostico.vue'
 import DiagnosticoPasado from '@/views/Navegacion/Pacientes/Diagnostico/DiagnosticoEspecifico.vue'
+import Calendario from '@/views/Navegacion/Calendario/Calendario.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -119,6 +120,12 @@ const router = createRouter({
                      component: LayoutMetricas
                   }
                ]
+            },
+            {
+               path: 'Calendario',
+               name: 'Calendario',
+               component: Calendario,
+               meta: { title: 'Calendario - Fisiolabs' },
             },
             {
                path: 'Ajustes',

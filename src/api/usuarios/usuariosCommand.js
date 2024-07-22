@@ -33,7 +33,7 @@ export const usuarioCommand = {
       }
    },
 
-   agregarIntegrante: async (nombre, correo, telefono, especialidad, foto) => {
+   agregarIntegrante: async (nombre, correo, telefono, especialidad, cedula, foto) => {
       try {
          let img = null
 
@@ -44,6 +44,7 @@ export const usuarioCommand = {
             correo,
             telefono,
             especialidad,
+            cedula,
             foto: img == null ? img : img.secure_url
          }
          const [data, config] = autorizationJSON(JSON)

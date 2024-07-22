@@ -40,6 +40,20 @@ import { CerrarSesion } from '@/router/rutasUtiles.js'
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
+            <router-link :to="{name:'Calendario'}" active-class="active_item border-l-4 border-blue-600"
+                         data-tooltip-target="Calendario"
+                         data-tooltip-placement="right"
+                         class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+            </router-link>
+            <div id="Calendario" role="tooltip"
+                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
+                Calendario
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
             <router-link :to="{name:'Metricas'}" active-class="active_item border-l-4 border-blue-600"
                          data-tooltip-target="Metricas"
                          data-tooltip-placement="right"
@@ -57,6 +71,8 @@ import { CerrarSesion } from '@/router/rutasUtiles.js'
             </div>
 
             <router-link :to="{name:'Ajustes'}" active-class="active_item border-l-4 border-blue-600"
+                         data-tooltip-target="Ajustes"
+                         data-tooltip-placement="right"
                          class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
@@ -65,6 +81,11 @@ import { CerrarSesion } from '@/router/rutasUtiles.js'
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             </router-link>
+            <div id="Ajustes" role="tooltip"
+                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
+                Ajustes
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
         </div>
 
         <div class="flex items-end w-16 h-screen py-4 cursor-pointer">
