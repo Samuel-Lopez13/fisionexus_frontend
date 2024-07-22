@@ -173,5 +173,60 @@ export const pacientesCommand = {
       }catch (error){
          console.log(error)
       }
-   }
+   },
+
+   postDiagnostico: async (expedienteId,temperatura,fr,fc,presionArterial,peso,estatura,imc,indiceCinturaCadera,saturacionOxigeno,valores,rangoDolor,nota,diagnostico,refiere,categoria,diagnosticoPrevio,terapeuticaEmpleada,diagnosticoFuncional,padecimientoActual,inspeccion,palpitacion,movibilidad,estudiosComplementarios,diagnosticoNosologico,cortoPlazo,medianoPlazo,largoPlazo,tratamientoFisioterapeutico,sugerencias,pronostico,fisioterapeutaId) => {
+      try {
+         const JSON ={
+            expedienteId,
+            exploracion:{
+               temperatura,
+               fr,
+               fc,
+               presionArterial,
+               peso,
+               estatura,
+               imc,
+               indiceCinturaCadera,
+               saturacionOxigeno
+            },
+            map:{
+               valores,
+               rangoDolor,
+               nota
+            },
+            diagnostic: {
+               diagnostico,
+               refiere,
+               categoria,
+               diagnosticoPrevio,
+               terapeuticaEmpleada,
+               diagnosticoFuncional,
+               padecimientoActual,
+               inspeccion,
+               palpitacion,
+               movibilidad,
+               estudiosComplementarios,
+               diagnosticoNosologico
+            },
+            program : {
+               cortoPlazo,
+               medianoPlazo,
+               largoPlazo,
+               tratamientoFisioterapeutico,
+               sugerencias,
+               pronostico
+            },
+            review: {
+               fisioterapeutaId
+            }
+         }
+         const [data, config] = autorizationJSON(JSON)
+         const response = await axios.post(apiUrl + '/Diagnostico', data, config)
+         return response.data
+      }catch (error){
+         console.log(error)
+      }
+   },
+
 }

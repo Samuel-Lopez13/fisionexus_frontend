@@ -10,6 +10,7 @@ import router from '@/router/index.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 import AltaUsuario from '@/components/PacientesComponents/Diagnostico/AltaUsuario.vue'
+import { pacientesCommand } from '@/api/pacientes/pacientesCommand.js'
 
 const route = useRoute()
 let nombre = ref('')
@@ -21,8 +22,19 @@ let imagen = ref(null)
 let fechaNacimiento = ref(null)
 let edad = ref(null)
 let fisios = ref([])
-let citaInicial = ref(true)
+let citaInicial = ref(false)
 let notaFinal = ref(false)
+
+//SIGNOS VITALES
+let temperatura = ref(null)
+let fr = ref(null)
+let fc = ref(null)
+let presionArterial = ref(null)
+let peso = ref(null)
+let estatura = ref(null)
+let imc = ref(null)
+let indiceCinturaCadera = ref(null)
+let saturacionoxigeno = ref(null)
 
 onMounted(() => {
     datosPaciente()
@@ -66,7 +78,9 @@ const irFinal = () =>{
         }
     });
 }
-
+const enviarDiagnostico = async () =>{
+    let response = await pacientesCommand.postDiagnostico(pacienteId.value)
+}
 /* Confirmación de finalizacion */
 
 const finalizarDiagnostico = () =>{
@@ -86,6 +100,30 @@ const ejecucionFinal = () => {
         diagnosticoListo()
     else
         finalizarDiagnostico()
+}
+
+const obtenerSignos = (datos) =>{
+    temperatura.value = datos.temperatura
+    fr.value = datos.fr
+    fc.value = datos.fc
+    presionArterial.value = datos.presionArterial
+    peso.value = datos.peso
+    estatura.value = datos.estatura
+    imc.value = datos.imc
+    indiceCinturaCadera.value = datos.indiceCinturaCadera
+    saturacionoxigeno.value = datos.saturacionOxigeno
+
+    console.log(
+        estatura.value,
+        fr.value,
+        fc.value,
+        presionArterial.value,
+        peso.value,
+        estatura.value,
+        imc.value,
+        indiceCinturaCadera.value,
+        saturacionoxigeno.value,
+    )
 }
 </script>
 
@@ -118,7 +156,7 @@ const ejecucionFinal = () => {
                     </div>
                 </header>
                 <div>
-                    <signos-vitales />
+                    <signos-vitales @signos="obtenerSignos"/>
                 </div>
                 <div
                     class="flex items-center w-full text-left rtl:text-right text-black bg-gray-100 border px-6 py-3 telefono:text-center">
