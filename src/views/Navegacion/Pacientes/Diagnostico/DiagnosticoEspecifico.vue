@@ -85,37 +85,36 @@ const verFisios = async () => {
         </section>
         <section
             class="overflow-y-auto flex-col flex gap-5 style_scroll desktop:w-6/12 laptop:w-8/12 tablet:w-full telefono:w-full">
-            <MapaEspecifico/>
-            <DatosEspecificos/>
+            <MapaEspecifico />
+            <DatosEspecificos />
         </section>
         <section class="tablet:w-full telefono:w-full desktop:w-3/12">
-            <!--Firma y refiere-->
-            <div>
-                    <h3 class="text-gray-600 text-lg font-semibold mb-3 telefono:mt-3 tablet:mt-3">Todas las revisiones</h3>
-                <ul class="relative border-s border-gray-200 w-[400px] telefono:w-full tablet:w-full">
-                    <li class="pl-6 pb-6" v-for="loead in 3">
-                        <div
-                            class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
-                        <time class="mb-1 text-sm font-normal leading-none text-gray-400">
-                            18/04/2024 14:30 hrs.
-                        </time>
-                        <div class="w-full flex items-end gap-2">
-                            <h3 class="text-lg font-semibold text-gray-900">Descargar comprobante</h3>
-                            <div class="hover:text-blue-600" role="button" title="Descargar comprobante de pago">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-                            </div>
+            <h3 class="text-gray-600 text-lg font-semibold mb-3 telefono:mt-3 tablet:mt-3">Todas las revisiones</h3>
+            <ul class="relative border-s border-gray-200 w-[400px] telefono:w-full tablet:w-full">
+                <li class="pl-6 pb-6" v-for="loead in 3">
+                    <!-- Esto es la barra vertical de revisiones -->
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400">
+                        18/04/2024 14:30 hrs.
+                    </time>
+                    <div class="w-full flex items-end gap-2">
+                        <h3 class="font-semibold text-gray-900">Descargar comprobante</h3>
+                        <div class="hover:text-blue-600" role="button" title="Descargar comprobante de pago">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
                         </div>
-                        <div class="flex items-center gap-2 text-gray-500">
-                            <p>Esto es un texto de prueba para ver como se comporta el input que agrega todo esto, al
-                                parecer me esta dejando bastante espacio, no se porque
-                                pero bueno, sigo escribiendo a ver como queda asi que sigo sigo y sigo
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                    <div class="text-gray-500 pt-1">
+                        <p>Esto es un texto de prueba para ver como se comporta el input que agrega todo esto, al
+                            parecer me esta dejando bastante espacio, no se porque
+                            pero bueno, sigo escribiendo a ver como queda asi que sigo sigo y sigo
+                        </p>
+                    </div>
+                </li>
+            </ul>
         </section>
     </div>
 </template>
