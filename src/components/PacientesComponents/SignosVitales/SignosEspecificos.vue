@@ -5,20 +5,24 @@
 <template>
     <div class="border text-gray-500 rounded-sm shadow">
         <header class="bg-gray-100 border-b text-sm text-black">
-            <h3 class="text-left py-3 p-4 telefono:text-center">Signos Vitales<span class="text-blue-600 ml-2">(13/07/2024)</span></h3>
+            <h3 class="text-left py-3 p-4 telefono:text-center">Signos Vitales<span class="text-blue-600 ml-2">(13/07/2024)</span>
+            </h3>
         </header>
         <section class="p-4">
             <div class="flex">
                 <label for="height" class="flex items-center gap-2 text-principal py-2 font-normal w-8/12">
           <span class="w-[30px] items-center justify-center flex">
             <svg width="9" height="22" viewBox="0 0 9 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0.669625 0.688163L0.669459 21.3117L8.33039 21.3117L8.33058 0.688191L0.669625 0.688163ZM1.84802 20.1331L1.8478 17.7054L4.57884 17.7054L4.57903 16.6742L1.84796 16.6742L1.84799 14.6092L3.42124 14.609L3.42124 13.5779L1.84799 13.5777V11.5156L4.57906 11.5156V10.4846H1.84799L1.84799 8.41878L3.42124 8.41898L3.42124 7.38791L1.84799 7.38772L1.84777 5.32537L4.57881 5.32535L4.57903 4.29406L1.84797 4.29406L1.84796 1.86656L7.15196 1.86675L7.15205 20.1333L1.84802 20.1331Z" fill="#0062FF" />
+              <path
+                  d="M0.669625 0.688163L0.669459 21.3117L8.33039 21.3117L8.33058 0.688191L0.669625 0.688163ZM1.84802 20.1331L1.8478 17.7054L4.57884 17.7054L4.57903 16.6742L1.84796 16.6742L1.84799 14.6092L3.42124 14.609L3.42124 13.5779L1.84799 13.5777V11.5156L4.57906 11.5156V10.4846H1.84799L1.84799 8.41878L3.42124 8.41898L3.42124 7.38791L1.84799 7.38772L1.84777 5.32537L4.57881 5.32535L4.57903 4.29406L1.84797 4.29406L1.84796 1.86656L7.15196 1.86675L7.15205 20.1333L1.84802 20.1331Z"
+                  fill="#0062FF" />
             </svg>
           </span>
                     <span>Estatura</span>
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
-                    <input type="number" disabled id="height" class="bg-gray-100 w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
+                    <input type="number" disabled id="height"
+                           class="bg-gray-100 w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">m</p>
                 </div>
             </div>
@@ -26,8 +30,12 @@
                 <label for="weight" class="flex items-center gap-2 text-principal py-2 font-normal w-8/12">
           <span class="w-[30px] items-center justify-center flex">
             <svg width="20" height="20" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.681 1H3.31905C2.31442 1 1.5 1.81442 1.5 2.81905V19.181C1.5 20.1856 2.31442 21 3.31905 21H19.681C20.6856 21 21.5 20.1856 21.5 19.181V2.81905C21.5 1.81442 20.6856 1 19.681 1Z" stroke="#0062FF" stroke-width="1.91" stroke-miterlimit="10" />
-              <path d="M5.13818 6.45709C9.10961 2.81899 13.8906 2.81899 17.862 6.45709L16.0429 9.1809C14.6165 8.53136 13.0674 8.19525 11.5001 8.19525C9.93275 8.19525 8.38364 8.53136 6.95723 9.1809L5.13818 6.45709Z" stroke="#0062FF" stroke-width="1.91" stroke-miterlimit="10" />
+              <path
+                  d="M19.681 1H3.31905C2.31442 1 1.5 1.81442 1.5 2.81905V19.181C1.5 20.1856 2.31442 21 3.31905 21H19.681C20.6856 21 21.5 20.1856 21.5 19.181V2.81905C21.5 1.81442 20.6856 1 19.681 1Z"
+                  stroke="#0062FF" stroke-width="1.91" stroke-miterlimit="10" />
+              <path
+                  d="M5.13818 6.45709C9.10961 2.81899 13.8906 2.81899 17.862 6.45709L16.0429 9.1809C14.6165 8.53136 13.0674 8.19525 11.5001 8.19525C9.93275 8.19525 8.38364 8.53136 6.95723 9.1809L5.13818 6.45709Z"
+                  stroke="#0062FF" stroke-width="1.91" stroke-miterlimit="10" />
               <path d="M11.5 5.54297V8.2763" stroke="#0062FF" stroke-width="1.91" stroke-miterlimit="10" />
               <path d="M11.5 11.9048V18.2762" stroke="#0062FF" stroke-width="1.91" stroke-miterlimit="10" />
             </svg>
@@ -35,7 +43,8 @@
                     <span>Peso</span>
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
-                    <input type="number" id="weight" disabled class="bg-gray-100 w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
+                    <input type="number" id="weight" disabled
+                           class="bg-gray-100 w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">Kg</p>
                 </div>
             </div>
