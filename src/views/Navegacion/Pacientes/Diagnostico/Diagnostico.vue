@@ -85,7 +85,6 @@ const enviarDiagnostico = async () =>{
 
 const finalizarDiagnostico = () =>{
     irFinal()
-    console.log(notaFinal.value)
 }
 
 const diagnosticoListo = async () =>{
@@ -112,17 +111,19 @@ const obtenerSignos = (datos) =>{
     imc.value = datos.imc
     indiceCinturaCadera.value = datos.indiceCinturaCadera
     saturacionoxigeno.value = datos.saturacionOxigeno
+}
 
+const mostrar = () => {
     console.log(
         estatura.value,
-        fr.value,
-        fc.value,
-        presionArterial.value,
         peso.value,
-        estatura.value,
-        imc.value,
-        indiceCinturaCadera.value,
+        temperatura.value,
+        fc.value,
+        fr.value,
+        presionArterial.value,
         saturacionoxigeno.value,
+        indiceCinturaCadera.value,
+        imc.value,
     )
 }
 </script>
@@ -204,7 +205,7 @@ const obtenerSignos = (datos) =>{
                            maxlength="5" />
                 </div>
                 <section class="telefono:w-full flex flex-col items-center pt-2">
-                    <button class="button-primary w-full" @click="NotificacionesModal.PantallaWarning('¿Estas seguro que deseas finalizar?')">Finalizar</button>
+                    <button class="button-primary w-full" @click=mostrar()>Finalizar</button>
                     <a class="text-blue-700 p-2 underline hover:text-gray-500 telefono:basis-full cursor-pointer" @click="router.back()">Volver</a>
                 </section>
             </div>

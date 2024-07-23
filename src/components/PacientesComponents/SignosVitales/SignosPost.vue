@@ -12,15 +12,17 @@ let signosVitales = reactive({
     indiceCinturaCadera:null,
     imc:null
 })
+
 const emit = defineEmits(['signos'])
 
-watch(signosVitales, (nuevoValor) => {
+watch(signosVitales, () => {
     enviarSignos();
 }, { deep: true })
 
 const enviarSignos = () => {
     emit('signos', signosVitales)
 }
+
 </script>
 
 <template>
