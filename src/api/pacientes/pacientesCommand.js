@@ -175,7 +175,7 @@ export const pacientesCommand = {
       }
    },
 
-   postDiagnostico: async (expedienteId,temperatura,fr,fc,presionArterial,peso,estatura,imc,indiceCinturaCadera,saturacionOxigeno,valores,rangoDolor,nota,diagnostico,refiere,categoria,diagnosticoPrevio,terapeuticaEmpleada,diagnosticoFuncional,padecimientoActual,inspeccion,palpitacion,movibilidad,estudiosComplementarios,diagnosticoNosologico,cortoPlazo,medianoPlazo,largoPlazo,tratamientoFisioterapeutico,sugerencias,pronostico,fisioterapeutaId) => {
+   postDiagnostico: async (expedienteId,temperatura,fr,fc,presionArterial,peso,estatura,imc,indiceCinturaCadera,saturacionOxigeno,valores,rangoDolor,nota,diagnostico,refiere,categoria,diagnosticoPrevio,terapeuticaEmpleada,diagnosticoFuncional,padecimientoActual,inspeccion,palpitacion,movibilidad,estudiosComplementarios,diagnosticoNosologico,cortoPlazo,medianoPlazo,largoPlazo,tratamientoFisioterapeutico,sugerencias,pronostico,fisioterapeutaId,comprobantePago) => {
       try {
          const JSON ={
             expedienteId,
@@ -218,9 +218,11 @@ export const pacientesCommand = {
                pronostico
             },
             review: {
-               fisioterapeutaId
+               fisioterapeutaId,
+               comprobantePago
             }
          }
+         console.log(JSON)
          const [data, config] = autorizationJSON(JSON)
          const response = await axios.post(apiUrl + '/Diagnostico', data, config)
          return response.data
