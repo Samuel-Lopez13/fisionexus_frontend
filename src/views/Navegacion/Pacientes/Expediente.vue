@@ -14,6 +14,7 @@ let nombre = ref('')
 let sexo = ref('')
 let apellido = ref('')
 let pacienteId = ref(route.params.id)
+let expedienteId = ref(null)
 let loader = ref(true)
 let imagen = ref(null)
 let fechaNacimiento = ref(null)
@@ -26,9 +27,15 @@ let motivo = ref('')
 
 onMounted(() => {
     datosPaciente()
+    getExpediente()
 })
 
 /* Peticiones HTTP */
+
+const getExpediente = async ()=>{
+  let response = await pacientesQueries.getExpediente(pacienteId.value)
+  expedienteId.value = response.expedienteId
+}
 const datosPaciente = async () => {
     loader.value = true
     let response = await pacientesQueries.getDatosPaciente(pacienteId.value)
@@ -56,6 +63,14 @@ const agendarCita = async () =>{
     spinner.value = false
 }
 
+const verificarBoton = async () =>{
+  let response = await pacientesQueries.diagnosticoActivo(pacienteId.value)
+  if (response.enCurso === true){
+    irDiagnostico(expedienteId.value)
+  }else{
+    irDiagnostico(response.diagnosticoId)
+  }
+}
 </script>
 
 <template>
@@ -90,12 +105,12 @@ const agendarCita = async () =>{
         </section>
         <section
             class="desktop:w-6/12 laptop:w-6/12 tablet:w-full tablet:order-3 telefono:w-full desktop:h-[766px] laptop:h-[766px] overflow-x-auto style_scroll">
-            <interrogatorio-expediente :pacienteId :sexo />
+            <interrogatorio-expediente :pacienteId :sexo/>
         </section>
 
         <section
             class="desktop:w-3/12 laptop:w-3/12 tablet:w-5/12 tablet:ml-5 tablet:order-2 telefono:w-full flex flex-col gap-3">
-            <button class="button-primary w-full" @click="irDiagnostico(pacienteId)">Iniciar Consulta</button>
+            <button class="button-primary w-full" @click="verificarBoton">Iniciar Consulta</button>
             <div class="rounded-md border">
                 <header class="text-gray-600 p-3 py-3 border-b bg-gray-100">
                     <h5 class="telefono:text-center">Agendar consulta</h5>

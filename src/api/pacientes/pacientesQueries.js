@@ -79,5 +79,24 @@ export const pacientesQueries = {
       } catch (error) {
          console.log(error)
       }
+   },
+
+   //Diagnostico
+   diagnosticoActivo: async (id) =>{
+      try {
+         const response = await axios.get(apiUrl + '/Diagnostico/Activo?expediente=' + id, autorization())
+         return response.data
+      } catch (error) {
+         console.log(error)
+      }
+   },
+
+   getDiagnosticoActivo: async (id) =>{
+      try {
+         const response = await axios.get(apiUrl + '/Diagnostico?diagnostico=' + id, autorization())
+         return response.data
+      } catch (error) {
+         console.log(error)
+      }
    }
 }
