@@ -1,4 +1,37 @@
 <script setup>
+import { reactive, watch } from 'vue'
+
+let datosDiagnostico = reactive({
+    diagnostico: null,
+    refiere: null,
+    categoria: null,
+    diagnosticoPrevio: null,
+    terapeuticaEmpleada: null,
+    diagnosticoFuncional: null,
+    padecimientoActual: null,
+    inspeccion: null,
+    palpitacion: null,
+    movibilidad: null,
+    estudiosComplementarios: null,
+    diagnosticoNosologico: null,
+
+    cortoPlazo: null,
+    medianoPlazo: null,
+    largoPlazo: null,
+    tratamientoFisioterapeutico: null,
+    sugerencias: null,
+    pronostico: null
+})
+
+const emit = defineEmits(['datosDiagnostico'])
+
+watch(datosDiagnostico, () => {
+    enviarDatos();
+}, { deep: true })
+
+const enviarDatos = () => {
+    emit('datosDiagnostico', datosDiagnostico)
+}
 
 </script>
 
@@ -16,7 +49,7 @@
                     </svg>
                 </summary>
                 <div class="px-6 py-3">
-                    <input type="text"
+                    <input type="text" v-model="datosDiagnostico.diagnostico"
                            class=" input-primary resize-none"
                            placeholder="Ingrese el diagnostico" />
                 </div>
@@ -36,7 +69,7 @@
                     </svg>
                 </summary>
                 <div class="px-6 py-3">
-                    <input type="text"
+                    <input type="text" v-model="datosDiagnostico.refiere"
                            class=" input-primary resize-none"
                            placeholder="Ingrese nombre del personal médico que lo refirió aquí" />
                 </div>
@@ -56,7 +89,7 @@
                     </svg>
                 </summary>
                 <div class="px-6 py-3">
-                    <input type="text"
+                    <input type="text" v-model="datosDiagnostico.categoria"
                            class=" input-primary resize-none"
                            placeholder="Ingrese la categoría" />
                 </div>
@@ -79,6 +112,7 @@
                     <div>
                         <label for="" class="block mb-2">Diagnóstico previo del médico</label>
                         <textarea
+                            v-model="datosDiagnostico.diagnosticoPrevio"
                             class=" input-primary resize-none"
                             placeholder="Ingrese el diagnóstico previo del médico"
                         ></textarea>
@@ -86,6 +120,7 @@
                     <div>
                         <label for="" class="block mb-2">Terapéutica empleada y tratamientos afines</label>
                         <textarea
+                            v-model="datosDiagnostico.terapeuticaEmpleada"
                             class=" input-primary resize-none"
                             placeholder="Ingrese la terapéutica empleada y tratamientos afines"
                         ></textarea>
@@ -108,6 +143,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.diagnosticoFuncional"
               class=" input-primary resize-none"
               placeholder="Ingrese el diagnóstico funcional"
           ></textarea>
@@ -129,6 +165,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.padecimientoActual"
               class=" input-primary resize-none"
               placeholder="Ingrese el padecimiento actual"
           ></textarea>
@@ -150,6 +187,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.inspeccion"
               class=" input-primary resize-none"
               placeholder="Ingrese la inspección general y específica"
           ></textarea>
@@ -171,6 +209,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.palpitacion"
               class=" input-primary resize-none"
               placeholder="Ingrese la palpación, sensibilidad y medidas antropométricas"
           ></textarea>
@@ -192,6 +231,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.movibilidad"
               class=" input-primary resize-none"
               placeholder="Ingrese la movilidad, fuerza muscular y reflejos"
           ></textarea>
@@ -213,6 +253,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.estudiosComplementarios"
               class=" input-primary resize-none"
               placeholder="Ingrese las pruebas especiales y estudios complementarios"
           ></textarea>
@@ -234,12 +275,15 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.diagnosticoNosologico"
               class=" input-primary resize-none"
               placeholder="Ingrese el diagnóstico nosológico"
           ></textarea>
                 </div>
             </details>
         </section>
+
+
         <!--Objetivos-->
         <section class="rounded-sm border shadow">
             <details open class="group">
@@ -257,6 +301,7 @@
                     <div>
                         <label for="" class="block mb-2">Corto plazo</label>
                         <textarea
+                            v-model="datosDiagnostico.cortoPlazo"
                             class=" input-primary resize-none"
                             placeholder="Ingrese los objetivos a corto plazo"
                         ></textarea>
@@ -264,6 +309,7 @@
                     <div>
                         <label for="" class="block mb-2">Mediano plazo</label>
                         <textarea
+                            v-model="datosDiagnostico.medianoPlazo"
                             class=" input-primary resize-none"
                             placeholder="Ingrese los objetivos a mediano plazo"
                         ></textarea>
@@ -271,6 +317,7 @@
                     <div>
                         <label for="" class="block mb-2">Largo plazo</label>
                         <textarea
+                            v-model="datosDiagnostico.largoPlazo"
                             class=" input-primary resize-none"
                             placeholder="Ingrese los objetivos a largo plazo"
                         ></textarea>
@@ -278,6 +325,8 @@
                 </div>
             </details>
         </section>
+
+
         <!--Tratamiento fisioterapéutico...-->
         <section class="rounded-sm border shadow">
             <details open class="group">
@@ -293,6 +342,7 @@
                 </summary>
                 <div class="px-6 py-3">
                     <textarea
+                        v-model="datosDiagnostico.tratamientoFisioterapeutico"
                         class=" input-primary resize-none"
                         placeholder="Ingrese el tratamiento fisioterapéutico"
                     ></textarea>
@@ -314,6 +364,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.sugerencias"
               class=" input-primary resize-none"
               placeholder="Ingrese las sugerencias y recomendaciones"
           ></textarea>
@@ -335,6 +386,7 @@
                 </summary>
                 <div class="px-6 py-3">
           <textarea
+              v-model="datosDiagnostico.pronostico"
               class=" input-primary resize-none"
               placeholder="Ingrese los pronósticos y recomendaciones"
           ></textarea>

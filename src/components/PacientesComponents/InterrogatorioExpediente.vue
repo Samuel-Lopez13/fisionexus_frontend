@@ -48,6 +48,7 @@ let cirugias = ref(null)
 let flujoVaginalId = ref(null)
 let tipoAnticonceptivoId = ref(null)
 let editar = ref(true)
+let diagnosticos = ref([])
 
 //Modelos reactivos
 const model = reactive({
@@ -89,6 +90,8 @@ const datosExpediente = async () => {
     let respuesta = await pacientesQueries.getExpediente(pacienteId.value)
     tipoInterrogatorio.value = respuesta.tipoInterrogatorio
     responsable.value = respuesta.responsable
+    diagnosticos.value = respuesta.diagnosticos
+    console.log(diagnosticos.value)
     //HeredoFamiliar
     model.padres = respuesta.heredoFamiliar.padres
     model.padresVivos = respuesta.heredoFamiliar.padresVivos
@@ -127,6 +130,15 @@ const datosExpediente = async () => {
     spinner.value = false
 }
 
+//irDiagnostico
+
+const irAlDiagnostico = (status, id) =>{
+  if (status === true){
+    irDiagnostico(id)
+  }else{
+    irDiagnosticos(id)
+  }
+}
 // Validaciones
 
 const validacionPadres = () => {
@@ -189,17 +201,8 @@ const editarDatos = () => {
                         <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
                     </svg>
                 </summary>
-                <div class="px-6 py-3 flex justify-between w-full items-center text-gray-600 hover:text-blue-500 cursor-pointer"@click="irDiagnostico(pacienteId)" >
-                    <div class="text-sm">Dolor de espalda, dolor de rodilla <span class="text-green-500 font-bold">(Activo)</span></div>
-                    <div class="flex items-center gap-2">
-                        Ir
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="px-6 py-3 flex justify-between w-full items-center text-gray-600 hover:text-blue-500" role="button" @click="irDiagnosticos(pacienteId)">
-                    <div class="text-sm">Dolor de espalda, dolor de rodilla</div>
+                <div v-for="diagnostico in diagnosticos" :key="id" class="px-6 py-3 flex justify-between w-full items-center text-gray-600 hover:text-blue-500 cursor-pointer" @click="irAlDiagnostico(diagnostico.status,diagnostico.diagnosticoId)" >
+                    <div class="text-sm">{{ diagnostico.diagnostico }} <span v-show="diagnostico.status === true" class="text-green-500 font-bold">(Activo)</span></div>
                     <div class="flex items-center gap-2">
                         Ir
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">

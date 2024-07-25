@@ -1,11 +1,23 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { areasAnterior, areasLateral, areasPosterior } from '@/helpers/mapaCorporal.js'
 
 const valores = ref([]) //Este es valores en el ep
 const rangoDolor = ref([]) //Este seria rango en el ep
 const areaSeleccionada = ref([])
 const painLevels = reactive({})
+
+let mapa =  reactive({
+    valores:[],
+    rangoDolor:[],
+    notas:null
+})
+
+const emit = defineEmits(['mapaC'])
+
+watch(mapa, () => {
+    enviarMapa();
+}, { deep: true })
 
 const handleClick = (area) => {
 
@@ -14,14 +26,14 @@ const handleClick = (area) => {
         painLevels[area.name] = 0
 
         //Agregamos el id de la parte del cuerpo
-        valores.value.push(BuscadorArea(area.name).id)
+        mapa.valores.push(BuscadorArea(area.name).id)
     } else {
         const index = areaSeleccionada.value.indexOf(area.name)
         areaSeleccionada.value.splice(index, 1)
         delete painLevels[area.name]
 
         //Eliminamos el id de la parte del cuerpo
-        valores.value = valores.value.filter(x => x !== BuscadorArea(area.name).id)
+        mapa.valores.value = mapa.valores.value.filter(x => x !== BuscadorArea(area.name).id)
     }
 }
 
@@ -51,7 +63,11 @@ const enviar = () => {
         rangos.push(painLevels[key])
     }
 
-    rangoDolor.value = rangos
+    mapa.rangoDolor.value = rangos
+}
+const enviarMapa = () => {
+    enviar()
+    emit('mapaC', mapa)
 }
 </script>
 
@@ -59,6 +75,7 @@ const enviar = () => {
     <div class="flex justify-around telefono:flex-wrap border rounded-sm">
         <!-- Vista Anterior -->
         <section class="relative">
+            <button @click="enviar">Imprimir</button>
             <img src="/src/assets/CuerpoHumano/VistaAnterior.jpeg" alt="Cuerpo Humano" class="w-[225px] h-[400px]">
             <div v-for="area in areasAnterior" :key="'anterior-' + area.name"
                  :style="{ left: area.x + 'px', top: area.y + 'px', width: area.width + 'px', height: area.height + 'px', backgroundColor: isSelected(area.name) ? '#0d6efd' : 'transparent' }"
@@ -127,7 +144,7 @@ const enviar = () => {
                 </div>
             </div>
             <div class="px-6 py-3">
-                <textarea
+                <textarea v-model="mapa.notas"
                     class=" input-primary resize-none"
                     placeholder="Ingrese su nota"
                 ></textarea>
