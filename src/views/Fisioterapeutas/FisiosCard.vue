@@ -1,11 +1,17 @@
 <script setup>
 import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { clavesStore } from '@/stores/clavesStore.js'
 
 let fisios = ref([])
 
 onMounted(() => {
     verFisios()
+})
+
+watch(() => clavesStore().actualizacionFisios, async () => {
+    verFisios()
+    clavesStore().actualizacionFisios = false
 })
 
 const verFisios = async () => {
@@ -15,11 +21,11 @@ const verFisios = async () => {
 
 <template>
     <div v-for="fisio in fisios" :key="fisio.id" role="button"
-         class="animate-fade-up animate-once max-w-sm text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-blue-600 group transition duration-200">
-        <img class="rounded-t-lg w-full h-[230px] object-cover" :src="fisio.foto" />
+         class="animate-fade-up animate-once max-w-sm text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-blue-500 group transition-all duration-1000 ease-out">
+        <img class="rounded-t-lg w-full h-[230px] object-cover group-hover:grayscale" :src="fisio.foto" />
         <div class="p-3">
             <a>
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-white">
+                <h5 class="mb-2 text-[20px] font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-white overflow-hidden whitespace-nowrap text-ellipsis">
                     {{ fisio.nombre }}
                 </h5>
             </a>

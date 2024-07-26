@@ -25,6 +25,7 @@ export default {
                 'fondo': '#F9FAFD',
                 'principal': '#0062FF',
                 'pHover': '#238dff',
+                'difuminado': 'rgba(95,95,95,0.5)',
             },
             colors:{
                 'principal': '#0062FF'

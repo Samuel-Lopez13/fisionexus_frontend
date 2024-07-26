@@ -305,32 +305,31 @@ export const notifiacionApi = {
    agregarUsuario: async () => {
       const { value: formValue } = await Swal.fire({
          title: 'Agregar integrante',
-         allowOutsideClick: false,
-         allowEscapeKey: false,
-         showConfirmButton: true,
-         showCancelButton: true,
-         confirmButtonText: 'Agregar',
-         cancelButtonText: 'Cancelar',
-         confirmButtonColor: `${primaryColor}`,
+         showConfirmButton: false,
          customClass: {
             popup: 'rounded-sm',
             title: 'text-xl p-5 bg-gray-100'
          },
          html: ` 
         <div class="flex flex-col gap-2">
-            <label>Nombre completo</label>
-            <input id="nombre" type="text" class="input-primary" placeholder="Pedro Davies">
-            <label>Correo:</label>
-            <input id="correo" type="text" class="input-primary" placeholder="Correo">
-            <label>Telefono:</label>
-            <input id="telefono" maxlength="10" type="text" class="input-primary" placeholder="Telefono">
-            <label>Especialidad:</label>
-            <input id="especialidad" type="text" class="input-primary" placeholder="Especialidad">
-            <label>Cedula:</label>
-            <input id="cedula" type="text" class="input-primary" placeholder="Cedula">
-            <label>Foto:</label>
-            <input id="foto" type="file" class="hover:border-blue-300 border border-gray-300 text-gray-900 text-sm rounded-[3px] focus:ring-blue-500 focus:border-blue-500 block focus:text-blue-900">
-            <p id="error" class="text-red-400 text-sm animate-fade" style="display: none;">Por favor, complete todos los campos</p>
+            <form action="">
+                <label>Nombre completo</label>
+                <input id="nombre" type="text" class="input-primary" placeholder="Pedro Davies">
+                <label>Correo:</label>
+                <input id="correo" type="text" class="input-primary" placeholder="Correo">
+                <label>Telefono:</label>
+                <input id="telefono" maxlength="10" type="text" class="input-primary" placeholder="Telefono">
+                <label>Especialidad:</label>
+                <input id="especialidad" type="text" class="input-primary" placeholder="Especialidad">
+                <label>Cedula:</label>
+                <input id="cedula" type="text" class="input-primary" placeholder="Cedula">
+                <label>Foto:</label>
+                <input id="foto" type="file" class="hover:border-blue-300 border border-gray-300 text-gray-900 text-sm rounded-[3px] focus:ring-blue-500 focus:border-blue-500 block focus:text-blue-900">
+                <p id="error" class="text-red-400 text-sm animate-fade" style="display: none;">Por favor, complete todos los campos</p>
+            </form>
+            <div class="">
+                <button id="agendar-btn" class="rounded-[3px] p-2 bg-blue-600 text-white w-full hover:bg-pHover">Agendar</button>
+             </div>
         </div> 
         `,
          preConfirm: () => {
@@ -357,6 +356,9 @@ export const notifiacionApi = {
          try {
             let response = await usuarioCommand.agregarIntegrante(nombre, correo, telefono, especialidad, cedula, foto)
             if (response === 'Se creo el fisioterapeuta correctamente') {
+               clavesStore().actualizacionFisios = true
+               console.log("Prueba de log")
+               console.log(clavesStore().actualizacionFisios)
                NotificacionesModal.ExitosoSimple('Se agrego un nuevo integrante')
             } else {
                NotificacionesModal.PantallaError('Ocurrio un error al agregar')
