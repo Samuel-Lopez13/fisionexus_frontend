@@ -2,6 +2,8 @@ import { apiUrl, autorizationJSON, sinAutorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
 import { irInicio } from '@/router/rutasUtiles.js'
 import { globalCommand } from '@/api/global/globaCommand.js'
+import { clavesStore } from '@/stores/clavesStore.js'
+import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 
 export const usuarioCommand = {
 
@@ -48,10 +50,16 @@ export const usuarioCommand = {
             foto: img == null ? img : img.secure_url
          }
          const [data, config] = autorizationJSON(JSON)
-         const response = await axios.post(apiUrl + '/Fisio', data, config)
-         return response.data
+
+         let response = await axios.post(apiUrl + '/Fisio', data, config)
+
+         console.log(response)
+         await NotificacionesModal.ExitosoSimple('Se registro correctamente el fisioterapeuta')
+
       } catch (error) {
-         console.log(error)
+         if (error.response.status === 400){
+            await NotificacionesModal.PantallaError('Ocurrio un error en el registro')
+         }
       }
    }
 }

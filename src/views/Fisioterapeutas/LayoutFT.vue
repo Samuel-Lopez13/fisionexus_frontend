@@ -1,6 +1,5 @@
 <script setup>
 import UsuarioCard from '@/views/Fisioterapeutas/FisiosCard.vue'
-import { notifiacionApi } from '@/helpers/notifications/ConsumoAlertas.js'
 import fisioForm from '@/components/formularios/FisioForm.vue'
 import TransitionRec from '@/components/recursos/TransitionRec.vue'
 import { ref } from 'vue'
@@ -29,17 +28,11 @@ let isHovered = ref(false)
         <TransitionRec class="fixed z-10 inset-0 flex items-center justify-center w-full h-full bg-black bg-opacity-40"
                        @click.self="registro = false">
             <div v-if="registro">
-                <fisioForm class="w-1/4 bg-white" @salir="registro = false"/>
+                <fisioForm class="w-[450px] bg-white" @salir="registro = false"/>
             </div>
         </TransitionRec>
 
         <div class="fixed bottom-8 right-8">
-            <button class="button-primary" @click="notifiacionApi.agregarUsuario()">
-                Agregar integrante +
-            </button>
-            <!--<button class="button-primary" @click="registro = true">
-                Agregar integrante +
-            </button>-->
             <button class="bg-principal h-[50px] font-poppins text-white bg-opacity-45 hover:bg-opacity-100 transition-all duration-1000 ease-out"
                     @mouseover="isHovered = true"
                     @mouseleave="isHovered = false"
@@ -71,13 +64,5 @@ let isHovered = ref(false)
     100% {
         background-position: 0% 50%;
     }
-}
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
 }
 </style>
