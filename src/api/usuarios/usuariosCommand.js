@@ -51,14 +51,21 @@ export const usuarioCommand = {
          }
          const [data, config] = autorizationJSON(JSON)
 
-         let response = await axios.post(apiUrl + '/Fisio', data, config)
+         await axios.post(apiUrl + '/Fisio', data, config)
 
-         console.log(response)
          await NotificacionesModal.ExitosoSimple('Se registro correctamente el fisioterapeuta')
 
+         return true
       } catch (error) {
          if (error.response.status === 400){
-            await NotificacionesModal.PantallaError('Ocurrio un error en el registro')
+            if ('El telefono ya esta registrado' === error.response.data.detail) {
+               await NotificacionesModal.PantallaError('Ya existe un usuario con este telefono')
+            } else if('La cedula ya esta registrada'  === error.response.data.detail) {
+               await NotificacionesModal.PantallaError('La cedula profesional ya esta registrada')
+            } else {
+               //El correo ya esta registrado
+               await NotificacionesModal.PantallaError('Ya existe un usuario con este correo')
+            }
          }
       }
    }

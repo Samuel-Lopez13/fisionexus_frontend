@@ -1,17 +1,21 @@
 <script setup>
 import { usuariosQueries } from '@/api/usuarios/usuariosQueries.js'
-import { onMounted, ref, watch } from 'vue'
-import { clavesStore } from '@/stores/clavesStore.js'
+import { defineProps, onMounted, ref, watch } from 'vue'
 
 let fisios = ref([])
+
+let props = defineProps({
+    actualizar: Boolean
+})
 
 onMounted(() => {
     verFisios()
 })
 
-watch(() => clavesStore().actualizacionFisios, async () => {
-    verFisios()
-    clavesStore().actualizacionFisios = false
+//Si el registro se acompleta el actualizar sera true
+watch(() => props.actualizar, async () => {
+    if(props.actualizar)
+        verFisios()
 })
 
 const verFisios = async () => {

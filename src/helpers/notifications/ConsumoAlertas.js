@@ -356,9 +356,6 @@ export const notifiacionApi = {
          try {
             let response = await usuarioCommand.agregarIntegrante(nombre, correo, telefono, especialidad, cedula, foto)
             if (response === 'Se creo el fisioterapeuta correctamente') {
-               clavesStore().actualizacionFisios = true
-               console.log("Prueba de log")
-               console.log(clavesStore().actualizacionFisios)
                NotificacionesModal.ExitosoSimple('Se agrego un nuevo integrante')
             } else {
                NotificacionesModal.PantallaError('Ocurrio un error al agregar')

@@ -4,9 +4,21 @@ import fisioForm from '@/components/formularios/FisioForm.vue'
 import TransitionRec from '@/components/recursos/TransitionRec.vue'
 import { ref } from 'vue'
 
-let registro = ref(true)
+let modal = ref(false)
 let isHovered = ref(false)
+let registro = ref(false)
 
+//Cerramos el modal e indicamos que el registro esta completo
+const finalizado = () => {
+    modal.value = false
+    registro.value = true
+}
+
+//Se abre el modal e indica que el registro esta incompleto
+const inicio = () => {
+    modal.value = true
+    registro.value = false
+}
 </script>
 
 <template>
@@ -21,14 +33,14 @@ let isHovered = ref(false)
             </p>
         </header>
         <section class="pb-4 grid grid-cols-[270px_270px_270px_270px_270px] justify-center gap-x-12 gap-y-7 telefono:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-5 telefono:place-items-center">
-            <UsuarioCard />
+            <UsuarioCard :actualizar=registro />
         </section>
 
         <!-- Modales -->
         <TransitionRec class="fixed z-10 inset-0 flex items-center justify-center w-full h-full bg-black bg-opacity-40"
-                       @click.self="registro = false">
-            <div v-if="registro">
-                <fisioForm class="w-[450px] bg-white" @salir="registro = false"/>
+                       @click.self="modal = false">
+            <div v-if="modal">
+                <fisioForm class="w-[450px] bg-white" @salir="finalizado()"/>
             </div>
         </TransitionRec>
 
@@ -37,7 +49,7 @@ let isHovered = ref(false)
                     @mouseover="isHovered = true"
                     @mouseleave="isHovered = false"
                     :class="isHovered ? 'px-3 rounded' : 'w-[50px] rounded-full'"
-                    @click="registro = true">
+                    @click="inicio()">
                 <span v-if="isHovered">Agregar Pacientes +</span>
                 <span v-else>+</span>
             </button>
