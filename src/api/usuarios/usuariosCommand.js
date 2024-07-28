@@ -2,6 +2,8 @@ import { apiUrl, autorizationJSON, sinAutorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
 import { irInicio } from '@/router/rutasUtiles.js'
 import { globalCommand } from '@/api/global/globaCommand.js'
+import { clavesStore } from '@/stores/clavesStore.js'
+import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 
 export const usuarioCommand = {
 
@@ -48,10 +50,23 @@ export const usuarioCommand = {
             foto: img == null ? img : img.secure_url
          }
          const [data, config] = autorizationJSON(JSON)
-         const response = await axios.post(apiUrl + '/Fisio', data, config)
-         return response.data
+
+         await axios.post(apiUrl + '/Fisio', data, config)
+
+         await NotificacionesModal.ExitosoSimple('Se registro correctamente el fisioterapeuta')
+
+         return true
       } catch (error) {
-         console.log(error)
+         if (error.response.status === 400){
+            if ('El telefono ya esta registrado' === error.response.data.detail) {
+               await NotificacionesModal.PantallaError('Ya existe un usuario con este telefono')
+            } else if('La cedula ya esta registrada'  === error.response.data.detail) {
+               await NotificacionesModal.PantallaError('La cedula profesional ya esta registrada')
+            } else {
+               //El correo ya esta registrado
+               await NotificacionesModal.PantallaError('Ya existe un usuario con este correo')
+            }
+         }
       }
    }
 }

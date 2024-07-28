@@ -15,7 +15,7 @@ const alertas = () =>{
 </script>
 
 <template>
-    <transition enter-active-class="transition-opacity duration-1000"
+    <!--<transition enter-active-class="transition-opacity duration-1000"
                 enter-from-class="opacity-0"
                 enter-to-class="opacity-100"
                 leave-active-class="transition-opacity duration-1000"
@@ -24,7 +24,7 @@ const alertas = () =>{
         <div v-show="alerta" class="absolute right-2 bottom-0 p-4 mb-4 text-sm text-yellow-800 rounded-sm bg-yellow-50" role="alert">
             <span class="font-medium">Aviso: </span> La cita de las 6:00 pm fue marcada como inasistencia
         </div>
-    </transition>
+    </transition>-->
 
 </template>
 
