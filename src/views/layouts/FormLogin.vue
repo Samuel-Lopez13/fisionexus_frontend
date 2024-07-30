@@ -1,30 +1,26 @@
 <script setup>
-import {onMounted, ref} from "vue";
-import {usuarioCommand} from "@/api/usuarios/usuariosCommand.js";
+import { ref } from "vue";
+import { usuarioCommand } from "@/api/usuarios/usuariosCommand.js";
+import TransitionRec from '@/components/recursos/TransitionRec.vue'
 
+//recursos
 let spinner = ref(false)
 let alertError = ref(false)
 let messageError = ref("")
+//modelo
 let username = ref("")
 let contrasena = ref("")
-
-onMounted(() =>{
-
-})
 
 const login = async () =>{
     spinner.value = true
     let response = await usuarioCommand.login(username.value, contrasena.value)
-    spinner.value = false
 
     if(response !== null){
         alertError.value = true
         messageError.value = response
     }
-}
 
-const handleFocus = () =>{
-    alertError.value = false
+    spinner.value = false
 }
 </script>
 
@@ -39,30 +35,24 @@ const handleFocus = () =>{
                 <img class="w-2/4" src="../../assets/icons/fisioIcon.png" alt="">
             </div>
             <form class="h-fit w-8/12 flex flex-col justify-center items-center gap-7 telefono:w-3/4 telefono:2/3 telefono:gap-6 telefono:h-auto">
-                <transition
-                    enter-active-class="transition-opacity duration-500"
-                    enter-from-class="opacity-0"
-                    enter-to-class="opacity-100"
-                    leave-active-class="transition-opacity duration-500"
-                    leave-from-class="opacity-100"
-                    leave-to-class="opacity-0">
+                <TransitionRec>
                     <div class="w-8/12 h-[40px] bg-[#FED0D1] flex items-center justify-center rounded-sm" v-if="alertError">
                         <img src="../../assets/icons/error.png" class="p-1 h-[24px]">
                         <h5 class="p-1 text-gray-900 text-sm">{{ messageError }}</h5>
                     </div>
-                </transition>
+                </TransitionRec>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Nombre de usuario</label>
-                    <input v-model="username" @focus="handleFocus()" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="text"
+                    <input v-model="username" @focus="alertError = false" :disabled=spinner :class="{ 'bg-white': spinner }" class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="text"
                            placeholder="Nombre de usuario">
                 </div>
                 <div class="flex flex-col w-8/12 justify-center gap-3 telefono:w-full">
                     <label class="text-gray-600">Contraseña</label>
-                    <input v-model="contrasena" @focus="handleFocus()" :disabled=spinner class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="password"
+                    <input v-model="contrasena" @focus="alertError = false" :disabled=spinner class="h-[40px] border-principal rounded-sm p-3 text-gray-600 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500" type="password"
                            placeholder="Contraseña">
                 </div>
                 <div class="w-full flex justify-center">
-                    <button type="submit" @click.prevent="login()" :disabled=spinner :class="{ 'bg-[#238dff]': spinner}" class="w-8/12 h-[45px] text-1xl font-bold tracking-widest bg-principal text-white rounded-sm hover:bg-pHover telefono:w-full">
+                    <button type="submit" @click.prevent="login()" :disabled=spinner :class="{ 'button-disabled': spinner}" class="w-8/12 h-[45px] text-1xl font-bold tracking-widest bg-principal text-white rounded-sm hover:bg-pHover telefono:w-full">
                         <div v-if="spinner === false">
                             Iniciar sesión
                         </div>
@@ -81,5 +71,9 @@ const handleFocus = () =>{
 </template>
 
 <style scoped>
+
+.desactivar{
+    background-color: #238dff;
+}
 
 </style>

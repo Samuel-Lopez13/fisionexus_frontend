@@ -1,14 +1,10 @@
 <script setup>
-    import { CerrarSesion } from '@/router/rutasUtiles.js'
 </script>
 
 <template>
     <nav class="flex flex-col items-center w-16 h-screen space-y-8 bg-white border-r border-gray-300 telefono:hidden">
         <div class="flex flex-col items-center w-16 py-3 space-y-5">
-            <a href="https://fe.uacam.mx/" target="_blank">
-                <img class="w-auto h-10" src="https://fe.uacam.mx/view/view_image?imagen=logo_micrositio.png&tipo=logo"
-                     alt="">
-            </a>
+
             <router-link :to="{name:'Inicio'}" active-class="active_item border-l-4 border-blue-600"
                          data-tooltip-target="Inicio" data-tooltip-placement="right"
                          class="w-full p-1.5 text-gray-500 duration-100 hover:text-blue-600 flex justify-center">
@@ -84,21 +80,6 @@
             <div id="Ajustes" role="tooltip"
                  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
                 Ajustes
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-        </div>
-
-        <div class="flex items-end w-16 h-screen py-4 cursor-pointer">
-            <div @click="CerrarSesion()" data-tooltip-target="Sesion" data-tooltip-placement="right"
-                 class="w-full p-1.5 text-gray-500 duration-200 hover:text-blue-600 flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
-                </svg>
-            </div>
-            <div id="Sesion" role="tooltip"
-                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip">
-                Cerrar Sesión
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
         </div>

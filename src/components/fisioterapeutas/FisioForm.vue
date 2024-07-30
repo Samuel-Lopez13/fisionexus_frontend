@@ -2,12 +2,14 @@
     import { ref } from 'vue'
     import { usuarioCommand } from '@/api/usuarios/usuariosCommand.js'
 
+    //modelos
     let nombre = ref("")
     let correo = ref("")
     let telefono = ref("")
     let especialidad = ref("")
     let cedula = ref("")
-    let foto = ref("https://res.cloudinary.com/doi0znv2t/image/upload/v1718432025/Utils/fotoPerfil.png")
+    let archivo = ref([])
+    //recursos
     const especialidades = ref([
         { idEspecialidad: '1', especialidad: 'Cardiología' },
         { idEspecialidad: '2', especialidad: 'Dermatología' },
@@ -16,10 +18,12 @@
     ]);
     let alerta = ref(false)
     let spinner = ref(false)
+    let foto = ref("https://res.cloudinary.com/doi0znv2t/image/upload/v1718432025/Utils/fotoPerfil.png")
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         foto.value = URL.createObjectURL(file);
+        archivo.value = file
     };
 
     const enviarFormulario = async () =>{
@@ -29,7 +33,7 @@
             alerta.value = true
         } else{
             spinner.value = true
-            registro = await usuarioCommand.agregarIntegrante(nombre.value, correo.value, telefono.value, especialidad.value, cedula.value, foto.value)
+            registro = await usuarioCommand.agregarIntegrante(nombre.value, correo.value, telefono.value, especialidad.value, cedula.value, archivo.value = archivo.value.length == 0 ? null : archivo.value)
             spinner.value = false
         }
 
@@ -82,14 +86,14 @@
                 <label class="text-lg font-medium text-blue-400">Especialidad:</label>
                 <select class="input-primary" v-model="especialidad">
                     <option value="" disabled selected>Elige una opción</option>
-                    <option v-for="especial in especialidades" :value="especial.idEspecialidad" class="py-1">
+                    <option v-for="especial in especialidades" :value="especial.idEspecialidad">
                         {{ especial.especialidad }}
                     </option>
                 </select>
             </div>
             <div>
                 <p id="error" class="text-center text-red-400 text-sm animate-fade pb-1" v-if="alerta == true">Todos los campos son obligatorios</p>
-                <button @click="agregarFisio()" :disabled=spinner :class="{ 'bg-[#238dff]': spinner}"
+                <button @click="agregarFisio()" :disabled=spinner :class="{ 'button-disabled': spinner}"
                         class="button-primary w-full">
                     <div v-if="spinner === false">
                         Registrar fisioterapeuta

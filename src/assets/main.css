@@ -13,6 +13,10 @@
     @apply bg-pHover;
 }
 
+.button-disabled {
+    @apply bg-[#238dff];
+}
+
 .input-primary{
     @apply hover:border-blue-300 border border-gray-300 text-gray-900 text-sm rounded-[3px] focus:ring-blue-500 focus:border-blue-500 block focus:text-blue-900  w-full p-2.5
 }
