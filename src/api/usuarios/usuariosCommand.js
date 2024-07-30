@@ -2,7 +2,6 @@ import { apiUrl, autorizationJSON, sinAutorizationJSON } from '@/api/headers.js'
 import axios from 'axios'
 import { irInicio } from '@/router/rutasUtiles.js'
 import { globalCommand } from '@/api/global/globaCommand.js'
-import { clavesStore } from '@/stores/clavesStore.js'
 import { NotificacionesModal } from '@/helpers/notifications/NotificacionGeneral.js'
 
 export const usuarioCommand = {
@@ -25,6 +24,7 @@ export const usuarioCommand = {
          //Te redirecciona al Dashboard
          irInicio()
 
+         //El return solo es para saber si, si se ejecuto correctamente
          return null
       } catch (error) {
          if (error.response.status === 400) {
@@ -55,6 +55,7 @@ export const usuarioCommand = {
 
          await NotificacionesModal.ExitosoSimple('Se registro correctamente el fisioterapeuta')
 
+         //El return solo es para saber si, si se ejecuto correctamente
          return true
       } catch (error) {
          if (error.response.status === 400){

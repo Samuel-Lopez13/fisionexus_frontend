@@ -1,6 +1,6 @@
 <script setup>
 import UsuarioCard from '@/views/Fisioterapeutas/FisiosCard.vue'
-import fisioForm from '@/components/formularios/FisioForm.vue'
+import fisioForm from '@/components/fisioterapeutas/FisioForm.vue'
 import TransitionRec from '@/components/recursos/TransitionRec.vue'
 import { ref } from 'vue'
 

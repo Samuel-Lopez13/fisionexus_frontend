@@ -2,9 +2,9 @@
 import Sidebar from '@/components/globalComponents/SideBar.vue'
 import Header from '@/components/globalComponents/HeaderInfo.vue'
 import Footer from '@/components/globalComponents/FooterInfo.vue'
-import { onMounted, ref } from 'vue'
+import Alertas from '@/components/globalComponents/AlertasInfo.vue'
+import { onMounted } from 'vue'
 import { initTooltips } from 'flowbite'
-import Alertas from '@/components/globalComponents/Alertas.vue'
 
 onMounted(() => {
     initTooltips()// Inicializar los tooltips nuevamente

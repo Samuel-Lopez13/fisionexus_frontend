@@ -3,8 +3,8 @@ import { CerrarSesion, irAjustes, irInicio, irMetricas, irPacientes } from '@/ro
 import { ref } from 'vue'
 import router from '@/router/index.js'
 
-const menu = ref(false)
-const nombre = ref(localStorage.getItem("Usuario"))
+let menu = ref(false)
+let nombre = ref(localStorage.getItem("Usuario"))
 let notis = ref(false)
 
 const MenuMobile = () =>{
@@ -19,8 +19,6 @@ const CerrarMenu = (ruta) => {
 const popNotificaciones = () =>{
     notis.value = !notis.value
 }
-
-
 </script>
 
 <template>
@@ -75,9 +73,9 @@ const popNotificaciones = () =>{
                           d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
                 </svg>
             </div>
-            <div v-if="notis" class="w-[300px] h-[400px] overflow-y-auto style_scroll absolute bg-white border top-12 right-12 rounded-md" v-click-away="popNotificaciones" >
+            <div v-if="notis" class="w-[300px] h-[400px] overflow-y-auto style_scroll absolute bg-white border top-14 right-6 rounded-md" v-click-away="popNotificaciones" >
                 <p v-for="load in 7" class="p-3 text-sm border-b text-gray-600 hover:bg-gray-50">
-                    La cita de las 6:00 pm (Paciente) fue marcada como inasistencia <span class="text-blue-600">(20/07/2024)</span>
+                    La cita de las 6:00 pm (Paciente) fue marcada como inasistencia <br> <span class="text-blue-600 text-[10px]">20/07/2024 14:00:00hrs</span>
                 </p>
             </div>
         </section>

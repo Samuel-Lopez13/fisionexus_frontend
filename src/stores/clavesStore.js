@@ -4,7 +4,6 @@ import moment from 'moment'
 export const clavesStore = defineStore('claves', {
     state: () => ({
         modificacionCita: false,
-        actualizacionFisios: false,
         vigencias: [],
         timeoutIds: [],
     }),
