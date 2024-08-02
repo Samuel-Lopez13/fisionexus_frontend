@@ -17,7 +17,7 @@ const ingresar = () => {
 }
 
 // Al montar el componente, verificar el permiso en localStorage
-onMounted(async () => {
+onMounted( () => {
     console.log('entre')
     if (localStorage.getItem('permisoKey') === key) {
         permiso.value = true
