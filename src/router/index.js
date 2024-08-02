@@ -17,6 +17,9 @@ import { pacientesQueries } from '@/api/pacientes/pacientesQueries.js'
 import Diagnostico from '@/views/Navegacion/Pacientes/Diagnostico/Diagnostico.vue'
 import DiagnosticoPasado from '@/views/Navegacion/Pacientes/Diagnostico/DiagnosticoEspecifico.vue'
 import Calendario from '@/views/Navegacion/Calendario/Calendario.vue'
+import Usuario from '@/views/Navegacion/Ajustes/Usuario.vue'
+import Catalogos from '@/views/Navegacion/Ajustes/Catalogos.vue'
+import Equipo from '@/views/Navegacion/Ajustes/Equipo.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,7 +40,7 @@ const router = createRouter({
          path: '/',
          name: 'Panel',
          component: Panel,
-         meta: { verifyToken: true },
+         meta: { verifyToken: false },
          children: [
             {
                path: 'Inicio',
@@ -137,7 +140,25 @@ const router = createRouter({
                   {
                      path: '',
                      name: 'Configuracion',
-                     component: LayoutAjustes
+                     component: LayoutAjustes,
+                     redirect: { name: 'Usuario' },
+                     children:[
+                        {
+                           path:'Usuario',
+                           name:'Usuario',
+                           component:Usuario
+                        },
+                        {
+                           path:'Catalogos',
+                           name:'Catalogos',
+                           component:Catalogos
+                        },
+                        {
+                           path:'Equipo',
+                           name:'Equipo',
+                           component:Equipo
+                        }
+                     ]
                   }
                ]
             }
@@ -196,6 +217,13 @@ router.beforeEach(async (to, from, next) => {
    } else {
       document.title = 'Fisiolabs' // Título por defecto
    }
+
+   router.beforeEach((to, from, next) => {
+      if (to.path !== '/Ajustes/Usuario') {
+         localStorage.removeItem('permisoKey')
+      }
+      next()
+   })
 
    return next()
 })
