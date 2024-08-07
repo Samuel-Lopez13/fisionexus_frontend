@@ -218,12 +218,6 @@ router.beforeEach(async (to, from, next) => {
       document.title = 'Fisiolabs' // Título por defecto
    }
 
-   router.beforeEach((to, from, next) => {
-      if (to.path !== '/Ajustes/Usuario') {
-         localStorage.removeItem('permisoKey')
-      }
-      next()
-   })
 
    return next()
 })

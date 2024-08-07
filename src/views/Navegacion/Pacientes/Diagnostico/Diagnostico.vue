@@ -23,7 +23,7 @@ let imagen = ref(null)
 let fechaNacimiento = ref(null)
 let edad = ref(null)
 let fisios = ref([])
-let citaInicial = ref(false)
+let citaInicial = ref(true)
 let notaFinal = ref(false)
 
 //REVISADO POR
