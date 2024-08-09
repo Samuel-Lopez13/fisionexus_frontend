@@ -51,7 +51,7 @@
 </script>
 
 <template>
-    <form class="rounded" @submit.prevent>
+    <form class="rounded-sm" @submit.prevent>
         <header class="text-2xl text-gray-600 p-4 bg-gray-100 flex justify-center rounded-tl rounded-tr">
             Fisioterapeuta
         </header>

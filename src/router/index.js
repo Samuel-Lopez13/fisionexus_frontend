@@ -20,6 +20,7 @@ import Calendario from '@/views/Navegacion/Calendario/Calendario.vue'
 import Usuario from '@/views/Navegacion/Ajustes/Usuario.vue'
 import Catalogos from '@/views/Navegacion/Ajustes/Catalogos.vue'
 import Equipo from '@/views/Navegacion/Ajustes/Equipo.vue'
+import Contraseñas from '@/views/Navegacion/Ajustes/Contraseñas.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,7 +41,7 @@ const router = createRouter({
          path: '/',
          name: 'Panel',
          component: Panel,
-         meta: { verifyToken: false },
+         meta: { verifyToken: true },
          children: [
             {
                path: 'Inicio',
@@ -147,6 +148,11 @@ const router = createRouter({
                            path:'Usuario',
                            name:'Usuario',
                            component:Usuario
+                        },
+                        {
+                           path:'Contrasenas',
+                           name:'Contrasenas',
+                           component:Contraseñas
                         },
                         {
                            path:'Catalogos',

@@ -75,7 +75,6 @@ const enviarMapa = () => {
     <div class="flex justify-around telefono:flex-wrap border rounded-sm">
         <!-- Vista Anterior -->
         <section class="relative">
-            <button @click="enviar">Imprimir</button>
             <img src="/src/assets/CuerpoHumano/VistaAnterior.jpeg" alt="Cuerpo Humano" class="w-[225px] h-[400px]">
             <div v-for="area in areasAnterior" :key="'anterior-' + area.name"
                  :style="{ left: area.x + 'px', top: area.y + 'px', width: area.width + 'px', height: area.height + 'px', backgroundColor: isSelected(area.name) ? '#0d6efd' : 'transparent' }"

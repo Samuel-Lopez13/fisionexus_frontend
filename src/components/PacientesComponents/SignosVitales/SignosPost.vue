@@ -27,8 +27,9 @@ const enviarSignos = () => {
 
 <template>
     <div class="border text-gray-500 rounded-sm shadow">
-        <header class="bg-gray-100 border-b text-sm text-black">
+        <header class="bg-gray-100 border-b text-sm text-black flex items-center justify-between">
             <h3 class="text-left py-3 p-4 telefono:text-center">Signos Vitales<span class="text-blue-600">*</span></h3>
+            <p class="py-3 p-4 text-sm text-blue-800 hover:text-blue-600 cursor-pointer">Importar ultimos signos vitales</p>
         </header>
         <section class="p-4">
             <div class="flex">
@@ -43,7 +44,7 @@ const enviarSignos = () => {
                     <span>Estatura</span>
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
-                    <input v-model="signosVitales.estatura" type="number" id="height"
+                    <input v-model="signosVitales.estatura" type="number"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">m</p>
                 </div>
@@ -65,7 +66,7 @@ const enviarSignos = () => {
                     <span>Peso</span>
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
-                    <input v-model="signosVitales.peso" type="number" id="weight"
+                    <input v-model="signosVitales.peso" type="number"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">Kg</p>
                 </div>
@@ -83,7 +84,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.temperatura" type="number"
-                           id="temperature"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">C°</p>
                 </div>
@@ -107,7 +107,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.fc" type="number"
-                           id="heart-rate"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">bpm</p>
                 </div>
@@ -125,7 +124,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.fr" type="number"
-                           id="respiratory-rate"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">rpm</p>
                 </div>
@@ -165,7 +163,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.presionArterial" type="number" maxlength="5"
-                           id="blood-pressure"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                    <!--  <input type="number"
                            class="w-3/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
@@ -185,7 +182,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.saturacionOxigeno" type="number"
-                           id="oxygen-saturation"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">%</p>
                 </div>
@@ -215,7 +211,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.indiceCinturaCadera" type="number"
-                           id="waist-to-hip"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">ICC</p>
                 </div>
@@ -239,7 +234,6 @@ const enviarSignos = () => {
                 </label>
                 <div class="flex items-center gap-1 py-2 w-4/12">
                     <input v-model="signosVitales.imc" type="number"
-                           id="BMI"
                            class="w-6/12 border-principal rounded-sm p-0 text-gray-700 hover:outline-0 focus:text-blue-900 focus:outline-0 focus:border-blue-500">
                     <p class="text-gray-700">IMC</p>
                 </div>
